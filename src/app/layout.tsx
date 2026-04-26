@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import GrainOverlay from "@/components/GrainOverlay";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -36,8 +37,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-text-primary">
         <GrainOverlay />
-        <Nav />
-        {children}
+        <SmoothScroll>
+          <Nav />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
