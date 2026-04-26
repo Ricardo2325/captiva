@@ -76,6 +76,8 @@ export default function Testimonials() {
             <motion.div
               key={t.name}
               variants={itemVariants}
+              whileHover={{ y: -6, borderColor: '#4f46e5' }}
+              transition={{ duration: 0.2 }}
               className="flex flex-col justify-between p-8 gap-8"
               style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
             >

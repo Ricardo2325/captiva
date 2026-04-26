@@ -14,7 +14,7 @@ export default function Footer() {
         </span>
 
         {/* Legal links */}
-        <div className="flex items-center gap-6 text-xs" style={{ color: '#8888aa' }}>
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs" style={{ color: '#8888aa' }}>
           <Link href="#" className="hover:text-text-primary transition-colors duration-200">
             Política de privacidad
           </Link>

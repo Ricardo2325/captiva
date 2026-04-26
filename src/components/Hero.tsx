@@ -18,7 +18,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col overflow-x-hidden">
       {/* Radial glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none"
         style={{
           background:
             'radial-gradient(ellipse at center top, rgba(79,70,229,0.13) 0%, transparent 65%)',
