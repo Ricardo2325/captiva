@@ -50,3 +50,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #4f46e5;
 }
+
+/* Horizontal scroll containers — hide scrollbar but keep scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

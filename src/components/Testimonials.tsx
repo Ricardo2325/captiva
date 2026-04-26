@@ -65,12 +65,13 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
+        <div className="relative">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible"
         >
           {testimonials.map((t) => (
             <motion.div
@@ -78,7 +79,7 @@ export default function Testimonials() {
               variants={itemVariants}
               whileHover={{ y: -6, borderColor: '#4f46e5' }}
               transition={{ duration: 0.2 }}
-              className="flex flex-col justify-between p-8 gap-8"
+              className="min-w-[85%] snap-start flex flex-col justify-between p-8 gap-8 md:min-w-0"
               style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
             >
               <p className="text-base leading-relaxed" style={{ color: '#e8e8f2' }}>
@@ -107,6 +108,9 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </motion.div>
+        <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
+          style={{ background: 'linear-gradient(to left, #0d0d14, transparent)' }} />
+        </div>
 
       </div>
     </section>

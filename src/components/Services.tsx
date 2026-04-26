@@ -76,8 +76,9 @@ export default function Services() {
           </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+        {/* Cards — horizontal scroll on mobile */}
+        <div className="relative">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -86,7 +87,7 @@ export default function Services() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.1, ease }}
               whileHover={{ y: -8, borderColor: '#4f46e5' }}
-              className="relative flex flex-col p-8 h-full"
+              className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0"
               style={{
                 backgroundColor: plan.featured ? '#13131f' : '#0d0d14',
                 border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
@@ -176,6 +177,9 @@ export default function Services() {
               </Link>
             </motion.div>
           ))}
+        </div>
+        <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
+          style={{ background: 'linear-gradient(to left, #0d0d14, transparent)' }} />
         </div>
 
         {/* Footnote */}

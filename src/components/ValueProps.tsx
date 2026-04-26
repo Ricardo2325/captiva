@@ -78,21 +78,22 @@ export default function ValueProps() {
           </h2>
         </motion.div>
 
-        {/* Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
-        >
+        {/* Grid — horizontal scroll on mobile, grid on desktop */}
+        <div className="relative">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible"
+          >
           {items.map((item) => (
             <motion.div
               key={item.title}
               variants={itemVariants}
               whileHover={{ borderColor: '#4f46e5' }}
               transition={{ duration: 0.2 }}
-              className="flex flex-col gap-5 p-8 md:p-10 cursor-default"
+              className="min-w-[78%] snap-start flex flex-col gap-5 p-8 cursor-default md:min-w-0"
               style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
             >
               <div style={{ color: '#4f46e5' }}>{item.icon}</div>
@@ -109,7 +110,11 @@ export default function ValueProps() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+          {/* Fade hint right edge — mobile only */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
+            style={{ background: 'linear-gradient(to left, #0d0d14, transparent)' }} />
+        </div>
 
       </div>
     </section>

@@ -69,22 +69,23 @@ export default function Process() {
           </h2>
         </motion.div>
 
-        {/* Steps grid */}
+        {/* Steps — horizontal scroll mobile, grid desktop */}
+        <div className="relative">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px"
-          style={{ backgroundColor: '#1e1e2e' }}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-4 md:gap-px md:overflow-visible"
+          style={{ '--md-bg': '#1e1e2e' } as React.CSSProperties}
         >
           {steps.map((step) => (
             <motion.div
               key={step.num}
               variants={itemVariants}
               whileHover={{ borderColor: '#4f46e5' }}
-              className="flex flex-col p-8 gap-4"
-              style={{ backgroundColor: '#0d0d14', border: '1px solid transparent' }}
+              className="min-w-[72%] snap-start flex flex-col p-8 gap-4 md:min-w-0"
+              style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
             >
               {/* Number */}
               <span
@@ -109,6 +110,9 @@ export default function Process() {
             </motion.div>
           ))}
         </motion.div>
+        <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
+          style={{ background: 'linear-gradient(to left, #0d0d14, transparent)' }} />
+        </div>
 
       </div>
     </section>
