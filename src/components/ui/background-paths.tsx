@@ -1,8 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-// Deterministic durations to avoid hydration mismatch (no Math.random)
+// Deterministic durations — no Math.random() to avoid hydration mismatch
 const DURATIONS = Array.from({ length: 36 }, (_, i) => 20 + ((i * 13.7) % 10));
 
 function FloatingPaths({ position }: { position: number }) {
@@ -53,6 +54,14 @@ function FloatingPaths({ position }: { position: number }) {
 }
 
 export function BackgroundPaths() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <FloatingPaths position={1} />
