@@ -52,25 +52,17 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
-          className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+          className="mb-12 md:mb-16"
         >
-          <div>
-            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
-              Testimonios
-            </p>
-            <h2
-              className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"
-              style={{ color: '#e8e8f2' }}
-            >
-              Lo que dicen<br />los que ya están dentro.
-            </h2>
-          </div>
-          <div className="flex items-center gap-6 flex-shrink-0">
-            <div className="text-center">
-              <span className="font-display font-extrabold text-3xl block" style={{ color: '#e8e8f2' }}>30+</span>
-              <span className="text-xs mt-1 block" style={{ color: '#8888aa' }}>clientes</span>
-            </div>
-          </div>
+          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
+            Testimonios
+          </p>
+          <h2
+            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"
+            style={{ color: '#e8e8f2' }}
+          >
+            Lo que dicen<br />los que ya están dentro.
+          </h2>
         </motion.div>
 
         <div className="relative">

@@ -154,7 +154,7 @@ export default function ValueProps() {
         >
           {[
             { value: '30+', label: 'Proyectos entregados' },
-            { value: '3 sem.', label: 'Tiempo medio de entrega' },
+            { value: '2 sem.', label: 'Tiempo medio de entrega' },
             { value: '€0', label: 'Costes ocultos' },
             { value: '24h', label: 'Tiempo máximo de respuesta' },
           ].map((s) => (
