@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import SplitText from '@/components/SplitText';
 import MagneticWrapper from '@/components/MagneticWrapper';
+import { BackgroundPaths } from '@/components/ui/background-paths';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -18,6 +19,9 @@ function fadeUp(delay: number) {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-x-hidden">
+      {/* Flowing indigo paths background */}
+      <BackgroundPaths />
+
       {/* Radial glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none"
