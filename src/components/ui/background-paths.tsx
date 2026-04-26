@@ -2,14 +2,21 @@
 
 import { motion } from 'framer-motion';
 
+// Deterministic durations to avoid hydration mismatch (no Math.random)
+const DURATIONS = Array.from({ length: 36 }, (_, i) => 20 + ((i * 13.7) % 10));
+
 function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 24 }, (_, i) => ({
+  const paths = Array.from({ length: 36 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position} -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position} ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position} ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: 0.4 + i * 0.05,
-    strokeOpacity: 0.04 + i * 0.007,
-    startOffset: i * 0.042,
-    duration: 18 + i * 0.8,
+    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
+      380 - i * 5 * position
+    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
+      152 - i * 5 * position
+    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
+      684 - i * 5 * position
+    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+    width: 0.5 + i * 0.03,
+    opacity: 0.06 + i * 0.018,
   }));
 
   return (
@@ -26,28 +33,17 @@ function FloatingPaths({ position }: { position: number }) {
             d={path.d}
             stroke="#4f46e5"
             strokeWidth={path.width}
-            strokeOpacity={path.strokeOpacity}
-            initial={{
-              pathLength: 0.12,
-              pathOffset: path.startOffset,
-              opacity: 0,
-            }}
+            strokeOpacity={path.opacity}
+            initial={{ pathLength: 0.3, opacity: 0.6 }}
             animate={{
-              pathOffset: path.startOffset + 1,
-              opacity: 1,
+              pathLength: 1,
+              opacity: [0.3, 0.6, 0.3],
+              pathOffset: [0, 1, 0],
             }}
             transition={{
-              pathOffset: {
-                duration: path.duration,
-                repeat: Infinity,
-                ease: 'linear',
-                repeatType: 'loop',
-              },
-              opacity: {
-                duration: 2,
-                delay: 0.2 + path.id * 0.04,
-                ease: 'easeIn',
-              },
+              duration: DURATIONS[path.id],
+              repeat: Infinity,
+              ease: 'linear',
             }}
           />
         ))}
