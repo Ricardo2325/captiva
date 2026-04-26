@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import SplitText from '@/components/SplitText';
-import MagneticWrapper from '@/components/MagneticWrapper';
 import { BackgroundPaths } from '@/components/ui/background-paths';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -75,27 +74,23 @@ export default function Hero() {
           {...fadeUp(1.0)}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto"
         >
-          <MagneticWrapper className="w-full sm:w-auto">
-            <Link
-              href="/portfolio"
-              className="block w-full sm:w-auto px-8 py-3.5 rounded-full font-medium text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] text-center"
-              style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
-            >
-              Ver portfolio
-            </Link>
-          </MagneticWrapper>
-          <MagneticWrapper className="w-full sm:w-auto">
-            <Link
-              href="/contacto"
-              className="block w-full sm:w-auto px-8 py-3.5 rounded-full border font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 group"
-              style={{ borderColor: '#1e1e2e', color: '#8888aa' }}
-            >
-              Hablamos
-              <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">
-                →
-              </span>
-            </Link>
-          </MagneticWrapper>
+          <Link
+            href="/portfolio"
+            className="block w-full sm:w-auto px-8 py-3.5 rounded-full font-medium text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] text-center"
+            style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+          >
+            Ver portfolio
+          </Link>
+          <Link
+            href="/contacto"
+            className="block w-full sm:w-auto px-8 py-3.5 rounded-full border font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 group"
+            style={{ borderColor: '#1e1e2e', color: '#8888aa' }}
+          >
+            Hablamos
+            <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">
+              →
+            </span>
+          </Link>
         </motion.div>
 
         {/* Social proof */}

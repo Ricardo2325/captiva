@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import MagneticWrapper from '@/components/MagneticWrapper';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const plans = [
@@ -150,15 +149,13 @@ export default function Services() {
                 </ul>
 
                 {plan.featured ? (
-                  <MagneticWrapper>
-                    <Link
-                      href="/contacto"
-                      className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
-                      style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
-                    >
-                      {plan.cta}
-                    </Link>
-                  </MagneticWrapper>
+                  <Link
+                    href="/contacto"
+                    className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
+                    style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+                  >
+                    {plan.cta}
+                  </Link>
                 ) : (
                   <Link
                     href="/contacto"
