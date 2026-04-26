@@ -6,22 +6,26 @@ const steps = [
   {
     num: '01',
     title: 'Llamada inicial',
-    desc: '30 minutos para entender tu negocio, tus objetivos y ver si encajamos. Sin compromiso.',
+    desc: '30 minutos para entender tu negocio, tus objetivos y ver si encajamos. Hablamos de dónde estás, qué quieres conseguir y qué obstáculos tienes ahora mismo. Sin compromiso ni presión de venta.',
+    duration: '30 min',
   },
   {
     num: '02',
     title: 'Propuesta',
-    desc: 'En 48h tienes un documento con alcance exacto, timeline y precio fijo. Sin sorpresas.',
+    desc: 'En 48 horas recibes un documento con el alcance exacto del proyecto, el timeline semana a semana y el precio fijo. Todo por escrito antes de empezar. Lo que acordamos es lo que pagas.',
+    duration: '48 h',
   },
   {
     num: '03',
     title: 'Diseño y desarrollo',
-    desc: 'Sprints cortos con revisiones. Ves el avance desde el primer día y das feedback en tiempo real.',
+    desc: 'Trabajamos en sprints cortos de 3-4 días. Cada revisión se comparte contigo en directo para que veas el avance y des feedback antes de seguir. Cero sorpresas al final.',
+    duration: '2–3 sem.',
   },
   {
     num: '04',
     title: 'Entrega y activación',
-    desc: 'Lanzamos, probamos cada automatización en vivo y te formamos. Tu negocio ya funciona solo.',
+    desc: 'Lanzamos juntos, probamos cada automatización en vivo y te formamos para que puedas gestionarlo tú. A partir del lanzamiento el sistema trabaja solo. Soporte incluido los primeros meses.',
+    duration: '1 día',
   },
 ];
 
@@ -87,13 +91,21 @@ export default function Process() {
               className="min-w-[72%] snap-start flex flex-col p-8 gap-4 md:min-w-0"
               style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
             >
-              {/* Number */}
-              <span
-                className="font-display font-extrabold text-3xl leading-none"
-                style={{ color: '#4f46e5' }}
-              >
-                {step.num}
-              </span>
+              {/* Number + duration */}
+              <div className="flex items-start justify-between">
+                <span
+                  className="font-display font-extrabold text-3xl leading-none"
+                  style={{ color: '#4f46e5' }}
+                >
+                  {step.num}
+                </span>
+                <span
+                  className="text-[10px] tracking-widest uppercase px-2 py-1"
+                  style={{ backgroundColor: 'rgba(79,70,229,0.1)', color: '#4f46e5' }}
+                >
+                  {step.duration}
+                </span>
+              </div>
 
               {/* Title */}
               <h3
@@ -111,6 +123,78 @@ export default function Process() {
           ))}
         </motion.div>
         </div>
+
+        {/* Guarantee */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease }}
+          className="mt-12 flex flex-col md:flex-row items-start md:items-center gap-6 p-8"
+          style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
+        >
+          <div
+            className="flex-shrink-0 w-12 h-12 flex items-center justify-center"
+            style={{ backgroundColor: 'rgba(79,70,229,0.12)' }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <h3 className="font-display font-bold text-base mb-1" style={{ color: '#e8e8f2' }}>
+              Garantía de satisfacción
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
+              Si al ver la primera entrega hay algo que no te convence, lo revisamos sin coste adicional. Trabajamos hasta que el resultado sea exactamente lo que acordamos — ni más, ni menos.
+            </p>
+          </div>
+          <div className="flex-shrink-0 text-right hidden md:block">
+            <span className="font-display font-extrabold text-2xl" style={{ color: '#4f46e5' }}>100%</span>
+            <p className="text-xs mt-0.5" style={{ color: '#8888aa' }}>satisfacción</p>
+          </div>
+        </motion.div>
+
+        {/* FAQ inline */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3, ease }}
+          className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+          {[
+            {
+              q: '¿Qué necesito tener listo antes de empezar?',
+              a: 'Prácticamente nada. Te guiamos con los textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos.',
+            },
+            {
+              q: '¿Qué pasa si el proyecto crece durante el desarrollo?',
+              a: 'Cualquier cambio de alcance se presupuesta por separado y se aprueba antes de ejecutarse. Nunca hay sorpresas en la factura final.',
+            },
+            {
+              q: '¿Puedo pedir cambios después del lanzamiento?',
+              a: 'Sí. Los planes incluyen soporte post-lanzamiento de 3 a 6 meses. Ajustes menores se resuelven en 24-48 horas.',
+            },
+            {
+              q: '¿Por qué solo 3 semanas?',
+              a: 'Porque nos especializamos en un tipo de proyecto y lo hemos hecho muchas veces. No reinventamos la rueda con cada cliente, aplicamos lo que ya sabemos que funciona.',
+            },
+          ].map((item) => (
+            <div
+              key={item.q}
+              className="p-6"
+              style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
+            >
+              <p className="font-display font-semibold text-sm mb-2" style={{ color: '#e8e8f2' }}>
+                {item.q}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
+                {item.a}
+              </p>
+            </div>
+          ))}
+        </motion.div>
 
       </div>
     </section>

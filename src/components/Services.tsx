@@ -70,11 +70,14 @@ export default function Services() {
             Servicios
           </p>
           <h2
-            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"
+            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl mb-5"
             style={{ color: '#e8e8f2' }}
           >
             Elige tu punto<br />de partida.
           </h2>
+          <p className="text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: '#8888aa' }}>
+            Cada proyecto empieza con una llamada gratuita de 30 minutos. A partir de ahí, te proponemos el plan que mejor encaja con donde estás ahora y a dónde quieres llegar. El precio es fijo — lo que acordamos es lo que pagas.
+          </p>
         </motion.div>
 
         {/* Cards */}
@@ -187,6 +190,97 @@ export default function Services() {
         >
           Precios orientativos. Cada proyecto se presupuesta a medida.
         </motion.p>
+
+        {/* What's included callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease }}
+          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4"
+        >
+          {[
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              ),
+              title: 'Diseño a medida',
+              desc: 'No usamos plantillas. Cada web se diseña desde cero para tu marca, tu nicho y tus objetivos de conversión.',
+            },
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              ),
+              title: 'Rendimiento técnico',
+              desc: 'Webs rápidas, bien optimizadas y con SEO básico incluido. Tu posición en Google mejora desde el lanzamiento.',
+            },
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              ),
+              title: 'Soporte post-entrega',
+              desc: 'No desaparecemos al lanzar. Estamos disponibles para ajustes, dudas y optimizaciones durante los meses siguientes.',
+            },
+          ].map((item) => (
+            <div key={item.title} className="flex gap-4 p-6" style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}>
+              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center" style={{ backgroundColor: 'rgba(79,70,229,0.12)' }}>
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-sm mb-1" style={{ color: '#e8e8f2' }}>{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* FAQ */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3, ease }}
+          className="mt-12"
+        >
+          <p className="text-xs tracking-widest uppercase mb-8" style={{ color: '#4f46e5' }}>
+            Preguntas frecuentes
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                q: '¿Qué pasa si necesito algo que no está en el plan?',
+                a: 'Cada proyecto se adapta. El plan es el punto de partida: en la llamada inicial ajustamos el alcance exacto a tu situación y necesidades concretas.',
+              },
+              {
+                q: '¿El precio incluye el hosting y el dominio?',
+                a: 'No. El hosting y dominio se contratan por tu cuenta directamente (entre 10-20€/mes). Te explicamos exactamente cómo hacerlo y qué contratar.',
+              },
+              {
+                q: '¿Qué necesito tener listo antes de empezar?',
+                a: 'Prácticamente nada. Te guiamos con textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos durante el proceso.',
+              },
+              {
+                q: '¿Cuánto tiempo lleva el proceso completo?',
+                a: 'Entre 2 y 5 semanas según el plan. Todo el timeline queda fijado por escrito antes de empezar, con fechas concretas de revisión y entrega.',
+              },
+            ].map((item) => (
+              <div key={item.q} className="p-6" style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}>
+                <p className="font-display font-semibold text-sm mb-2" style={{ color: '#e8e8f2' }}>
+                  {item.q}
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
+                  {item.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
       </div>
     </section>

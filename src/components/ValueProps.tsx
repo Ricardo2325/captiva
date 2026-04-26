@@ -10,7 +10,7 @@ const items = [
       </svg>
     ),
     title: 'Entrega en 3 semanas',
-    desc: 'De la primera llamada a tu web en producción. Sin procesos eternos ni reuniones innecesarias.',
+    desc: 'De la primera llamada a tu web en producción. Sin procesos eternos, sin reuniones que no aportan. Ves el avance desde el día uno y damos feedback en tiempo real.',
   },
   {
     icon: (
@@ -20,7 +20,7 @@ const items = [
       </svg>
     ),
     title: 'Automatizaciones incluidas',
-    desc: 'Formularios, recordatorios, reservas y seguimiento automático. Tu negocio funciona solo.',
+    desc: 'Formularios, recordatorios, reservas y seguimiento automático desde el primer día. Cada lead que entra recibe atención en menos de 2 minutos, a cualquier hora, sin que muevas un dedo.',
   },
   {
     icon: (
@@ -34,7 +34,37 @@ const items = [
       </svg>
     ),
     title: 'Especializados en tu nicho',
-    desc: 'Trabajamos exclusivamente con entrenadores y negocios locales. Sabemos lo que convierte.',
+    desc: 'Trabajamos exclusivamente con entrenadores personales y negocios locales. Conocemos el sector, sabemos qué convierte y no perdemos tiempo en curva de aprendizaje a tu costa.',
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+    title: 'Precio fijo, sin sorpresas',
+    desc: 'Presupuesto cerrado antes de empezar. Lo que acordamos es lo que pagas, sin costes ocultos, sin extras de última hora. Si algo se sale del alcance, lo hablamos antes de hacerlo.',
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+    title: 'Hablas con quien hace el trabajo',
+    desc: 'Sin cuentas, sin gestores intermedios. Hablas directamente con el desarrollador y el estratega. Respuesta en menos de 24 horas, siempre con contexto de tu proyecto.',
+  },
+  {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+      </svg>
+    ),
+    title: 'Resultados medibles',
+    desc: 'No hacemos webs bonitas que no convierten. Cada proyecto incluye métricas claras de éxito: consultas generadas, tiempo de gestión ahorrado, ingresos atribuibles. Sabemos si funciona.',
   },
 ];
 
@@ -78,7 +108,7 @@ export default function ValueProps() {
           </h2>
         </motion.div>
 
-        {/* Grid — horizontal scroll on mobile, grid on desktop */}
+        {/* Grid — horizontal scroll on mobile, 3-col 2-row on desktop */}
         <div className="relative">
           <motion.div
             variants={containerVariants}
@@ -112,6 +142,34 @@ export default function ValueProps() {
           ))}
           </motion.div>
         </div>
+
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px"
+          style={{ backgroundColor: '#1e1e2e' }}
+        >
+          {[
+            { value: '30+', label: 'Proyectos entregados' },
+            { value: '3 sem.', label: 'Tiempo medio de entrega' },
+            { value: '€0', label: 'Costes ocultos' },
+            { value: '24h', label: 'Tiempo máximo de respuesta' },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center justify-center py-8 px-4 text-center"
+              style={{ backgroundColor: '#0d0d14' }}
+            >
+              <span className="font-display font-extrabold text-3xl md:text-4xl mb-1" style={{ color: '#e8e8f2' }}>
+                {s.value}
+              </span>
+              <span className="text-xs" style={{ color: '#8888aa' }}>{s.label}</span>
+            </div>
+          ))}
+        </motion.div>
 
       </div>
     </section>

@@ -2,11 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import projects from '@/data/projects';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const MOBILE_INITIAL = 4;
+
+// Desktop (4-col grid) col-spans per project index:
+//   Row 1: [0:span-2] [1:span-1] [2:span-1]  = 4
+//   Row 2: [3:span-1] [4:span-2] [5:span-1]  = 4
+//   Row 3: [6:span-2] [7:span-2]              = 4
+const mdColSpans: number[] = [2, 1, 1, 1, 2, 1, 2, 2];
 
 export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
@@ -34,10 +40,13 @@ export default function Portfolio() {
           </h2>
         </motion.div>
 
-        {/* Grid — 4 items on mobile with Ver más, all on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {/* Irregular grid: 2-col mobile, 4-col desktop with varying spans */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 [grid-auto-rows:190px] md:[grid-auto-rows:280px]">
           {projects.map((project, i) => {
             const hiddenOnMobile = i >= MOBILE_INITIAL && !showAll;
+            const mdSpan = mdColSpans[i] ?? 1;
+            const isFeatured = mdSpan >= 2;
+
             return (
               <motion.div
                 key={project.name}
@@ -45,11 +54,29 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.06, ease }}
-                className={hiddenOnMobile ? 'hidden md:block' : ''}
+                className={[
+                  'flex flex-col',
+                  hiddenOnMobile ? 'hidden md:flex' : '',
+                  isFeatured ? 'md:col-span-2' : '',
+                ].filter(Boolean).join(' ')}
               >
-                <Link href={`/proyecto/${project.slug}`} className="group block">
-                  <div className="relative aspect-[4/3] overflow-hidden mb-3">
+                <Link href={`/proyecto/${project.slug}`} className="group flex flex-col h-full">
+                  {/* Image */}
+                  <div className="relative flex-1 overflow-hidden">
                     <div className="absolute inset-0" style={{ background: project.gradient }} />
+
+                    {/* Tagline overlay on featured cards */}
+                    {isFeatured && (
+                      <div
+                        className="absolute bottom-0 left-0 right-0 p-4 hidden md:block pointer-events-none"
+                        style={{ background: 'linear-gradient(to top, rgba(13,13,20,0.75) 0%, transparent 100%)' }}
+                      >
+                        <p className="text-sm leading-snug" style={{ color: '#e8e8f2' }}>
+                          {project.tagline}
+                        </p>
+                      </div>
+                    )}
+
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
@@ -65,15 +92,19 @@ export default function Portfolio() {
                       </span>
                     </motion.div>
                   </div>
-                  <p
-                    className="font-display font-semibold text-sm mb-1 group-hover:text-accent transition-colors duration-200"
-                    style={{ color: '#e8e8f2' }}
-                  >
-                    {project.name}
-                  </p>
-                  <p className="text-xs" style={{ color: '#8888aa' }}>
-                    {project.type}
-                  </p>
+
+                  {/* Text */}
+                  <div className="pt-3 pb-1 shrink-0">
+                    <p
+                      className="font-display font-semibold text-sm mb-0.5 group-hover:opacity-70 transition-opacity duration-200"
+                      style={{ color: '#e8e8f2' }}
+                    >
+                      {project.name}
+                    </p>
+                    <p className="text-xs" style={{ color: '#8888aa' }}>
+                      {project.type}
+                    </p>
+                  </div>
                 </Link>
               </motion.div>
             );

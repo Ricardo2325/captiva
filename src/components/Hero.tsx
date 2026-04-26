@@ -97,6 +97,27 @@ export default function Hero() {
             </Link>
           </MagneticWrapper>
         </motion.div>
+
+        {/* Social proof */}
+        <motion.div
+          {...fadeUp(1.15)}
+          className="flex items-center justify-center gap-8 md:gap-12 mt-10 flex-wrap"
+        >
+          {[
+            { value: '+30', label: 'proyectos entregados' },
+            { value: '3 sem.', label: 'de media hasta lanzar' },
+            { value: '100%', label: 'clientes satisfechos' },
+          ].map((stat, i) => (
+            <div key={i} className="flex flex-col items-center gap-0.5">
+              <span className="font-display font-extrabold text-2xl md:text-3xl" style={{ color: '#e8e8f2' }}>
+                {stat.value}
+              </span>
+              <span className="text-[11px] tracking-wide" style={{ color: '#8888aa' }}>
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

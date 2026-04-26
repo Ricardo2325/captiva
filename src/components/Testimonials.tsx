@@ -52,17 +52,37 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
-          className="mb-16 md:mb-20"
+          className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
         >
-          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
-            Testimonios
-          </p>
-          <h2
-            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"
-            style={{ color: '#e8e8f2' }}
-          >
-            Lo que dicen<br />los que ya están dentro.
-          </h2>
+          <div>
+            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
+              Testimonios
+            </p>
+            <h2
+              className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"
+              style={{ color: '#e8e8f2' }}
+            >
+              Lo que dicen<br />los que ya están dentro.
+            </h2>
+          </div>
+          <div className="flex items-center gap-6 flex-shrink-0">
+            <div className="text-center">
+              <span className="font-display font-extrabold text-3xl block" style={{ color: '#e8e8f2' }}>4.9</span>
+              <div className="flex gap-0.5 justify-center my-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#f59e0b">
+                    <path d="M6 1l1.39 2.82L10.5 4.27l-2.25 2.19.53 3.09L6 8l-2.78 1.55.53-3.09L1.5 4.27l3.11-.45L6 1z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-xs" style={{ color: '#8888aa' }}>valoración media</span>
+            </div>
+            <div style={{ width: '1px', height: '48px', backgroundColor: '#1e1e2e' }} />
+            <div className="text-center">
+              <span className="font-display font-extrabold text-3xl block" style={{ color: '#e8e8f2' }}>30+</span>
+              <span className="text-xs mt-1 block" style={{ color: '#8888aa' }}>clientes</span>
+            </div>
+          </div>
         </motion.div>
 
         <div className="relative">
@@ -82,9 +102,18 @@ export default function Testimonials() {
               className="min-w-[85%] snap-start flex flex-col justify-between p-8 gap-8 md:min-w-0"
               style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
             >
-              <p className="text-base leading-relaxed" style={{ color: '#e8e8f2' }}>
-                "{t.quote}"
-              </p>
+              <div className="flex flex-col gap-4">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="14" height="14" viewBox="0 0 12 12" fill="#f59e0b">
+                      <path d="M6 1l1.39 2.82L10.5 4.27l-2.25 2.19.53 3.09L6 8l-2.78 1.55.53-3.09L1.5 4.27l3.11-.45L6 1z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-base leading-relaxed" style={{ color: '#e8e8f2' }}>
+                  "{t.quote}"
+                </p>
+              </div>
               <div className="flex items-center gap-3">
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
