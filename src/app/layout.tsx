@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
   display: "swap",
 });
 
 const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+  variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   display: "swap",
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${syne.variable} ${dmSans.variable} h-full`}
+      className={`${bricolage.variable} ${dmSans.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-background text-text-primary">
         <Nav />

@@ -41,7 +41,7 @@ export default function Hero() {
         {/* Headline */}
         <motion.h1
           {...fadeUp(0.1)}
-          className="font-display font-extrabold leading-[1.05] tracking-tight mb-6 text-[2.2rem] sm:text-5xl md:text-6xl lg:text-7xl"
+          className="font-display font-extrabold leading-[1.05] tracking-tight mb-6 text-[1.85rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl w-full"
           style={{ color: '#e8e8f2' }}
         >
           Webs a medida.{' '}

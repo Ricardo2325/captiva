@@ -9,8 +9,8 @@
   --color-text-muted: #8888aa;
   --color-border: #1e1e2e;
 
-  --font-display: var(--font-syne);
-  --font-body: var(--font-dm-sans);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 * {
