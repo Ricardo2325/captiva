@@ -78,7 +78,7 @@ export default function Services() {
 
         {/* Cards — horizontal scroll on mobile */}
         <div className="relative">
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-6 px-6 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
