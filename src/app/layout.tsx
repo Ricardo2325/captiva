@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import Nav from "@/components/Nav";
 import GrainOverlay from "@/components/GrainOverlay";
 import SmoothScroll from "@/components/SmoothScroll";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -39,7 +40,9 @@ export default function RootLayout({
         <GrainOverlay />
         <SmoothScroll>
           <Nav />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </SmoothScroll>
       </body>
     </html>

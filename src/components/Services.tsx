@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import MagneticWrapper from '@/components/MagneticWrapper';
 
 const plans = [
   {
@@ -76,112 +77,106 @@ export default function Services() {
           </h2>
         </motion.div>
 
-        {/* Cards — horizontal scroll on mobile */}
+        {/* Cards */}
         <div className="relative">
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
-          {plans.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease }}
-              whileHover={{ y: -8, borderColor: '#4f46e5' }}
-              className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0"
-              style={{
-                backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
-                border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
-                boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
-              }}
-            >
-              {/* Badge */}
-              {plan.featured && (
-                <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-[11px] font-medium tracking-wider uppercase"
-                  style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
-                >
-                  Más popular
-                </div>
-              )}
-
-              {/* Plan name + price */}
-              <div className="mb-6">
-                <p className="text-sm mb-4" style={{ color: plan.featured ? '#8888aa' : '#8888aa' }}>
-                  {plan.name}
-                </p>
-                <div className="flex items-baseline gap-1 mb-3">
-                  <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>
-                    €{plan.price}
-                  </span>
-                  <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
-                </div>
-                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                  {plan.desc}
-                </p>
-              </div>
-
-              {/* Divider */}
-              <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
-
-              {/* Features */}
-              <ul className="flex flex-col gap-3 mb-8 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      className="flex-shrink-0 mt-0.5"
-                      style={{ color: '#4f46e5' }}
-                    >
-                      <path
-                        d="M3 8l3.5 3.5L13 4.5"
-                        stroke="currentColor"
-                        strokeWidth="1.75"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <Link
-                href="#contacto"
-                className="block text-center py-3 text-sm font-medium transition-all duration-200"
-                style={
-                  plan.featured
-                    ? { backgroundColor: '#4f46e5', color: '#e8e8f2' }
-                    : { border: '1px solid #1e1e2e', color: '#8888aa' }
-                }
-                onMouseEnter={(e) => {
-                  if (!plan.featured) {
-                    (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5';
-                    (e.currentTarget as HTMLElement).style.color = '#e8e8f2';
-                  } else {
-                    (e.currentTarget as HTMLElement).style.backgroundColor = '#6366f1';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!plan.featured) {
-                    (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e';
-                    (e.currentTarget as HTMLElement).style.color = '#8888aa';
-                  } else {
-                    (e.currentTarget as HTMLElement).style.backgroundColor = '#4f46e5';
-                  }
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
+            {plans.map((plan, i) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease }}
+                whileHover={{ y: -8, borderColor: '#4f46e5' }}
+                className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0"
+                style={{
+                  backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
+                  border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
+                  boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
                 }}
               >
-                {plan.cta}
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                {plan.featured && (
+                  <div
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-[11px] font-medium tracking-wider uppercase"
+                    style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+                  >
+                    Más popular
+                  </div>
+                )}
+
+                <div className="mb-6">
+                  <p className="text-sm mb-4" style={{ color: '#8888aa' }}>
+                    {plan.name}
+                  </p>
+                  <div className="flex items-baseline gap-1 mb-3">
+                    <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>
+                      €{plan.price}
+                    </span>
+                    <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
+                    {plan.desc}
+                  </p>
+                </div>
+
+                <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
+
+                <ul className="flex flex-col gap-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        className="flex-shrink-0 mt-0.5"
+                        style={{ color: '#4f46e5' }}
+                      >
+                        <path
+                          d="M3 8l3.5 3.5L13 4.5"
+                          stroke="currentColor"
+                          strokeWidth="1.75"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {plan.featured ? (
+                  <MagneticWrapper>
+                    <Link
+                      href="/contacto"
+                      className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
+                      style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+                    >
+                      {plan.cta}
+                    </Link>
+                  </MagneticWrapper>
+                ) : (
+                  <Link
+                    href="/contacto"
+                    className="block text-center py-3 text-sm font-medium transition-all duration-200"
+                    style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5';
+                      (e.currentTarget as HTMLElement).style.color = '#e8e8f2';
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e';
+                      (e.currentTarget as HTMLElement).style.color = '#8888aa';
+                    }}
+                  >
+                    {plan.cta}
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Footnote */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -4,7 +4,13 @@ import Link from 'next/link';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState } from 'react';
 
-const links = ['Servicios', 'Portfolio', 'Proceso', 'Contacto'];
+const links = [
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Proceso', href: '/proceso' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Contacto', href: '/contacto' },
+];
 
 export default function Nav() {
   const { scrollY } = useScroll();
@@ -36,15 +42,15 @@ export default function Nav() {
         <nav className="hidden md:flex items-center gap-8">
           {links.map((item) => (
             <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="text-sm text-text-muted hover:text-text-primary transition-colors duration-200"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
           <Link
-            href="#contacto"
+            href="/contacto"
             className="text-sm px-4 py-2 rounded-full border border-border text-text-primary hover:border-accent hover:text-accent transition-all duration-200"
           >
             Hablamos
@@ -80,16 +86,16 @@ export default function Nav() {
         <nav className="flex flex-col gap-0 px-6 pb-6">
           {links.map((item) => (
             <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               onClick={() => setMenuOpen(false)}
               className="py-4 text-base text-text-muted hover:text-text-primary border-b border-border transition-colors duration-200"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
           <Link
-            href="#contacto"
+            href="/contacto"
             onClick={() => setMenuOpen(false)}
             className="mt-4 text-sm text-center px-4 py-3 rounded-full border border-border text-text-primary hover:border-accent hover:text-accent transition-all duration-200"
           >

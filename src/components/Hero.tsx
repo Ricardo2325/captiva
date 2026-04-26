@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import SplitText from '@/components/SplitText';
+import MagneticWrapper from '@/components/MagneticWrapper';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -38,20 +40,24 @@ export default function Hero() {
           Agencia digital · Negocios locales
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          {...fadeUp(0.1)}
+        {/* Headline — split text word by word */}
+        <h1
           className="font-display font-extrabold leading-[1.05] tracking-tight mb-6 text-[1.85rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl w-full"
           style={{ color: '#e8e8f2' }}
         >
-          Webs a medida.{' '}
-          <span style={{ color: '#8888aa' }}>Automatizaciones</span>{' '}
-          que trabajan por ti.
-        </motion.h1>
+          <SplitText text="Webs a medida." startDelay={0.1} stagger={0.08} />{' '}
+          <SplitText
+            text="Automatizaciones"
+            startDelay={0.34}
+            stagger={0.08}
+            style={{ color: '#8888aa' }}
+          />{' '}
+          <SplitText text="que trabajan por ti." startDelay={0.42} stagger={0.08} />
+        </h1>
 
         {/* Subheadline */}
         <motion.p
-          {...fadeUp(0.2)}
+          {...fadeUp(0.9)}
           className="max-w-lg mx-auto text-base md:text-lg leading-relaxed mb-10"
           style={{ color: '#8888aa' }}
         >
@@ -62,32 +68,36 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div
-          {...fadeUp(0.3)}
+          {...fadeUp(1.0)}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto"
         >
-          <Link
-            href="#portfolio"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full font-medium text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] text-center"
-            style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
-          >
-            Ver portfolio
-          </Link>
-          <Link
-            href="#contacto"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full border font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 group"
-            style={{ borderColor: '#1e1e2e', color: '#8888aa' }}
-          >
-            Hablamos
-            <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">
-              →
-            </span>
-          </Link>
+          <MagneticWrapper className="w-full sm:w-auto">
+            <Link
+              href="/portfolio"
+              className="block w-full sm:w-auto px-8 py-3.5 rounded-full font-medium text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] text-center"
+              style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+            >
+              Ver portfolio
+            </Link>
+          </MagneticWrapper>
+          <MagneticWrapper className="w-full sm:w-auto">
+            <Link
+              href="/contacto"
+              className="block w-full sm:w-auto px-8 py-3.5 rounded-full border font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 group"
+              style={{ borderColor: '#1e1e2e', color: '#8888aa' }}
+            >
+              Hablamos
+              <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">
+                →
+              </span>
+            </Link>
+          </MagneticWrapper>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        {...fadeUp(0.6)}
+        {...fadeUp(1.2)}
         className="relative z-10 flex flex-col items-center gap-2 pb-10"
         style={{ color: '#8888aa' }}
       >
