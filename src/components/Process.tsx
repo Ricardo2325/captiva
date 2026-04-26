@@ -86,16 +86,13 @@ export default function Process() {
               className="flex flex-col p-8 gap-4"
               style={{ backgroundColor: '#0d0d14', border: '1px solid transparent' }}
             >
-              {/* Number + accent bar */}
-              <div className="flex items-center gap-3">
-                <span
-                  className="font-display font-extrabold text-3xl leading-none"
-                  style={{ color: '#1e1e2e' }}
-                >
-                  {step.num}
-                </span>
-                <div className="flex-1 h-px" style={{ backgroundColor: '#4f46e5', opacity: 0.4 }} />
-              </div>
+              {/* Number */}
+              <span
+                className="font-display font-extrabold text-3xl leading-none"
+                style={{ color: '#1e1e2e' }}
+              >
+                {step.num}
+              </span>
 
               {/* Title */}
               <h3
