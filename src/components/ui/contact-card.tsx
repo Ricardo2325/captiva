@@ -10,6 +10,7 @@ type ContactInfoItem = {
     icon: LucideIcon;
     label: string;
     value: string;
+    href?: string;
     className?: string;
 };
 
@@ -80,16 +81,35 @@ export function ContactCard({
     );
 }
 
-function ContactInfo({ icon: Icon, label, value, className }: ContactInfoItem) {
-    return (
-        <div className={cn('flex items-center gap-3 py-3', className)}>
-            <div className="rounded-lg p-3" style={{ backgroundColor: 'rgba(79, 70, 229, 0.1)' }}>
+function ContactInfo({ icon: Icon, label, value, href, className }: ContactInfoItem) {
+    const inner = (
+        <>
+            <div className="rounded-lg p-3 shrink-0" style={{ backgroundColor: 'rgba(79, 70, 229, 0.1)' }}>
                 <Icon className="h-5 w-5" style={{ color: '#4f46e5' }} />
             </div>
             <div>
                 <p className="font-medium text-sm" style={{ color: '#e8e8f2' }}>{label}</p>
                 <p className="text-xs" style={{ color: '#8888aa' }}>{value}</p>
             </div>
+        </>
+    );
+
+    if (href) {
+        return (
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn('flex items-center gap-3 py-3 transition-opacity duration-200 hover:opacity-70', className)}
+            >
+                {inner}
+            </a>
+        );
+    }
+
+    return (
+        <div className={cn('flex items-center gap-3 py-3', className)}>
+            {inner}
         </div>
     );
 }

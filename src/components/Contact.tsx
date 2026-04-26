@@ -74,8 +74,14 @@ const contactInfo = [
     icon: PhoneIcon,
     label: 'WhatsApp',
     value: `+${WHATSAPP_PHONE.slice(0, 2)} ${WHATSAPP_PHONE.slice(2, 5)} ${WHATSAPP_PHONE.slice(5)}`,
+    href: `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_MSG}`,
   },
-  { icon: CalendarIcon, label: 'Llamada gratuita', value: '30 min · Sin compromiso' },
+  {
+    icon: CalendarIcon,
+    label: 'Agenda una llamada',
+    value: '30 min · Gratuita · Sin compromiso',
+    href: CALENDAR_URL,
+  },
 ];
 
 export default function Contact() {
@@ -166,26 +172,6 @@ export default function Contact() {
                 {status === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
               </button>
 
-              <div className="flex flex-col gap-2 pt-2" style={{ borderTop: '1px solid #1e1e2e' }}>
-                <a
-                  href={CALENDAR_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-center transition-opacity duration-200 hover:opacity-70"
-                  style={{ color: '#4f46e5' }}
-                >
-                  O reserva una llamada gratuita →
-                </a>
-                <a
-                  href={`https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_MSG}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-center transition-opacity duration-200 hover:opacity-70"
-                  style={{ color: '#25d366' }}
-                >
-                  Escríbenos por WhatsApp →
-                </a>
-              </div>
             </form>
           )}
         </ContactCard>
