@@ -27,6 +27,20 @@ const steps = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
 export default function Process() {
   return (
     <section
@@ -55,61 +69,49 @@ export default function Process() {
           </h2>
         </motion.div>
 
-        {/* Steps */}
-        <div className="relative grid grid-cols-1 md:grid-cols-4 gap-0">
-
-          {/* Connector line — desktop only */}
-          <div
-            className="hidden md:block absolute top-[2.1rem] left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px pointer-events-none"
-            style={{ backgroundColor: '#1e1e2e' }}
-          />
-
-          {steps.map((step, i) => (
+        {/* Steps grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px"
+          style={{ backgroundColor: '#1e1e2e' }}
+        >
+          {steps.map((step) => (
             <motion.div
               key={step.num}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: i * 0.12, ease }}
-              className="relative flex md:flex-col gap-5 md:gap-6 px-0 md:px-6 py-6 md:py-0 md:pt-0"
-              style={{ borderTop: i > 0 ? '1px solid #1e1e2e' : undefined }}
+              variants={itemVariants}
+              whileHover={{ borderColor: '#4f46e5' }}
+              className="flex flex-col p-8 gap-4"
+              style={{ backgroundColor: '#0d0d14', border: '1px solid transparent' }}
             >
-              {/* Number bubble */}
-              <div
-                className="relative z-10 flex-shrink-0 w-[3.5rem] h-[3.5rem] flex items-center justify-center"
-                style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
-              >
+              {/* Number + accent bar */}
+              <div className="flex items-center gap-3">
                 <span
-                  className="font-display font-bold text-sm"
-                  style={{ color: '#4f46e5' }}
+                  className="font-display font-extrabold text-3xl leading-none"
+                  style={{ color: '#1e1e2e' }}
                 >
                   {step.num}
                 </span>
+                <div className="flex-1 h-px" style={{ backgroundColor: '#4f46e5', opacity: 0.4 }} />
               </div>
 
-              {/* Text */}
-              <div className="pt-1 md:pt-6">
-                <h3
-                  className="font-display font-bold text-lg mb-2"
-                  style={{ color: '#e8e8f2' }}
-                >
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                  {step.desc}
-                </p>
-              </div>
+              {/* Title */}
+              <h3
+                className="font-display font-bold text-lg"
+                style={{ color: '#e8e8f2' }}
+              >
+                {step.title}
+              </h3>
 
-              {/* Mobile connector */}
-              {i < steps.length - 1 && (
-                <div
-                  className="md:hidden absolute left-[1.75rem] top-[calc(3.5rem+1.5rem)] bottom-0 w-px"
-                  style={{ backgroundColor: '#1e1e2e' }}
-                />
-              )}
+              {/* Description */}
+              <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
+                {step.desc}
+              </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
