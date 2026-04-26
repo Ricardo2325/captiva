@@ -15,7 +15,7 @@ function fadeUp(delay: number) {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 pt-24 pb-20 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col px-6 md:px-12 overflow-hidden">
       {/* Subtle radial glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none"
@@ -25,7 +25,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
+      <div className="relative z-10 max-w-5xl mx-auto text-center flex-1 flex flex-col items-center justify-center pt-24 pb-8">
         {/* Badge */}
         <motion.div
           {...fadeUp(0)}
@@ -99,10 +99,10 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — en el flujo, siempre visible debajo de los CTAs */}
       <motion.div
         {...fadeUp(0.6)}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="flex flex-col items-center gap-2 pb-10"
         style={{ color: '#8888aa' }}
       >
         <span className="text-xs tracking-widest uppercase">Scroll</span>
@@ -110,9 +110,7 @@ export default function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           className="w-px h-8"
-          style={{
-            background: 'linear-gradient(to bottom, #1e1e2e, transparent)',
-          }}
+          style={{ background: 'linear-gradient(to bottom, #1e1e2e, transparent)' }}
         />
       </motion.div>
     </section>
