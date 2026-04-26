@@ -84,15 +84,16 @@ export default function ValueProps() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-px"
-          style={{ backgroundColor: '#1e1e2e' }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
           {items.map((item) => (
             <motion.div
               key={item.title}
               variants={itemVariants}
-              className="flex flex-col gap-5 p-8 md:p-10"
-              style={{ backgroundColor: '#0d0d14' }}
+              whileHover={{ borderColor: '#4f46e5' }}
+              transition={{ duration: 0.2 }}
+              className="flex flex-col gap-5 p-8 md:p-10 cursor-default"
+              style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
             >
               <div style={{ color: '#4f46e5' }}>{item.icon}</div>
               <div>
