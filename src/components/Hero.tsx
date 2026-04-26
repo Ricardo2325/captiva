@@ -100,8 +100,7 @@ export default function Hero() {
         >
           {[
             { value: '+30', label: 'proyectos entregados' },
-            { value: '3 sem.', label: 'de media hasta lanzar' },
-            { value: '100%', label: 'clientes satisfechos' },
+            { value: '2 sem.', label: 'de media hasta lanzar' },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center gap-0.5">
               <span className="font-display font-extrabold text-2xl md:text-3xl" style={{ color: '#e8e8f2' }}>

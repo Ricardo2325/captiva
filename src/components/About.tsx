@@ -67,7 +67,7 @@ export default function About() {
           {[
             { value: '30+', label: 'Proyectos entregados' },
             { value: '2+', label: 'Años especializados' },
-            { value: '5', label: 'Sectores del fitness' },
+            { value: '2 sem.', label: 'Tiempo medio de entrega' },
             { value: '24h', label: 'Respuesta garantizada' },
           ].map((s) => (
             <div

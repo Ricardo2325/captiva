@@ -67,18 +67,6 @@ export default function Testimonials() {
           </div>
           <div className="flex items-center gap-6 flex-shrink-0">
             <div className="text-center">
-              <span className="font-display font-extrabold text-3xl block" style={{ color: '#e8e8f2' }}>4.9</span>
-              <div className="flex gap-0.5 justify-center my-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#f59e0b">
-                    <path d="M6 1l1.39 2.82L10.5 4.27l-2.25 2.19.53 3.09L6 8l-2.78 1.55.53-3.09L1.5 4.27l3.11-.45L6 1z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-xs" style={{ color: '#8888aa' }}>valoración media</span>
-            </div>
-            <div style={{ width: '1px', height: '48px', backgroundColor: '#1e1e2e' }} />
-            <div className="text-center">
               <span className="font-display font-extrabold text-3xl block" style={{ color: '#e8e8f2' }}>30+</span>
               <span className="text-xs mt-1 block" style={{ color: '#8888aa' }}>clientes</span>
             </div>
