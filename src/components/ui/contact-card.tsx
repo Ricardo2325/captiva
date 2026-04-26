@@ -14,8 +14,8 @@ type ContactInfoItem = {
 };
 
 type ContactCardProps = {
-    title?: string;
-    description?: string;
+    title?: React.ReactNode;
+    description?: React.ReactNode;
     contactInfo?: ContactInfoItem[];
     className?: string;
     formSectionClassName?: string;
