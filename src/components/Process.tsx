@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const steps = [
   {
@@ -44,6 +45,71 @@ const itemVariants = {
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
+
+const faqItems = [
+  {
+    q: '¿Qué necesito tener listo antes de empezar?',
+    a: 'Prácticamente nada. Te guiamos con los textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos.',
+  },
+  {
+    q: '¿Qué pasa si el proyecto crece durante el desarrollo?',
+    a: 'Cualquier cambio de alcance se presupuesta por separado y se aprueba antes de ejecutarse. Nunca hay sorpresas en la factura final.',
+  },
+  {
+    q: '¿Puedo pedir cambios después del lanzamiento?',
+    a: 'Sí. Los planes incluyen soporte post-lanzamiento de 3 a 6 meses. Ajustes menores se resuelven en 24-48 horas.',
+  },
+  {
+    q: '¿Por qué solo 3 semanas?',
+    a: 'Porque nos especializamos en un tipo de proyecto y lo hemos hecho muchas veces. No reinventamos la rueda con cada cliente, aplicamos lo que ya sabemos que funciona.',
+  },
+];
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ borderBottom: '1px solid #1e1e2e' }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-4 py-5 text-left"
+      >
+        <span className="font-display font-semibold text-sm" style={{ color: '#e8e8f2' }}>
+          {q}
+        </span>
+        <span
+          className="flex-shrink-0 w-6 h-6 flex items-center justify-center transition-colors duration-200"
+          style={{ color: open ? '#4f46e5' : '#8888aa' }}
+        >
+          <motion.svg
+            width="14" height="14" viewBox="0 0 14 14"
+            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+            animate={{ rotate: open ? 45 : 0 }}
+            transition={{ duration: 0.25, ease }}
+          >
+            <line x1="7" y1="1" x2="7" y2="13" />
+            <line x1="1" y1="7" x2="13" y2="7" />
+          </motion.svg>
+        </span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease }}
+            className="overflow-hidden"
+          >
+            <p className="text-sm leading-relaxed pb-5" style={{ color: '#8888aa' }}>
+              {a}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Process() {
   return (
@@ -155,44 +221,17 @@ export default function Process() {
           </div>
         </motion.div>
 
-        {/* FAQ inline */}
+        {/* FAQ accordion */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease }}
-          className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="mt-8 px-6 md:px-8"
+          style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
         >
-          {[
-            {
-              q: '¿Qué necesito tener listo antes de empezar?',
-              a: 'Prácticamente nada. Te guiamos con los textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos.',
-            },
-            {
-              q: '¿Qué pasa si el proyecto crece durante el desarrollo?',
-              a: 'Cualquier cambio de alcance se presupuesta por separado y se aprueba antes de ejecutarse. Nunca hay sorpresas en la factura final.',
-            },
-            {
-              q: '¿Puedo pedir cambios después del lanzamiento?',
-              a: 'Sí. Los planes incluyen soporte post-lanzamiento de 3 a 6 meses. Ajustes menores se resuelven en 24-48 horas.',
-            },
-            {
-              q: '¿Por qué solo 3 semanas?',
-              a: 'Porque nos especializamos en un tipo de proyecto y lo hemos hecho muchas veces. No reinventamos la rueda con cada cliente, aplicamos lo que ya sabemos que funciona.',
-            },
-          ].map((item) => (
-            <div
-              key={item.q}
-              className="p-6"
-              style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
-            >
-              <p className="font-display font-semibold text-sm mb-2" style={{ color: '#e8e8f2' }}>
-                {item.q}
-              </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                {item.a}
-              </p>
-            </div>
+          {faqItems.map((item) => (
+            <FaqItem key={item.q} q={item.q} a={item.a} />
           ))}
         </motion.div>
 
