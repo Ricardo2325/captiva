@@ -61,51 +61,13 @@ const testimonials = [
     initial: 'D',
     stars: 5,
   },
-  // Nuevas reseñas
-  {
-    quote: 'Tardamos un par de semanas más de lo esperado en la revisión de textos, pero el resultado final fue exactamente lo que necesitaba. Muy honesto en todo el proceso.',
-    name: 'Roberto P.',
-    role: 'Entrenador de natación, Alicante',
-    initial: 'R',
-    stars: 4,
-  },
-  {
-    quote: 'Duplicamos las consultas recibidas en el primer mes. La web transmite otra categoría.',
-    name: 'Miriam C.',
-    role: 'Instructora de yoga, Palma',
-    initial: 'M',
-    stars: 5,
-  },
-  {
-    quote: 'Al principio tuve alguna duda con el sistema de reservas y cómo encajaba con mi calendario. Lo resolvieron en el día. El soporte postventa es de los que marcan la diferencia.',
-    name: 'Álvaro D.',
-    role: 'Personal trainer, San Sebastián',
-    initial: 'A',
-    stars: 4,
-  },
-  {
-    quote: 'Lo que acordamos al principio fue lo que pagué. Sin ajustes de última hora, sin extras no previstos. Eso, hoy en día, vale mucho.',
-    name: 'Elena R.',
-    role: 'Coach de pilates, Granada',
-    initial: 'E',
-    stars: 5,
-  },
-  {
-    quote: 'La landing del reto online convirtió al 11%. Sinceramente no me lo esperaba. Ya estamos preparando el siguiente lanzamiento con ellos.',
-    name: 'Sergio F.',
-    role: 'Coach de transformación, Valladolid',
-    initial: 'S',
-    stars: 5,
-  },
 ];
 
-// 4-col grid, 6 rows — all rows fully filled:
+// 4-col grid, 4 rows:
 // Row 1: T0(c1-2,r1-2)  T1(c3-4,r1)
 // Row 2: T0(cont)        T2(c3,r2)  T3(c4,r2)
 // Row 3: T4(c1)  T5(c2)  T6(c3-4,r3-4)
 // Row 4: T7(c1-2,r4)     T6(cont)
-// Row 5: T8(c1) T9(c2)   T10(c3-4,r5)
-// Row 6: T11(c1-2,r6)    T12(c3-4,r6)
 const layout = [
   { colSpan: 2, rowSpan: 2 },
   { colSpan: 2, rowSpan: 1 },
@@ -114,11 +76,6 @@ const layout = [
   { colSpan: 1, rowSpan: 1 },
   { colSpan: 1, rowSpan: 1 },
   { colSpan: 2, rowSpan: 2 },
-  { colSpan: 2, rowSpan: 1 },
-  { colSpan: 1, rowSpan: 1 },
-  { colSpan: 1, rowSpan: 1 },
-  { colSpan: 2, rowSpan: 1 },
-  { colSpan: 2, rowSpan: 1 },
   { colSpan: 2, rowSpan: 1 },
 ];
 
