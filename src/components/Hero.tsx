@@ -21,7 +21,7 @@ export default function Hero() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at center top, rgba(79,70,229,0.13) 0%, transparent 65%)',
+            'radial-gradient(ellipse at center top, rgba(79,70,229,0.18) 0%, transparent 65%)',
         }}
       />
 

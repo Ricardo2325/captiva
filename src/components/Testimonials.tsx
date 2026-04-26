@@ -100,7 +100,7 @@ export default function Testimonials() {
                 </div>
                 <span
                   className="ml-auto text-[10px] tracking-wider uppercase px-2 py-1 flex-shrink-0"
-                  style={{ backgroundColor: '#1e1e2e', color: '#8888aa' }}
+                  style={{ backgroundColor: 'rgba(79,70,229,0.1)', color: '#4f46e5' }}
                 >
                   Demo
                 </span>

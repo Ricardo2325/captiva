@@ -38,7 +38,7 @@ function InputField({
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       onChange(e.target.value),
     required,
-    className: 'w-full px-4 py-3 text-sm bg-transparent outline-none transition-colors duration-200',
+    className: 'w-full px-4 py-3.5 text-sm bg-transparent outline-none transition-colors duration-200',
     style: {
       backgroundColor: '#0d0d14',
       border: '1px solid #1e1e2e',

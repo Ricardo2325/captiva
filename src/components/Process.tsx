@@ -90,7 +90,7 @@ export default function Process() {
               {/* Number */}
               <span
                 className="font-display font-extrabold text-3xl leading-none"
-                style={{ color: '#1e1e2e' }}
+                style={{ color: '#4f46e5' }}
               >
                 {step.num}
               </span>

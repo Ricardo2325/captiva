@@ -89,8 +89,9 @@ export default function Services() {
               whileHover={{ y: -8, borderColor: '#4f46e5' }}
               className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0"
               style={{
-                backgroundColor: plan.featured ? '#13131f' : '#0d0d14',
+                backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
                 border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
+                boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
               }}
             >
               {/* Badge */}
