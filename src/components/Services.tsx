@@ -77,7 +77,7 @@ export default function Services() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -85,12 +85,11 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.1, ease }}
-              whileHover={!plan.featured ? { borderColor: '#4f46e5' } : {}}
-              className={`relative flex flex-col p-8 md:-translate-y-0 ${plan.featured ? 'md:-translate-y-4' : ''}`}
+              whileHover={{ y: -8, borderColor: '#4f46e5' }}
+              className="relative flex flex-col p-8 h-full"
               style={{
                 backgroundColor: plan.featured ? '#13131f' : '#0d0d14',
                 border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
-                transition: 'border-color 0.2s ease',
               }}
             >
               {/* Badge */}
