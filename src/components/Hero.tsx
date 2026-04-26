@@ -99,7 +99,7 @@ export default function Hero() {
           className="flex items-center justify-center gap-8 md:gap-12 mt-10 flex-wrap"
         >
           {[
-            { value: '+30', label: 'proyectos entregados' },
+            { value: 'Precio fijo', label: 'sin sorpresas al final' },
             { value: '2 sem.', label: 'de media hasta lanzar' },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center gap-0.5">

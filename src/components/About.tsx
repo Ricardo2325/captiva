@@ -65,7 +65,7 @@ export default function About() {
           style={{ backgroundColor: '#1e1e2e' }}
         >
           {[
-            { value: '30+', label: 'Proyectos entregados' },
+            { value: 'Precio fijo', label: 'Sin sorpresas al final' },
             { value: '2+', label: 'Años especializados' },
             { value: '2 sem.', label: 'Tiempo medio de entrega' },
             { value: '24h', label: 'Respuesta garantizada' },
