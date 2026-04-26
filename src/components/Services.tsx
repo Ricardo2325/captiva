@@ -178,8 +178,6 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-        <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
-          style={{ background: 'linear-gradient(to left, #0d0d14, transparent)' }} />
         </div>
 
         {/* Footnote */}
