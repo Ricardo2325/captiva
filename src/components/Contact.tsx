@@ -8,7 +8,7 @@ const WHATSAPP_PHONE = '34600000000'; // sin + ni espacios
 const WHATSAPP_MSG = encodeURIComponent(
   'Hola! He visto vuestra web y me interesa lo que ofrecéis. ¿Podemos hablar sobre mi proyecto?'
 );
-const CALENDAR_URL = 'https://calendly.com/captiva'; // reemplaza con tu link real
+const CALENDAR_URL = 'https://calendly.com/ricardorodriguezdelgado6';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ease = [0.22, 1, 0.36, 1] as const;
