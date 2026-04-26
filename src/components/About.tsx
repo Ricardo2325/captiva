@@ -68,11 +68,11 @@ export default function About() {
               {/* Avatar */}
               <div className="flex-shrink-0">
                 <div
-                  className="w-16 h-16 flex items-center justify-center"
+                  className="w-20 h-20 rounded-full flex items-center justify-center"
                   style={{ background: person.gradient }}
                 >
                   <span
-                    className="font-display font-extrabold text-2xl"
+                    className="font-display font-extrabold text-3xl"
                     style={{ color: 'rgba(232,232,242,0.9)' }}
                   >
                     {person.initials}
