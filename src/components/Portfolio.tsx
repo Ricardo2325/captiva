@@ -92,7 +92,7 @@ export default function Portfolio() {
               style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
               whileHover={{ borderColor: '#4f46e5' }}
             >
-              Ver los 8 proyectos
+              Ver todos los proyectos
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
                 <path d="M7 2v10M2 7l5 5 5-5" />
               </svg>
