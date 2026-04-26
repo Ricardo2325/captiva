@@ -3,6 +3,7 @@ import ValueProps from '@/components/ValueProps';
 import Services from '@/components/Services';
 import Portfolio from '@/components/Portfolio';
 import Process from '@/components/Process';
+import About from '@/components/About';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Services />
       <Portfolio />
       <Process />
+      <About />
     </main>
   );
 }
