@@ -36,12 +36,15 @@ Tailwind v4 `@theme inline` block defines CSS variables:
 
 | Token | Value |
 |-------|-------|
-| `--color-bg` | `#0d0d14` |
+| `--color-background` | `#0d0d14` |
 | `--color-surface` | `#13131f` |
 | `--color-accent` | `#4f46e5` (indigo) |
+| `--color-accent-hover` | `#6366f1` |
 | `--color-text-primary` | `#e8e8f2` |
 | `--color-text-muted` | `#8888aa` |
 | `--color-border` | `#1e1e2e` |
+
+Components use **inline styles** with the raw hex values (not Tailwind utilities) for colors — match this pattern when editing or creating components. The `cn()` helper (`src/lib/utils.ts`) is available for conditional classnames.
 
 Fonts: **Bricolage Grotesque** (display/headings) via `font-display`, **DM Sans** (body) via `font-body`.
 
