@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import MagneticWrapper from '@/components/MagneticWrapper';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const plans = [
   {
@@ -240,7 +241,7 @@ export default function Services() {
           ))}
         </motion.div>
 
-        {/* FAQ */}
+        {/* FAQ accordion */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -251,34 +252,47 @@ export default function Services() {
           <p className="text-xs tracking-widest uppercase mb-8" style={{ color: '#4f46e5' }}>
             Preguntas frecuentes
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              {
-                q: '¿Qué pasa si necesito algo que no está en el plan?',
-                a: 'Cada proyecto se adapta. El plan es el punto de partida: en la llamada inicial ajustamos el alcance exacto a tu situación y necesidades concretas.',
-              },
-              {
-                q: '¿El precio incluye el hosting y el dominio?',
-                a: 'No. El hosting y dominio se contratan por tu cuenta directamente (entre 10-20€/mes). Te explicamos exactamente cómo hacerlo y qué contratar.',
-              },
-              {
-                q: '¿Qué necesito tener listo antes de empezar?',
-                a: 'Prácticamente nada. Te guiamos con textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos durante el proceso.',
-              },
-              {
-                q: '¿Cuánto tiempo lleva el proceso completo?',
-                a: 'Entre 2 y 5 semanas según el plan. Todo el timeline queda fijado por escrito antes de empezar, con fechas concretas de revisión y entrega.',
-              },
-            ].map((item) => (
-              <div key={item.q} className="p-6" style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}>
-                <p className="font-display font-semibold text-sm mb-2" style={{ color: '#e8e8f2' }}>
-                  {item.q}
-                </p>
-                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                  {item.a}
-                </p>
-              </div>
-            ))}
+          <div
+            className="px-6 md:px-8"
+            style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
+          >
+            <Accordion type="single" collapsible>
+              {[
+                {
+                  q: '¿Qué pasa si necesito algo que no está en el plan?',
+                  a: 'Cada proyecto se adapta. El plan es el punto de partida: en la llamada inicial ajustamos el alcance exacto a tu situación y necesidades concretas.',
+                },
+                {
+                  q: '¿El precio incluye el hosting y el dominio?',
+                  a: 'No. El hosting y dominio se contratan por tu cuenta directamente (entre 10-20€/mes). Te explicamos exactamente cómo hacerlo y qué contratar.',
+                },
+                {
+                  q: '¿Qué necesito tener listo antes de empezar?',
+                  a: 'Prácticamente nada. Te guiamos con textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos durante el proceso.',
+                },
+                {
+                  q: '¿Cuánto tiempo lleva el proceso completo?',
+                  a: 'Entre 2 y 5 semanas según el plan. Todo el timeline queda fijado por escrito antes de empezar, con fechas concretas de revisión y entrega.',
+                },
+              ].map((item, i) => (
+                <AccordionItem
+                  key={item.q}
+                  value={`faq-${i}`}
+                  className="[&:last-child]:border-b-0"
+                  style={{ borderColor: '#1e1e2e' }}
+                >
+                  <AccordionTrigger
+                    className="font-display text-sm hover:no-underline hover:opacity-70 py-5"
+                    style={{ color: '#e8e8f2' }}
+                  >
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent style={{ color: '#8888aa' }}>
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </motion.div>
 

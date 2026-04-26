@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const steps = [
   {
@@ -65,51 +65,6 @@ const faqItems = [
   },
 ];
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div style={{ borderBottom: '1px solid #1e1e2e' }}>
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left"
-      >
-        <span className="font-display font-semibold text-sm" style={{ color: '#e8e8f2' }}>
-          {q}
-        </span>
-        <span
-          className="flex-shrink-0 w-6 h-6 flex items-center justify-center transition-colors duration-200"
-          style={{ color: open ? '#4f46e5' : '#8888aa' }}
-        >
-          <motion.svg
-            width="14" height="14" viewBox="0 0 14 14"
-            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-            animate={{ rotate: open ? 45 : 0 }}
-            transition={{ duration: 0.25, ease }}
-          >
-            <line x1="7" y1="1" x2="7" y2="13" />
-            <line x1="1" y1="7" x2="13" y2="7" />
-          </motion.svg>
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease }}
-            className="overflow-hidden"
-          >
-            <p className="text-sm leading-relaxed pb-5" style={{ color: '#8888aa' }}>
-              {a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 export default function Process() {
   return (
@@ -230,9 +185,26 @@ export default function Process() {
           className="mt-8 px-6 md:px-8"
           style={{ backgroundColor: '#0d0d14', border: '1px solid #1e1e2e' }}
         >
-          {faqItems.map((item) => (
-            <FaqItem key={item.q} q={item.q} a={item.a} />
-          ))}
+          <Accordion type="single" collapsible>
+            {faqItems.map((item, i) => (
+              <AccordionItem
+                key={item.q}
+                value={`faq-${i}`}
+                className="[&:last-child]:border-b-0"
+                style={{ borderColor: '#1e1e2e' }}
+              >
+                <AccordionTrigger
+                  className="font-display text-sm hover:no-underline hover:opacity-70 py-5"
+                  style={{ color: '#e8e8f2' }}
+                >
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent style={{ color: '#8888aa' }}>
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </motion.div>
 
       </div>
