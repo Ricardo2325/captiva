@@ -1,10 +1,29 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { Project } from '@/data/projects';
+import DeviceMockup from '@/components/DeviceMockup';
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+function HeroScreenshot({ slug, gradient }: { slug: string; gradient: string }) {
+  const [failed, setFailed] = useState(false);
+  return (
+    <>
+      <div className="absolute inset-0" style={{ background: gradient }} />
+      {!failed && (
+        <img
+          src={`/portfolio/${slug}/desktop.jpg`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          onError={() => setFailed(true)}
+        />
+      )}
+    </>
+  );
+}
 
 function fadeUp(delay = 0) {
   return {
@@ -21,12 +40,19 @@ export default function ProjectDetail({ project }: { project: Project }) {
       {/* Hero */}
       <section className="relative">
         <div
-          className="w-full"
-          style={{ height: 'clamp(280px, 45vw, 520px)', background: project.gradient }}
-        />
-        {/* Overlay gradient to background */}
+          className="w-full relative overflow-hidden"
+          style={{ height: 'clamp(280px, 45vw, 520px)' }}
+        >
+          <HeroScreenshot slug={project.slug} gradient={project.gradient} />
+        </div>
+        {/* Fade top — oculta el nav del proyecto cliente */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+          className="absolute top-0 left-0 right-0 h-28 pointer-events-none z-10"
+          style={{ background: 'linear-gradient(to bottom, #0d0d14 0%, transparent 100%)' }}
+        />
+        {/* Fade bottom — fusiona con el fondo de Captiva */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
           style={{ background: 'linear-gradient(to bottom, transparent, #0d0d14)' }}
         />
       </section>
@@ -122,21 +148,19 @@ export default function ProjectDetail({ project }: { project: Project }) {
           </p>
         </motion.div>
 
-        {/* Screenshots */}
+        {/* Device mockup */}
         <motion.div {...fadeUp(0.25)} className="mb-16">
           <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#4f46e5' }}>
-            Capturas del proyecto
+            Diseño multiplataforma
           </p>
-          <div className="flex flex-col gap-4">
-            <div className="w-full aspect-[16/8]" style={{ background: project.gradientA }} />
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-[4/3]" style={{ background: project.gradientB }} />
-              <div className="aspect-[4/3]" style={{ background: project.gradientC }} />
-            </div>
+          <DeviceMockup slug={project.slug} gradient={project.gradient} />
+          <div className="flex items-center justify-center gap-6 mt-5">
+            {(['Escritorio', 'Tablet', 'Móvil'] as const).map((label) => (
+              <span key={label} className="text-xs" style={{ color: '#8888aa' }}>
+                {label}
+              </span>
+            ))}
           </div>
-          <p className="text-xs mt-4 text-center" style={{ color: '#8888aa' }}>
-            Proyecto de demostración — capturas simuladas
-          </p>
         </motion.div>
 
         {/* CTA */}

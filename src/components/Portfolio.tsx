@@ -10,9 +10,25 @@ const MOBILE_INITIAL = 4;
 
 // Desktop (4-col grid) col-spans per project index:
 //   Row 1: [0:span-2] [1:span-1] [2:span-1]  = 4
-//   Row 2: [3:span-1] [4:span-2] [5:span-1]  = 4
-//   Row 3: [6:span-2] [7:span-2]              = 4
-const mdColSpans: number[] = [2, 1, 1, 1, 2, 1, 2, 2];
+//   Row 2: [3:span-1] [4:span-1] [5:span-2]  = 4
+const mdColSpans: number[] = [2, 1, 1, 1, 1, 2];
+
+function CardImage({ slug, gradient }: { slug: string; gradient: string }) {
+  const [failed, setFailed] = useState(false);
+  return (
+    <>
+      <div className="absolute inset-0" style={{ background: gradient }} />
+      {!failed && (
+        <img
+          src={`/portfolio/${slug}/desktop.jpg`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          onError={() => setFailed(true)}
+        />
+      )}
+    </>
+  );
+}
 
 export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
@@ -63,13 +79,13 @@ export default function Portfolio() {
                 <Link href={`/proyecto/${project.slug}`} className="group flex flex-col h-full">
                   {/* Image */}
                   <div className="relative flex-1 overflow-hidden">
-                    <div className="absolute inset-0" style={{ background: project.gradient }} />
+                    <CardImage slug={project.slug} gradient={project.gradient} />
 
                     {/* Tagline overlay on featured cards */}
                     {isFeatured && (
                       <div
-                        className="absolute bottom-0 left-0 right-0 p-4 hidden md:block pointer-events-none"
-                        style={{ background: 'linear-gradient(to top, rgba(13,13,20,0.75) 0%, transparent 100%)' }}
+                        className="absolute bottom-0 left-0 right-0 p-4 hidden md:block pointer-events-none z-10"
+                        style={{ background: 'linear-gradient(to top, rgba(13,13,20,0.85) 0%, transparent 100%)' }}
                       >
                         <p className="text-sm leading-snug" style={{ color: '#e8e8f2' }}>
                           {project.tagline}
@@ -81,7 +97,7 @@ export default function Portfolio() {
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute inset-0 flex items-center justify-center"
+                      className="absolute inset-0 z-20 flex items-center justify-center"
                       style={{ backgroundColor: 'rgba(13,13,20,0.7)' }}
                     >
                       <span

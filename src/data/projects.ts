@@ -4,10 +4,8 @@ export interface Project {
   type: string;
   tagline: string;
   context: string;
+  url: string;
   gradient: string;
-  gradientA: string;
-  gradientB: string;
-  gradientC: string;
   metrics: { value: string; label: string }[];
   challenge: string;
   automation: string;
@@ -15,164 +13,112 @@ export interface Project {
 
 const projects: Project[] = [
   {
-    name: 'FitLife Coach',
-    slug: 'fitlife-coach',
+    name: 'Aureum Dental',
+    slug: 'aureum-dental',
     type: 'Web corporativa',
-    tagline: 'De cero visibilidad a lista de espera en 30 días.',
-    context: 'Entrenadora personal en Madrid sin presencia digital. Dependía al 100% del boca a boca.',
-    gradient: 'linear-gradient(135deg, #1a1040 0%, #4f46e5 50%, #7c3aed 100%)',
-    gradientA: 'linear-gradient(135deg, #2d1b6b 0%, #4f46e5 100%)',
-    gradientB: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
-    gradientC: 'linear-gradient(135deg, #1a1040 0%, #7c3aed 100%)',
+    tagline: 'La clínica premium que ahora también encuentra quien la busca.',
+    context: 'Clínica dental estética en Madrid Salamanca sin captación digital.',
+    url: 'https://clinica-1-three.vercel.app/',
+    gradient: 'linear-gradient(135deg, #0f0a00 0%, #6b4c0e 50%, #b08d35 100%)',
     metrics: [
-      { value: '+340%', label: 'Consultas el primer mes' },
-      { value: '8 semanas', label: 'Hasta lista de espera' },
-      { value: '0 llamadas', label: 'Para cerrar citas' },
+      { value: '+2.400', label: 'Pacientes tratados' },
+      { value: '98%', label: 'Tasa de satisfacción' },
+      { value: '15 años', label: 'De trayectoria' },
     ],
     challenge:
-      'Sandra llevaba 4 años como entrenadora personal viviendo de recomendaciones. Cuando éstas se secaron en verano, necesitaba urgente un canal propio que atrajera clientes sin depender de terceros.',
+      'Aureum tenía reputación impecable en el barrio de Salamanca pero sin presencia digital, los pacientes de mayor poder adquisitivo — los que buscan carillas o implantes — no los encontraban. Cada nueva alta llegaba por recomendación. Escalable, no.',
     automation:
-      'Implementamos un sistema de captación completo: formulario de consulta gratuita → email de confirmación automático → recordatorio 24h antes → secuencia de seguimiento si no responde. Todo sin tocar el móvil. Cada lead que entra recibe atención en menos de 2 minutos, a cualquier hora.',
+      'Web premium con galería de casos reales (antes/después), fichas de cada especialista con certificaciones y filosofía de trabajo, y formulario de primera consulta que filtra por tipo de tratamiento. El sistema confirma la cita automáticamente y envía recordatorio 24h antes.',
   },
   {
-    name: 'Entrena con Marc',
-    slug: 'entrena-con-marc',
-    type: 'Landing page',
-    tagline: 'Un lanzamiento que superó todas las previsiones.',
-    context: 'Entrenador online lanzando su primer programa de 12 semanas.',
-    gradient: 'linear-gradient(135deg, #0d2818 0%, #065f46 50%, #10b981 100%)',
-    gradientA: 'linear-gradient(135deg, #052e16 0%, #065f46 100%)',
-    gradientB: 'linear-gradient(135deg, #065f46 0%, #10b981 100%)',
-    gradientC: 'linear-gradient(135deg, #0d2818 0%, #10b981 100%)',
-    metrics: [
-      { value: '8.4%', label: 'Tasa de conversión' },
-      { value: '€18.400', label: 'Ingresos en el lanzamiento' },
-      { value: '48h', label: 'Para agotar plazas' },
-    ],
-    challenge:
-      'Marc tenía audiencia en Instagram pero no conseguía monetizarla. Cada vez que anunciaba plazas, la gente le pedía más info por DM y el proceso se perdía. Necesitaba un sistema que convirtiera ese interés en ventas reales.',
-    automation:
-      'Construimos una landing de ventas con temporizador de cuenta atrás real, checkout integrado y secuencia de emails post-compra automática. Los alumnos recibían acceso, bienvenida y guía de inicio sin que Marc tuviese que hacer nada. El seguimiento de impagos también era automático.',
-  },
-  {
-    name: 'PowerBox Gym',
-    slug: 'powerbox-gym',
-    type: 'Web + reservas',
-    tagline: 'El teléfono dejó de sonar. Las clases, de llenarse solas.',
-    context: 'Box de CrossFit en Barcelona gestionando reservas por WhatsApp.',
-    gradient: 'linear-gradient(135deg, #1c0a00 0%, #c2410c 50%, #f97316 100%)',
-    gradientA: 'linear-gradient(135deg, #431407 0%, #c2410c 100%)',
-    gradientB: 'linear-gradient(135deg, #c2410c 0%, #f97316 100%)',
-    gradientC: 'linear-gradient(135deg, #1c0a00 0%, #f97316 100%)',
-    metrics: [
-      { value: '-90%', label: 'Tiempo en gestión admin' },
-      { value: '+60%', label: 'Ocupación media de clases' },
-      { value: '0€', label: 'En herramientas de terceros' },
-    ],
-    challenge:
-      'Los dueños de PowerBox pasaban 2 horas al día respondiendo WhatsApps para gestionar reservas, cancelaciones y pagos. En temporada alta, el caos era total y perdían clientes por falta de respuesta.',
-    automation:
-      'Sistema de reservas online con confirmación automática, recordatorio 1h antes de la clase y gestión de lista de espera. Si alguien cancela, el primero en lista entra automáticamente y recibe aviso. Los pagos mensuales se cobran solos. Los dueños solo abren el gimnasio.',
-  },
-  {
-    name: 'Nutri & Move',
-    slug: 'nutri-move',
-    type: 'Web + CRM',
-    tagline: 'Un negocio de dos personas que funciona como uno de diez.',
-    context: 'Nutricionista y entrenadora personal trabajando juntas sin sistema común.',
-    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #9333ea 50%, #ec4899 100%)',
-    gradientA: 'linear-gradient(135deg, #3b0764 0%, #9333ea 100%)',
-    gradientB: 'linear-gradient(135deg, #9333ea 0%, #ec4899 100%)',
-    gradientC: 'linear-gradient(135deg, #1a0a2e 0%, #ec4899 100%)',
-    metrics: [
-      { value: '3x', label: 'Más clientes con mismo equipo' },
-      { value: '-5h', label: 'Menos admin a la semana' },
-      { value: '94%', label: 'Retención de clientes' },
-    ],
-    challenge:
-      'Laura y Ana tenían clientes en común pero usaban herramientas distintas. Perdían seguimiento, duplicaban trabajo y cada nueva alta les costaba 1 hora de papeleo. El negocio crecía pero la rentabilidad no.',
-    automation:
-      'CRM personalizado donde cada cliente tiene su ficha, objetivos, progreso y pagos. Cuando una profesional actualiza algo, la otra lo ve al instante. Los informes mensuales se generan solos. Las renovaciones se cobran automáticamente con recordatorio previo.',
-  },
-  {
-    name: 'Run Academy',
-    slug: 'run-academy',
-    type: 'Landing page',
-    tagline: '200 inscritos antes de abrir las puertas.',
-    context: 'Academia online de running lanzando su primer curso de temporada.',
-    gradient: 'linear-gradient(135deg, #0a1628 0%, #1d4ed8 50%, #3b82f6 100%)',
-    gradientA: 'linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 100%)',
-    gradientB: 'linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%)',
-    gradientC: 'linear-gradient(135deg, #0a1628 0%, #3b82f6 100%)',
-    metrics: [
-      { value: '200', label: 'Inscritos en 48 horas' },
-      { value: '€24.000', label: 'Facturación del lanzamiento' },
-      { value: '11%', label: 'Conversión de la landing' },
-    ],
-    challenge:
-      'Javier tenía una comunidad de corredores amateur en Strava pero no sabía cómo monetizarla. Cada vez que hablaba de su curso en historias, recibía muchos "me interesa" pero nadie pagaba.',
-    automation:
-      'Página de pre-inscripción con lead magnet (plan de 4 semanas gratis), secuencia de email de 7 días calentando el lanzamiento y apertura de carrito con temporizador. Los interesados llegaron ya convencidos el día de la apertura.',
-  },
-  {
-    name: 'Strength Lab',
-    slug: 'strength-lab',
+    name: 'Fisioterapia Raíces',
+    slug: 'fisioterapia-raices',
     type: 'Web corporativa',
-    tagline: 'La web que convence antes de que abras la boca.',
-    context: 'Estudio de fuerza y acondicionamiento en Valencia con web amateur desactualizada.',
-    gradient: 'linear-gradient(135deg, #111827 0%, #374151 50%, #6b7280 100%)',
-    gradientA: 'linear-gradient(135deg, #1f2937 0%, #374151 100%)',
-    gradientB: 'linear-gradient(135deg, #374151 0%, #6b7280 100%)',
-    gradientC: 'linear-gradient(135deg, #111827 0%, #6b7280 100%)',
+    tagline: 'El fisio del barrio que ahora también encuentra el algoritmo.',
+    context: 'Centro de fisioterapia con 4.9★ y 127 reseñas cogiendo citas por teléfono.',
+    url: 'https://clinica-2-nine.vercel.app/',
+    gradient: 'linear-gradient(135deg, #051412 0%, #0b5a4a 50%, #1a8a72 100%)',
     metrics: [
-      { value: '+210%', label: 'Tráfico orgánico en 3 meses' },
-      { value: '4.9★', label: 'Valoración media Google' },
-      { value: '+45%', label: 'Ticket medio por cliente' },
+      { value: '+2.800', label: 'Pacientes tratados' },
+      { value: '4.9★', label: 'Valoración en Google' },
+      { value: '127', label: 'Reseñas verificadas' },
     ],
     challenge:
-      'El estudio era referente en la zona pero su web parecía de 2012. Los clientes de mayor poder adquisitivo, los que querían contratar packs premium, no llegaban porque la imagen no transmitía el nivel del servicio.',
+      '127 reseñas de 5 estrellas y el equipo seguía cogiendo citas por teléfono, interrumpiendo sesiones, perdiendo llamadas. Los nuevos pacientes no encontraban info clara de precios, especialidades ni disponibilidad. La mejor fisio de Malasaña era invisible online.',
     automation:
-      'Rediseño completo con foco en posicionamiento premium. Fichas de entrenadores con certificaciones, vídeos de metodología y testimonios verificados. Integración con Google My Business para actualización automática de valoraciones y respuesta a reseñas asistida.',
+      'Web con ficha detallada de cada especialidad (columna, deportiva, suelo pélvico, domiciliaria), equipo con fotos y perfil de cada fisio, y formulario de primera visita que filtra por tipo de lesión. Las reseñas de Google se sincronizan automáticamente a la web.',
   },
   {
-    name: 'MindBody Studio',
-    slug: 'mindbody-studio',
-    type: 'Reservas online',
-    tagline: 'Cero llamadas. Cero emails. Solo clases llenas.',
-    context: 'Estudio de yoga y pilates gestionando todo por teléfono y cuaderno.',
-    gradient: 'linear-gradient(135deg, #0f172a 0%, #0891b2 50%, #06b6d4 100%)',
-    gradientA: 'linear-gradient(135deg, #164e63 0%, #0891b2 100%)',
-    gradientB: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)',
-    gradientC: 'linear-gradient(135deg, #0f172a 0%, #06b6d4 100%)',
+    name: 'Álex Moreno',
+    slug: 'alex-moreno',
+    type: 'Landing page',
+    tagline: 'De recomendaciones esporádicas a clientes que llegan solos.',
+    context: 'Entrenador personal con 8 años de experiencia dependiendo del boca a boca.',
+    url: 'https://entrenador-personal-1.vercel.app/',
+    gradient: 'linear-gradient(135deg, #0f0505 0%, #8b1a1a 50%, #c0392b 100%)',
     metrics: [
-      { value: '100%', label: 'Reservas digitales' },
-      { value: '-3h', label: 'De gestión diaria' },
-      { value: '+35%', label: 'Ingresos por bonos' },
+      { value: '150+', label: 'Clientes transformados' },
+      { value: '12 sem.', label: 'Programa de transformación' },
+      { value: 'Desde 97€', label: 'Plan online/mes' },
     ],
     challenge:
-      'Marta pasaba las mañanas respondiendo mensajes y llamadas para cuadrar horarios. Los no-shows le costaban dinero y no tenía sistema para cobrar cancelaciones de última hora.',
+      'Álex llevaba 8 años transformando cuerpos y tenía 150 clientes que podían recomendarle. Pero el flujo de nuevos clientes era impredecible — un mes entraban 3, otro ninguno. Sin sistema, sin previsibilidad, sin forma de escalar sin trabajar más horas.',
     automation:
-      'Sistema de reservas con pago anticipado obligatorio, política de cancelación automatizada y recordatorio por SMS 2 horas antes. Los bonos de sesiones se venden online, se descuentan automáticamente y avisan cuando quedan 2 sesiones para renovar.',
+      'Landing con 3 modalidades de servicio bien diferenciadas, testimonios con resultados concretos (nombres, kilos, tiempos) y formulario de consulta inicial que califica al lead antes de que Álex invierta tiempo. Primera sesión gratuita como gancho. El sistema agenda solo.',
   },
   {
-    name: 'Elite Performance',
-    slug: 'elite-performance',
-    type: 'Funnel de ventas',
-    tagline: 'De €0 a €40k recurrentes en un trimestre.',
-    context: 'Preparador físico de alto rendimiento sin sistema de venta online.',
-    gradient: 'linear-gradient(135deg, #1a0505 0%, #991b1b 50%, #ef4444 100%)',
-    gradientA: 'linear-gradient(135deg, #450a0a 0%, #991b1b 100%)',
-    gradientB: 'linear-gradient(135deg, #991b1b 0%, #ef4444 100%)',
-    gradientC: 'linear-gradient(135deg, #1a0505 0%, #ef4444 100%)',
+    name: 'Sara Jiménez',
+    slug: 'sara-jimenez',
+    type: 'Landing + comunidad',
+    tagline: '48K seguidores convertidos en clientes reales.',
+    context: 'Coach de fitness con audiencia en Instagram sin sistema de conversión.',
+    url: 'https://entrenador-personal-2.vercel.app/',
+    gradient: 'linear-gradient(135deg, #14082a 0%, #7b2fbf 50%, #d946a8 100%)',
     metrics: [
-      { value: '4x', label: 'ROI en 60 días' },
-      { value: '€40k', label: 'MRR al tercer mes' },
-      { value: '92%', label: 'Tasa de renovación' },
+      { value: '48.2K', label: 'Seguidores en Instagram' },
+      { value: '200+', label: 'Clientas atendidas' },
+      { value: 'Desde 79€', label: 'Plan mensual' },
     ],
     challenge:
-      'Carlos trabajaba con deportistas de élite pero cobraba lo mismo que un entrenador de barrio. Todo era manual, todo era por referencia y no podía escalar sin clonarse. Quería un sistema que vendiera su metodología premium.',
+      '48.000 seguidores en Instagram y cada vez que Sara anunciaba plazas, los DMs explotaban con preguntas. Respondía manualmente, el proceso se eternizaba y muchas interesadas se enfriaban antes de contratar. La audiencia estaba; el sistema para monetizarla, no.',
     automation:
-      'Funnel completo: anuncio → landing de aplicación (no de venta directa) → formulario de cualificación → llamada de ventas automatizada en el calendario → onboarding automático post-pago. Solo habla con quien ya quiere comprar. El sistema filtra y calienta solo.',
+      'Web con 4 planes explicados sin ambigüedad, primera semana de prueba gratuita como primer paso de bajo compromiso, y formulario de solicitud que califica a la clienta (objetivo, disponibilidad, experiencia previa). El onboarding post-alta es automático.',
+  },
+  {
+    name: 'Vértex Real Estate',
+    slug: 'vertex-real-estate',
+    type: 'Web + catálogo',
+    tagline: '26 años de expertise inmobiliario, por fin visibles online.',
+    context: 'Inmobiliaria premium en Tenerife con web que no transmitía su nivel.',
+    url: 'https://inmobiliaria-1-ten.vercel.app/',
+    gradient: 'linear-gradient(135deg, #050a17 0%, #1a3461 50%, #2c5282 100%)',
+    metrics: [
+      { value: '+1.200', label: 'Operaciones cerradas' },
+      { value: '26 años', label: 'De experiencia' },
+      { value: '98 días', label: 'Media de venta' },
+    ],
+    challenge:
+      '26 años y 1.200 operaciones cerradas, pero su web no transmitía eso. Los compradores internacionales —el 30% de su negocio— encontraban una página que no generaba confianza. Perdían leads de alta calidad antes de la primera llamada.',
+    automation:
+      'Web premium con catálogo de 30 propiedades con mapa interactivo integrado, filtros por zona/precio/tipo, fichas con galería y coordenadas GPS. Formulario diferenciado según tipo de operación (compra, venta, alquiler, inversión). El primer contacto llega cualificado.',
+  },
+  {
+    name: 'La Botánica',
+    slug: 'la-botanica',
+    type: 'E-commerce',
+    tagline: 'De tienda local a ecommerce con panel de gestión propio.',
+    context: 'Tienda de decoración natural en Jerez sin presencia digital ni venta online.',
+    url: 'https://labotanica-khaki.vercel.app/',
+    gradient: 'linear-gradient(135deg, #061209 0%, #1a5c2a 50%, #2d8c4a 100%)',
+    metrics: [
+      { value: '4 roles', label: 'Cliente, admin, staff, invitado' },
+      { value: 'Real-time', label: 'Stock y pedidos en vivo' },
+      { value: '30 días', label: 'Garantía en plantas' },
+    ],
+    challenge:
+      'Tienda física con clientes fieles en Jerez pero sin canal digital. Perdían ventas fuera de horario, no podían llegar a clientes fuera de la ciudad y gestionar el stock con hojas de cálculo se había vuelto insostenible.',
+    automation:
+      'Ecommerce completo: catálogo con filtros por categoría, carrito persistente, sistema de favoritos, checkout con pasarela de pago y panel de administración para gestionar pedidos y stock. Panel de staff para preparar envíos. Backend en Supabase con autenticación por roles y datos en tiempo real.',
   },
 ];
 
