@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Portfolio from '@/components/Portfolio';
+import PortfolioScroll from '@/components/PortfolioScroll';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
-      <main className="pt-16">
-        <Portfolio />
+      <main>
+        <PortfolioScroll />
       </main>
       <Footer />
     </>

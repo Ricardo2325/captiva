@@ -34,7 +34,7 @@ const projects: Project[] = [
     name: 'Fisioterapia Raíces',
     slug: 'fisioterapia-raices',
     type: 'Web corporativa',
-    tagline: 'El fisio del barrio que ahora también encuentra el algoritmo.',
+    tagline: 'De 127 reseñas de 5 estrellas a captar pacientes sin coger el teléfono.',
     context: 'Centro de fisioterapia con 4.9★ y 127 reseñas cogiendo citas por teléfono.',
     url: 'https://clinica-2-nine.vercel.app/',
     gradient: 'linear-gradient(135deg, #051412 0%, #0b5a4a 50%, #1a8a72 100%)',
@@ -55,7 +55,7 @@ const projects: Project[] = [
     tagline: 'De recomendaciones esporádicas a clientes que llegan solos.',
     context: 'Entrenador personal con 8 años de experiencia dependiendo del boca a boca.',
     url: 'https://entrenador-personal-1.vercel.app/',
-    gradient: 'linear-gradient(135deg, #0f0505 0%, #8b1a1a 50%, #c0392b 100%)',
+    gradient: 'linear-gradient(135deg, #1a0900 0%, #c45200 50%, #f97316 100%)',
     metrics: [
       { value: '150+', label: 'Clientes transformados' },
       { value: '12 sem.', label: 'Programa de transformación' },
