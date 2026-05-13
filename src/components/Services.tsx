@@ -83,11 +83,11 @@ function PricingCarousel() {
         ref={scrollRef}
         onScroll={handleScroll}
         data-lenis-prevent
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-2"
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2"
         style={{ scrollbarWidth: 'none' } as React.CSSProperties}
       >
         {plans.map((plan, i) => (
-          <div key={plan.name} className="w-[82vw] max-w-sm shrink-0 snap-start">
+          <div key={plan.name} className="w-[85%] shrink-0 snap-start">
             <div
               className="relative flex flex-col p-8 h-full cursor-default"
               style={{
@@ -137,8 +137,6 @@ function PricingCarousel() {
             </div>
           </div>
         ))}
-        {/* trailing spacer so last card doesn't flush to edge */}
-        <div className="w-6 shrink-0" aria-hidden="true" />
       </div>
 
       {/* Controls */}
