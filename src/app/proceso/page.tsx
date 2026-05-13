@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Proceso — Captiva',
-  description: 'De la llamada inicial al lanzamiento en 3 semanas. Así trabajamos en Captiva.',
+  description: 'De la llamada inicial al lanzamiento en 2 semanas. Así trabajamos en Captiva.',
 };
 
 export default function ProcesoPage() {

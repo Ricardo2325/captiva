@@ -60,7 +60,7 @@ const faqItems = [
     a: 'Sí. Los planes incluyen soporte post-lanzamiento de 3 a 6 meses. Ajustes menores se resuelven en 24-48 horas.',
   },
   {
-    q: '¿Por qué solo 3 semanas?',
+    q: '¿Por qué solo 2 semanas?',
     a: 'Porque nos especializamos en un tipo de proyecto y lo hemos hecho muchas veces. No reinventamos la rueda con cada cliente, aplicamos lo que ya sabemos que funciona.',
   },
 ];
