@@ -82,7 +82,7 @@ function PricingCarousel() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        data-lenis-prevent
+
         className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2"
         style={{ scrollbarWidth: 'none' } as React.CSSProperties}
       >
