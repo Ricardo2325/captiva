@@ -167,6 +167,18 @@ function PhoneFrame({ src, slug }: { src: string; slug: string }) {
           background: '#000',
         }}
       >
+        {/* Status bar gradient — negro sólido en la zona del Dynamic Island */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '14%',
+            background: 'linear-gradient(180deg, #000 55%, transparent 100%)',
+            zIndex: 9,
+          }}
+        />
         {/* Dynamic Island */}
         <div
           style={{
