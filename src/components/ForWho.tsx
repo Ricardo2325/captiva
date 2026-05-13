@@ -9,26 +9,26 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const situations = [
   {
     heading: 'Tus clientes llegan por recomendación.',
-    desc: 'El boca a boca funciona pero no escala. Querés que gente que no te conoce te encuentre, te evalúe y te contacte sola.',
+    desc: 'El boca a boca funciona pero no escala. Quieres que gente que no te conoce te encuentre, te evalúe y te contacte sola.',
   },
   {
-    heading: 'Gestionás reservas por WhatsApp.',
-    desc: 'Respondés mensajes a cualquier hora, confirmás citas a mano y a veces se te escapan. Eso tiene solución.',
+    heading: 'Gestionas reservas por WhatsApp.',
+    desc: 'Respondes mensajes a cualquier hora, confirmas citas a mano y a veces se te escapan. Eso tiene solución.',
   },
   {
     heading: 'Tu web existe pero no convierte.',
-    desc: 'Tenés presencia online pero los visitantes no se convierten en clientes. La web informa, pero no vende.',
+    desc: 'Tienes presencia online pero los visitantes no se convierten en clientes. La web informa, pero no vende.',
   },
   {
     heading: 'Para crecer necesitarías contratar.',
-    desc: 'Más clientes significa más trabajo manual. Querés escalar sin que el negocio dependa de que estés vos presente.',
+    desc: 'Más clientes significa más trabajo manual. Quieres escalar sin que el negocio dependa de que estés tú presente.',
   },
   {
-    heading: 'Tenés buenas reseñas pero poca visibilidad.',
-    desc: 'Los que te conocen hablan bien de vos. El problema es que poca gente te conoce. La reputación está, el canal no.',
+    heading: 'Tienes buenas reseñas pero poca visibilidad.',
+    desc: 'Los que te conocen hablan bien de ti. El problema es que poca gente te conoce. La reputación está, el canal no.',
   },
   {
-    heading: 'No querés gastar sin saber qué pagás.',
+    heading: 'No quieres gastar sin saber qué pagas.',
     desc: 'Precio fijo desde el primer día, alcance por escrito, sin sorpresas al final. Si no encajamos, te lo decimos antes de empezar.',
   },
 ];
@@ -45,7 +45,7 @@ function SituationRow({ situation, index }: { situation: typeof situations[0]; i
       transition={{ duration: 0.45, delay: index * 0.055, ease }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      className="relative grid grid-cols-[3rem_1fr] md:grid-cols-[5rem_1fr_1fr] gap-x-6 md:gap-x-10 py-7 md:py-9 cursor-default"
+      className="relative grid grid-cols-[3rem_1fr] md:grid-cols-[5rem_1fr_1fr] gap-x-6 md:gap-x-10 px-4 md:px-6 py-7 md:py-9 cursor-default"
       style={{
         borderTop: '1px solid #1e1e2e',
         backgroundColor: hovered ? 'rgba(79,70,229,0.03)' : 'transparent',
@@ -111,7 +111,7 @@ export default function ForWho() {
             className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-2xl mb-5"
             style={{ color: '#e8e8f2' }}
           >
-            Captiva es para vos si alguna de estas situaciones te suena.
+            Captiva es para ti si alguna de estas situaciones te suena.
           </h2>
           <p className="text-base md:text-lg max-w-xl" style={{ color: '#8888aa' }}>
             No importa el sector. Importa que tu negocio tenga algo bueno que ofrecer y quieras que más gente lo encuentre.
