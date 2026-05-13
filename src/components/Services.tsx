@@ -102,6 +102,7 @@ export default function Services() {
         <div className="relative">
           <div
             ref={scrollRef}
+            data-lenis-prevent
             className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch"
             onContextMenu={(e) => e.preventDefault()}
           >

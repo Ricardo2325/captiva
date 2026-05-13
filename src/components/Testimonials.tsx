@@ -317,6 +317,7 @@ export default function Testimonials() {
         {/* Mobile: horizontal scroll con peek */}
         <div
           className="md:hidden overflow-x-auto pb-4"
+          data-lenis-prevent
           style={{
             scrollSnapType: 'x mandatory',
             scrollbarWidth: 'none',
