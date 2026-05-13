@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ComparisonTable from '@/components/ComparisonTable';
 
@@ -58,11 +58,18 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function Services() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollLeft = 1;
-    el.scrollLeft = 0;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        el.scrollLeft = 1;
+        el.scrollLeft = 0;
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
