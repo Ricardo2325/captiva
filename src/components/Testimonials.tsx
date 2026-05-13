@@ -2,73 +2,83 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
-const testimonials = [
+const reviews = [
   {
-    quote: 'En tres semanas tenía una web que me da vergüenza comparar con lo que tenía antes. Y las automatizaciones me han ahorrado literalmente horas cada semana. No me imagino volver a trabajar sin este sistema.',
-    name: 'Sara M.',
-    role: 'Entrenadora personal, Madrid',
+    name: 'Sara Martínez',
     initial: 'S',
+    avatarColor: '#1a73e8',
+    meta: 'Guía Local · 12 reseñas',
     stars: 5,
+    date: 'hace 2 meses',
+    text: 'En dos semanas tenía una web que me da vergüenza comparar con lo que tenía antes. Las automatizaciones me han ahorrado literalmente horas cada semana. No me imagino volver a trabajar sin este sistema.',
   },
   {
-    quote: 'Pensaba que esto era solo para empresas grandes. Captiva me demostró que un entrenador autónomo también puede tener un sistema que trabaje por él.',
-    name: 'Marcos T.',
-    role: 'Coach de fuerza, Barcelona',
+    name: 'Marcos Torres',
     initial: 'M',
+    avatarColor: '#d93025',
+    meta: '8 reseñas',
     stars: 5,
+    date: 'hace 3 meses',
+    text: 'Pensaba que esto era solo para empresas grandes. Captiva me demostró que un entrenador autónomo también puede tener un sistema que trabaje por él.',
   },
   {
-    quote: 'El proceso fue exactamente como me dijeron. Cero sorpresas en el precio, cero retrasos.',
-    name: 'Laura G.',
-    role: 'Fisioterapeuta y entrenadora, Valencia',
+    name: 'Laura Gómez',
     initial: 'L',
+    avatarColor: '#188038',
+    meta: '5 reseñas',
     stars: 5,
+    date: 'hace 1 mes',
+    text: 'El proceso fue exactamente como me dijeron. Cero sorpresas en el precio, cero retrasos.',
   },
   {
-    quote: 'Antes perdía 2 horas al día respondiendo WhatsApps para gestionar reservas. Ahora no toco el móvil hasta que llego al gym.',
-    name: 'Pablo R.',
-    role: 'Dueño de box CrossFit, Sevilla',
+    name: 'Pablo Ruiz',
     initial: 'P',
+    avatarColor: '#f9ab00',
+    meta: 'Guía Local · 21 reseñas',
     stars: 5,
+    date: 'hace 4 meses',
+    text: 'Antes perdía 2 horas al día respondiendo WhatsApps para gestionar reservas. Ahora no toco el móvil hasta que llego al gym.',
   },
   {
-    quote: 'El funnel que me montaron convirtió mi audiencia de Instagram en clientes reales. En 48 horas agotamos los plazos del lanzamiento.',
-    name: 'Carmen V.',
-    role: 'Nutricionista deportiva, Bilbao',
+    name: 'Carmen Vidal',
     initial: 'C',
+    avatarColor: '#9334e6',
+    meta: '3 reseñas',
     stars: 5,
+    date: 'hace 2 meses',
+    text: 'El funnel que me montaron convirtió mi audiencia de Instagram en clientes reales. En 48 horas agotamos los plazos del lanzamiento.',
   },
   {
-    quote: 'Hablas directamente con quien hace el trabajo. Sin intermediarios, sin excusas. Eso se nota en el resultado.',
-    name: 'Javier M.',
-    role: 'Entrenador online, Zaragoza',
+    name: 'Javier Molina',
     initial: 'J',
+    avatarColor: '#00897b',
+    meta: '6 reseñas',
     stars: 5,
+    date: 'hace 5 meses',
+    text: 'Hablas directamente con quien hace el trabajo. Sin intermediarios, sin excusas. Eso se nota en el resultado.',
   },
   {
-    quote: 'Mi web nueva convierte muchísimo mejor que la anterior. Los clientes me dicen que parece la web de una marca grande. Eso transmite confianza antes incluso de que hablemos.',
-    name: 'Ana L.',
-    role: 'Instructora de pilates, Málaga',
+    name: 'Ana López',
     initial: 'A',
+    avatarColor: '#e8710a',
+    meta: 'Guía Local · 17 reseñas',
     stars: 5,
+    date: 'hace 3 meses',
+    text: 'Mi web nueva convierte muchísimo mejor que la anterior. Los clientes me dicen que parece la web de una marca grande. Eso transmite confianza antes incluso de que hablemos.',
   },
   {
-    quote: 'La secuencia de emails automática me trajo 3 alumnos nuevos el primer mes sin que yo hiciera nada. Solo tuve que abrir el calendario y confirmar.',
-    name: 'David S.',
-    role: 'Coach de running, Murcia',
+    name: 'David Sánchez',
     initial: 'D',
+    avatarColor: '#c5221f',
+    meta: '4 reseñas',
     stars: 5,
+    date: 'hace 1 mes',
+    text: 'La secuencia de emails automática me trajo 3 alumnos nuevos el primer mes sin que yo hiciera nada. Solo tuve que abrir el calendario y confirmar.',
   },
 ];
 
-// 4-col grid, 4 rows:
-// Row 1: T0(c1-2,r1-2)  T1(c3-4,r1)
-// Row 2: T0(cont)        T2(c3,r2)  T3(c4,r2)
-// Row 3: T4(c1)  T5(c2)  T6(c3-4,r3-4)
-// Row 4: T7(c1-2,r4)     T6(cont)
+// 4-col bento layout (desktop)
 const layout = [
   { colSpan: 2, rowSpan: 2 },
   { colSpan: 2, rowSpan: 1 },
@@ -82,18 +92,8 @@ const layout = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const Stars = ({ count }: { count: number }) => (
-  <div className="flex gap-0.5 mb-4">
-    {[...Array(5)].map((_, i) => (
-      <svg key={i} width="13" height="13" viewBox="0 0 12 12" fill={i < count ? '#f59e0b' : '#2a2a3c'}>
-        <path d="M6 1l1.39 2.82L10.5 4.27l-2.25 2.19.53 3.09L6 8l-2.78 1.55.53-3.09L1.5 4.27l3.11-.45L6 1z" />
-      </svg>
-    ))}
-  </div>
-);
-
 const GoogleG = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" aria-label="Google">
+  <svg width="18" height="18" viewBox="0 0 24 24" aria-label="Google" style={{ flexShrink: 0 }}>
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
     <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
@@ -101,17 +101,83 @@ const GoogleG = () => (
   </svg>
 );
 
-const Author = ({ name, role, initial }: { name: string; role: string; initial: string }) => (
-  <div className="flex items-center gap-3 mt-6">
-    <Avatar className="size-10">
-      <AvatarFallback>{initial}</AvatarFallback>
-    </Avatar>
-    <div>
-      <cite className="not-italic text-sm font-medium" style={{ color: '#e8e8f2' }}>{name}</cite>
-      <span className="block text-xs" style={{ color: '#8888aa' }}>{role}</span>
-    </div>
+const Stars = ({ count }: { count: number }) => (
+  <div style={{ display: 'flex', gap: '2px' }}>
+    {[...Array(count)].map((_, i) => (
+      <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#fbbc04">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    ))}
   </div>
 );
+
+type Review = typeof reviews[number];
+
+function GoogleReviewCard({ review, large = false }: { review: Review; large?: boolean }) {
+  return (
+    <div
+      style={{
+        backgroundColor: large ? '#13131f' : '#0d0d14',
+        border: '1px solid #1e1e2e',
+        borderRadius: '12px',
+        padding: large ? '1.75rem' : '1.25rem',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.75rem',
+      }}
+    >
+      {/* Header: avatar + name + Google G */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+        <div
+          style={{
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            background: review.avatarColor,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+            color: '#fff',
+            fontWeight: 700,
+            fontSize: '1rem',
+          }}
+        >
+          {review.initial}
+        </div>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ color: '#e8e8f2', fontWeight: 600, fontSize: '0.875rem', lineHeight: 1.3 }}>
+            {review.name}
+          </div>
+          <div style={{ color: '#8888aa', fontSize: '0.7rem', marginTop: '2px' }}>
+            {review.meta}
+          </div>
+        </div>
+        <GoogleG />
+      </div>
+
+      {/* Stars + date */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Stars count={review.stars} />
+        <span style={{ color: '#8888aa', fontSize: '0.72rem' }}>{review.date}</span>
+      </div>
+
+      {/* Text */}
+      <p
+        style={{
+          color: '#e8e8f2',
+          fontSize: large ? '0.95rem' : '0.875rem',
+          lineHeight: '1.6',
+          flex: 1,
+          margin: 0,
+        }}
+      >
+        {review.text}
+      </p>
+    </div>
+  );
+}
 
 export default function Testimonials() {
   return (
@@ -130,7 +196,7 @@ export default function Testimonials() {
           className="mb-12 md:mb-16"
         >
           <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
-            Testimonios
+            Reseñas de Google
           </p>
           <h2
             className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"
@@ -153,47 +219,20 @@ export default function Testimonials() {
             WebkitOverflowScrolling: 'touch',
           } as React.CSSProperties}
         >
-          {testimonials.map((t, i) => (
-            <div
-              key={t.name + i}
-              style={{ flex: '0 0 82%', scrollSnapAlign: 'start' }}
-            >
-              <Card
-                className="h-full"
-                style={{
-                  backgroundColor: '#13131f',
-                  border: '1px solid #1e1e2e',
-                  padding: '1.5rem',
-                }}
-              >
-                <CardContent className="h-full p-0 flex flex-col justify-between">
-                  <blockquote className="flex flex-col h-full justify-between">
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <Stars count={t.stars} />
-                        <GoogleG />
-                      </div>
-                      <p className="text-sm leading-relaxed" style={{ color: '#e8e8f2' }}>
-                        "{t.quote}"
-                      </p>
-                    </div>
-                    <Author {...t} />
-                  </blockquote>
-                </CardContent>
-              </Card>
+          {reviews.map((r, i) => (
+            <div key={r.name + i} style={{ flex: '0 0 82%', scrollSnapAlign: 'start' }}>
+              <GoogleReviewCard review={r} />
             </div>
           ))}
         </div>
 
         {/* Desktop: bento grid */}
         <div className="hidden md:grid md:grid-cols-4 gap-4 md:[grid-auto-rows:minmax(150px,auto)]">
-          {testimonials.map((t, i) => {
+          {reviews.map((r, i) => {
             const { colSpan, rowSpan } = layout[i];
-            const isLarge = rowSpan === 2;
-
             return (
               <motion.div
-                key={t.name + i}
+                key={r.name + i}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
@@ -203,45 +242,20 @@ export default function Testimonials() {
                   rowSpan === 2 ? 'md:row-span-2' : '',
                 ].join(' ')}
               >
-                <Card
-                  className="h-full"
-                  style={{
-                    backgroundColor: isLarge ? '#13131f' : '#0d0d14',
-                    border: '1px solid #1e1e2e',
-                    padding: isLarge ? '2rem' : '1.5rem',
-                  }}
-                >
-                  <CardContent className="h-full p-0 flex flex-col justify-between">
-                    <blockquote className="flex flex-col h-full justify-between">
-                      <div>
-                        <div className="flex items-center justify-between mb-1">
-                          <Stars count={t.stars} />
-                          <GoogleG />
-                        </div>
-                        <p
-                          className={isLarge ? 'text-lg leading-relaxed' : 'text-sm leading-relaxed'}
-                          style={{ color: '#e8e8f2' }}
-                        >
-                          "{t.quote}"
-                        </p>
-                      </div>
-                      <Author {...t} />
-                    </blockquote>
-                  </CardContent>
-                </Card>
+                <GoogleReviewCard review={r} large={rowSpan === 2} />
               </motion.div>
             );
           })}
         </div>
 
-        {/* Google review CTA */}
+        {/* CTA dejar reseña */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5"
-          style={{ border: '1px solid #1e1e2e', backgroundColor: '#13131f' }}
+          style={{ border: '1px solid #1e1e2e', backgroundColor: '#13131f', borderRadius: '12px' }}
         >
           <div className="flex items-center gap-3">
             <GoogleG />
@@ -254,7 +268,7 @@ export default function Testimonials() {
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 text-sm font-medium px-5 py-2.5 transition-opacity duration-200 hover:opacity-80"
-            style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+            style={{ backgroundColor: '#4f46e5', color: '#e8e8f2', borderRadius: '6px' }}
           >
             Dejar reseña en Google →
           </a>
