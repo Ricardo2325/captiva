@@ -208,7 +208,7 @@ function PhoneFrame({ src, slug }: { src: string; slug: string }) {
   );
 }
 
-function TabletFrame({ src, slug }: { src: string; slug: string }) {
+function TabletFrame({ src, slug, objectPosition = 'center' }: { src: string; slug: string; objectPosition?: string }) {
   return (
     <div
       style={{
@@ -249,7 +249,7 @@ function TabletFrame({ src, slug }: { src: string; slug: string }) {
           src={src}
           alt=""
           fill
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: 'cover', objectPosition }}
           sizes="(max-width: 768px) 40vw, 20vw"
         />
         {/* Home indicator */}
@@ -301,7 +301,7 @@ function ScreenshotStack({ project }: { project: Project }) {
               filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.6))',
             }}
           >
-            <TabletFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
+            <TabletFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} objectPosition="top" />
           </div>
         )}
       </div>
