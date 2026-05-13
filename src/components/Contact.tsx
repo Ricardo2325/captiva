@@ -116,34 +116,31 @@ export default function Contact() {
               <p className="text-sm md:text-base" style={{ color: '#8888aa' }}>
                 Rellena el formulario y te respondemos en menos de 24 horas. O si lo prefieres, agenda directamente una llamada gratuita.
               </p>
-              <a
-                href={CALENDAR_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-5 group transition-all duration-200"
-                style={{
-                  border: '1px solid #4f46e5',
-                  backgroundColor: 'rgba(79,70,229,0.06)',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.14)')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.06)')}
-              >
-                <div
-                  className="flex-shrink-0 w-10 h-10 flex items-center justify-center"
-                  style={{ backgroundColor: 'rgba(79,70,229,0.15)' }}
+              <div className="flex justify-center">
+                <a
+                  href={CALENDAR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-4 group transition-all duration-200"
+                  style={{
+                    border: '1px solid #4f46e5',
+                    backgroundColor: 'rgba(79,70,229,0.06)',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.14)')}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.06)')}
                 >
-                  <CalendarIcon className="w-5 h-5" style={{ color: '#4f46e5' }} />
-                </div>
-                <div className="flex-1">
-                  <p className="font-display font-bold text-sm" style={{ color: '#e8e8f2' }}>
-                    Agenda una llamada gratuita
-                  </p>
-                  <p className="text-xs mt-0.5" style={{ color: '#8888aa' }}>
-                    30 min · Sin compromiso · Directo a tu calendario
-                  </p>
-                </div>
-                <span style={{ color: '#4f46e5', fontSize: '1.1rem' }} className="group-hover:translate-x-1 transition-transform duration-200 inline-block">→</span>
-              </a>
+                  <CalendarIcon className="w-5 h-5 flex-shrink-0" style={{ color: '#4f46e5' }} />
+                  <div>
+                    <p className="font-display font-bold text-sm" style={{ color: '#e8e8f2' }}>
+                      Agenda una llamada gratuita
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ color: '#8888aa' }}>
+                      30 min · Sin compromiso · Directo a tu calendario
+                    </p>
+                  </div>
+                  <span style={{ color: '#4f46e5', fontSize: '1.1rem' }} className="group-hover:translate-x-1 transition-transform duration-200 inline-block">→</span>
+                </a>
+              </div>
             </div>
           }
         >
