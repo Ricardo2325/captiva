@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -139,8 +140,53 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        {/* Bento grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:[grid-auto-rows:minmax(150px,auto)]">
+        {/* Mobile: horizontal scroll con peek */}
+        <div
+          className="md:hidden flex gap-4 overflow-x-auto pb-4"
+          style={{
+            marginLeft: '-1.5rem',
+            marginRight: '-1.5rem',
+            paddingLeft: '1.5rem',
+            paddingRight: '1.5rem',
+            scrollSnapType: 'x mandatory',
+            scrollbarWidth: 'none',
+            WebkitOverflowScrolling: 'touch',
+          } as React.CSSProperties}
+        >
+          {testimonials.map((t, i) => (
+            <div
+              key={t.name + i}
+              style={{ flex: '0 0 82%', scrollSnapAlign: 'start' }}
+            >
+              <Card
+                className="h-full"
+                style={{
+                  backgroundColor: '#13131f',
+                  border: '1px solid #1e1e2e',
+                  padding: '1.5rem',
+                }}
+              >
+                <CardContent className="h-full p-0 flex flex-col justify-between">
+                  <blockquote className="flex flex-col h-full justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <Stars count={t.stars} />
+                        <GoogleG />
+                      </div>
+                      <p className="text-sm leading-relaxed" style={{ color: '#e8e8f2' }}>
+                        "{t.quote}"
+                      </p>
+                    </div>
+                    <Author {...t} />
+                  </blockquote>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: bento grid */}
+        <div className="hidden md:grid md:grid-cols-4 gap-4 md:[grid-auto-rows:minmax(150px,auto)]">
           {testimonials.map((t, i) => {
             const { colSpan, rowSpan } = layout[i];
             const isLarge = rowSpan === 2;
