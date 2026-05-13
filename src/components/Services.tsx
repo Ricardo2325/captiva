@@ -153,7 +153,7 @@ export default function Services() {
                   <Link
                     href="/contacto"
                     className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
-                    style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+                    style={{ backgroundColor: '#4f46e5', color: '#e8e8f2', touchAction: 'manipulation' }}
                   >
                     {plan.cta}
                   </Link>
@@ -161,7 +161,7 @@ export default function Services() {
                   <Link
                     href="/contacto"
                     className="block text-center py-3 text-sm font-medium transition-all duration-200"
-                    style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
+                    style={{ border: '1px solid #1e1e2e', color: '#8888aa', touchAction: 'manipulation' }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5';
                       (e.currentTarget as HTMLElement).style.color = '#e8e8f2';
