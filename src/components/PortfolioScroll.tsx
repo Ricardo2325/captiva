@@ -572,6 +572,8 @@ export default function PortfolioScroll() {
     if (!lenis) return;
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.lagSmoothing(0);
+    // Recalculate ScrollTrigger positions now that Lenis is connected
+    ScrollTrigger.refresh();
     return () => {
       lenis.off('scroll', ScrollTrigger.update);
     };
