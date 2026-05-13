@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MailIcon, PhoneIcon, CalendarIcon } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 import { ContactCard } from '@/components/ui/contact-card';
 
 // ── Configura estos valores ──────────────────────────────────────────────────
@@ -68,21 +68,6 @@ function InputField({
   );
 }
 
-const contactInfo = [
-  { icon: MailIcon, label: 'Email', value: 'hola@captiva.es' },
-  {
-    icon: PhoneIcon,
-    label: 'WhatsApp',
-    value: `+${WHATSAPP_PHONE.slice(0, 2)} ${WHATSAPP_PHONE.slice(2, 5)} ${WHATSAPP_PHONE.slice(5)}`,
-    href: `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_MSG}`,
-  },
-  {
-    icon: CalendarIcon,
-    label: 'Agenda una llamada',
-    value: '30 min · Gratuita · Sin compromiso',
-    href: CALENDAR_URL,
-  },
-];
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: '', email: '', telefono: '', mensaje: '' });
@@ -126,8 +111,41 @@ export default function Contact() {
 
         <ContactCard
           title={<>Cuéntanos<br />tu proyecto.</>}
-          description="Si tienes alguna pregunta sobre nuestros servicios o quieres empezar, rellena el formulario. Te respondemos en menos de 24 horas."
-          contactInfo={contactInfo}
+          description={
+            <div className="flex flex-col gap-6">
+              <p className="text-sm md:text-base" style={{ color: '#8888aa' }}>
+                Rellena el formulario y te respondemos en menos de 24 horas. O si lo prefieres, agenda directamente una llamada gratuita.
+              </p>
+              <a
+                href={CALENDAR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-5 group transition-all duration-200"
+                style={{
+                  border: '1px solid #4f46e5',
+                  backgroundColor: 'rgba(79,70,229,0.06)',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.14)')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.06)')}
+              >
+                <div
+                  className="flex-shrink-0 w-10 h-10 flex items-center justify-center"
+                  style={{ backgroundColor: 'rgba(79,70,229,0.15)' }}
+                >
+                  <CalendarIcon className="w-5 h-5" style={{ color: '#4f46e5' }} />
+                </div>
+                <div className="flex-1">
+                  <p className="font-display font-bold text-sm" style={{ color: '#e8e8f2' }}>
+                    Agenda una llamada gratuita
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: '#8888aa' }}>
+                    30 min · Sin compromiso · Directo a tu calendario
+                  </p>
+                </div>
+                <span style={{ color: '#4f46e5', fontSize: '1.1rem' }} className="group-hover:translate-x-1 transition-transform duration-200 inline-block">→</span>
+              </a>
+            </div>
+          }
         >
           {status === 'success' ? (
             <div className="flex flex-col items-center justify-center py-12 text-center gap-4 w-full">
