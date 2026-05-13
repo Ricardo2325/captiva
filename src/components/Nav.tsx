@@ -44,14 +44,14 @@ export default function Nav() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm text-text-muted hover:text-text-primary transition-colors duration-200"
+              className="text-base text-text-muted hover:text-text-primary transition-colors duration-200"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href="/contacto"
-            className="text-sm px-4 py-2 rounded-full border border-border text-text-primary hover:border-accent hover:text-accent transition-all duration-200"
+            className="text-base px-4 py-2 rounded-full border border-border text-text-primary hover:border-accent hover:text-accent transition-all duration-200"
           >
             Contacto
           </Link>
