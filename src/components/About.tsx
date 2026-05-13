@@ -90,54 +90,62 @@ export default function About() {
           ))}
         </motion.div>
 
-        {/* Team */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {team.map((person, i) => (
-            <motion.div
-              key={person.name}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: i * 0.12, ease }}
-              whileHover={{ borderColor: '#4f46e5' }}
-              className="flex gap-6 p-8"
-              style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
-            >
-              {/* Avatar */}
-              <div className="flex-shrink-0">
+        {/* Team — zig-zag */}
+        <div className="flex flex-col gap-px" style={{ borderTop: '1px solid #1e1e2e' }}>
+          {team.map((person, i) => {
+            const reverse = i % 2 === 1;
+            return (
+              <motion.div
+                key={person.name}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease }}
+                className={`flex flex-col md:flex-row gap-0 ${reverse ? 'md:flex-row-reverse' : ''}`}
+                style={{ borderBottom: '1px solid #1e1e2e' }}
+              >
+                {/* Avatar block */}
                 <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center"
+                  className="flex items-center justify-center p-12 md:w-64 flex-shrink-0"
                   style={{ background: person.gradient }}
                 >
-                  <span
-                    className="font-display font-extrabold text-3xl"
-                    style={{ color: 'rgba(232,232,242,0.9)' }}
+                  <div
+                    className="w-24 h-24 rounded-full flex items-center justify-center"
+                    style={{ background: 'rgba(0,0,0,0.25)' }}
                   >
-                    {person.initials}
-                  </span>
+                    <span
+                      className="font-display font-extrabold text-4xl"
+                      style={{ color: 'rgba(232,232,242,0.95)' }}
+                    >
+                      {person.initials}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Info */}
-              <div>
-                <h3
-                  className="font-display font-bold text-xl mb-1"
-                  style={{ color: '#e8e8f2' }}
+                {/* Info block */}
+                <div
+                  className="flex-1 flex flex-col justify-center p-10 md:p-14"
+                  style={{ backgroundColor: '#13131f' }}
                 >
-                  {person.name}
-                </h3>
-                <p
-                  className="text-xs tracking-wider uppercase mb-4"
-                  style={{ color: '#4f46e5' }}
-                >
-                  {person.role}
-                </p>
-                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                  {person.bio}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                  <p
+                    className="text-xs tracking-widest uppercase mb-3"
+                    style={{ color: '#4f46e5' }}
+                  >
+                    {person.role}
+                  </p>
+                  <h3
+                    className="font-display font-bold text-3xl mb-4"
+                    style={{ color: '#e8e8f2' }}
+                  >
+                    {person.name}
+                  </h3>
+                  <p className="text-base leading-relaxed max-w-lg" style={{ color: '#8888aa' }}>
+                    {person.bio}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Values */}
