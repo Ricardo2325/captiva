@@ -334,7 +334,7 @@ export default function Testimonials() {
         {/* Desktop: carrusel 4+4 con flechas */}
         <DesktopCarousel reviews={reviews} ease={ease} />
 
-        {/* CTA dejar reseña */}
+        {/* CTA dejar reseña — desactivado hasta tener Google Maps
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -359,6 +359,7 @@ export default function Testimonials() {
             Dejar reseña en Google →
           </a>
         </motion.div>
+        */}
 
       </div>
     </section>
