@@ -13,8 +13,9 @@ interface AccordionItemProps {
 
 function AccordionItem({ project, isActive, onMouseEnter }: AccordionItemProps) {
   return (
-    <div
-      className="relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-in-out"
+    <Link
+      href="/portfolio"
+      className="relative rounded-2xl overflow-hidden block transition-all duration-700 ease-in-out"
       style={{
         height: '480px',
         flex: isActive ? '1 1 0%' : '0 0 64px',
@@ -102,7 +103,7 @@ function AccordionItem({ project, isActive, onMouseEnter }: AccordionItemProps) 
           </p>
         )}
       </div>
-    </div>
+    </Link>
   );
 }
 
