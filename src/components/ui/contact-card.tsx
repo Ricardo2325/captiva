@@ -17,6 +17,7 @@ type ContactInfoItem = {
 type ContactCardProps = {
     title?: React.ReactNode;
     description?: React.ReactNode;
+    leftFooter?: React.ReactNode;
     contactInfo?: ContactInfoItem[];
     className?: string;
     formSectionClassName?: string;
@@ -26,6 +27,7 @@ type ContactCardProps = {
 export function ContactCard({
     title = 'Cuéntanos tu proyecto.',
     description = 'Rellena el formulario o elige cómo prefieres que nos pongamos en contacto. Te respondemos en menos de 24 horas.',
+    leftFooter,
     contactInfo,
     className,
     formSectionClassName,
@@ -46,7 +48,7 @@ export function ContactCard({
             <PlusIcon className="absolute -right-3 -bottom-3 h-6 w-6" style={{ color: '#4f46e5' }} />
 
             {/* Left section — title, description, contact info */}
-            <div className="lg:col-span-2 flex flex-col justify-between">
+            <div className="lg:col-span-2 flex flex-col">
                 <div className="space-y-5 px-4 py-8 md:p-8">
                     <h2
                         className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl"
@@ -54,9 +56,9 @@ export function ContactCard({
                     >
                         {title}
                     </h2>
-                    <p className="max-w-xl text-sm md:text-base lg:text-lg" style={{ color: '#8888aa' }}>
+                    <div className="max-w-xl text-sm md:text-base lg:text-lg" style={{ color: '#8888aa' }}>
                         {description}
-                    </p>
+                    </div>
                     {contactInfo && contactInfo.length > 0 && (
                         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                             {contactInfo.map((info, i) => (
@@ -65,6 +67,11 @@ export function ContactCard({
                         </div>
                     )}
                 </div>
+                {leftFooter && (
+                    <div className="mt-auto px-4 pb-8 md:px-8">
+                        {leftFooter}
+                    </div>
+                )}
             </div>
 
             {/* Right section — form / children */}
