@@ -571,6 +571,7 @@ export default function PortfolioScroll() {
   useEffect(() => {
     if (!lenis) return;
     lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.lagSmoothing(0);
     return () => {
       lenis.off('scroll', ScrollTrigger.update);
     };
