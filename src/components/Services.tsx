@@ -83,7 +83,7 @@ export default function Services() {
 
         {/* Cards */}
         <div className="relative">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch select-none" style={{ overscrollBehaviorX: 'contain' }}>
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.name}
