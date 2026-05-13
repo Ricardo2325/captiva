@@ -7,21 +7,21 @@ const team = [
     initials: 'R',
     name: 'Ricardo',
     role: 'Desarrollador Full Stack',
-    bio: 'Llevo años construyendo sistemas que funcionan de verdad. Me obsesiona que el código sea limpio y que cada automatización ahorre tiempo real — no solo en el papel. Empecé Captiva porque vi demasiados autónomos pagando precios de agencia grande por webs que no convertían.',
+    bio: 'Llevo años construyendo sistemas que funcionan de verdad. Me obsesiona que el código sea limpio y que cada automatización ahorre tiempo real, no solo en el papel. Empecé Captiva porque vi demasiados autónomos pagando precios de agencia grande por webs que no convertían.',
     gradient: 'linear-gradient(135deg, #1a1040 0%, #4f46e5 100%)',
   },
   {
     initials: 'I',
     name: 'Ismael',
     role: 'Marketing & Desarrollo',
-    bio: 'Vengo del marketing pero me enamoré del código. Ese cruce es donde vivo — entiendo qué tiene que decir una web para que funcione y sé construirla. Odio los proyectos genéricos casi tanto como las reuniones que podrían haber sido un email.',
+    bio: 'Vengo del marketing pero me enamoré del código. Ese cruce es donde vivo: entiendo qué tiene que decir una web para que funcione y sé construirla. Odio los proyectos genéricos casi tanto como las reuniones que podrían haber sido un email.',
     gradient: 'linear-gradient(135deg, #1a0a00 0%, #c45200 100%)',
   },
   {
     initials: 'C',
     name: 'Cristian',
     role: 'Especialista en Marketing Digital',
-    bio: 'El copy es lo primero que lee un visitante y lo último que la mayoría cuida. Me encargo de que cada palabra en tu web esté ahí por un motivo. También llevo la estrategia y los funnels — la parte que convierte lectores en clientes.',
+    bio: 'El copy es lo primero que lee un visitante y lo último que la mayoría cuida. Me encargo de que cada palabra en tu web esté ahí por un motivo. También llevo la estrategia y los funnels, la parte que convierte lectores en clientes.',
     gradient: 'linear-gradient(135deg, #0d2818 0%, #065f46 100%)',
   },
 ];
@@ -77,7 +77,7 @@ export default function About() {
               Captiva nació de una frustración concreta: demasiados entrenadores, fisioterapeutas y negocios locales atrapados entre dos opciones malas. O una agencia cara que les trataba como un cliente más en la cadena de montaje, o una plantilla barata que no diferenciaba su negocio de nadie.
             </p>
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
-              Decidimos que había una tercera vía — especialización real. Si solo trabajás con un tipo de negocio, aprendés exactamente qué funciona para ellos. No reinventás la rueda en cada proyecto. Y podés entregar en dos semanas lo que una agencia generalista tarda dos meses.
+              Decidimos que había una tercera vía: la especialización real. Si solo trabajás con un tipo de negocio, aprendés exactamente qué funciona para ellos. No reinventás la rueda en cada proyecto. Y podés entregar en dos semanas lo que una agencia generalista tarda dos meses.
             </p>
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
               Eso es Captiva. Sin capas intermedias, sin presupuestos orientativos, sin desaparecer después del lanzamiento.
@@ -227,6 +227,32 @@ export default function About() {
               </p>
             </div>
           ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+          className="mt-16 flex flex-col md:flex-row items-center justify-between gap-6 p-8 md:p-10"
+          style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
+        >
+          <div>
+            <h3 className="font-display font-bold text-xl md:text-2xl mb-2" style={{ color: '#e8e8f2' }}>
+              ¿Trabajamos juntos?
+            </h3>
+            <p className="text-sm" style={{ color: '#8888aa' }}>
+              Primera llamada gratuita. Sin compromiso. Te contamos exactamente qué haríamos con tu negocio.
+            </p>
+          </div>
+          <a
+            href="/contacto"
+            className="shrink-0 text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+            style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+          >
+            Hablamos →
+          </a>
         </motion.div>
 
       </div>

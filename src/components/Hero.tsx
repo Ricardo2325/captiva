@@ -65,7 +65,7 @@ export default function Hero() {
           style={{ color: '#8888aa' }}
         >
           Diseñamos webs que convierten visitas en clientes y automatizamos
-          los procesos que te roban tiempo — para que tú te centres en lo que
+          los procesos que te roban tiempo, para que tú te centres en lo que
           sabes hacer.
         </motion.p>
 
