@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Cambia esto cuando verifiques el dominio captiva.es en Resend
 const FROM = 'onboarding@resend.dev';
-const TO = process.env.CONTACT_EMAIL ?? 'hola@captiva.es';
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const TO = process.env.CONTACT_EMAIL ?? 'hola@captiva.es';
   const body = await req.json();
   const { nombre, email, telefono, mensaje } = body as Record<string, string>;
 
