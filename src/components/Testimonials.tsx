@@ -185,7 +185,7 @@ function GoogleReviewCard({ review, large = false }: { review: Review; large?: b
   );
 }
 
-const PER_PAGE = 5;
+const PER_PAGE = 4;
 
 function DesktopCarousel({ reviews, ease }: { reviews: Review[]; ease: readonly number[] }) {
   const [page, setPage] = useState(0);
@@ -214,7 +214,7 @@ function DesktopCarousel({ reviews, ease }: { reviews: Review[]; ease: readonly 
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: ease as [number, number, number, number] }}
-            className="grid grid-cols-5 gap-4"
+            className="grid grid-cols-4 gap-4"
           >
             {visible.map((r, i) => (
               <GoogleReviewCard key={r.name + i} review={r} />
