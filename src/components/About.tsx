@@ -11,8 +11,15 @@ const team = [
     gradient: 'linear-gradient(135deg, #1a1040 0%, #4f46e5 100%)',
   },
   {
-    initials: 'A',
-    name: 'Alejandro',
+    initials: 'I',
+    name: 'Ismael',
+    role: 'Marketing & Desarrollo',
+    bio: 'Combino estrategia de marketing con código. Me encargo de que cada proyecto tenga coherencia entre lo que dice, cómo se ve y cómo convierte.',
+    gradient: 'linear-gradient(135deg, #1a0a00 0%, #c45200 100%)',
+  },
+  {
+    initials: 'C',
+    name: 'Cristian',
     role: 'Especialista en Marketing Digital',
     bio: 'Me encargo de que la web no solo sea bonita, sino que convierta. Copy, estrategia, funnels y la parte que hace que el teléfono suene.',
     gradient: 'linear-gradient(135deg, #0d2818 0%, #065f46 100%)',
@@ -45,7 +52,7 @@ export default function About() {
             className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl mb-5"
             style={{ color: '#e8e8f2' }}
           >
-            Dos personas.<br />Un enfoque.
+            Tres personas.<br />Un enfoque.
           </h2>
           <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#8888aa' }}>
             Somos una micro-agencia sin capas intermedias. Hablas directamente con quien hace el trabajo. Nada de cuentas, nada de gestores de proyecto. Solo resultado.
@@ -84,7 +91,7 @@ export default function About() {
         </motion.div>
 
         {/* Team */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {team.map((person, i) => (
             <motion.div
               key={person.name}
