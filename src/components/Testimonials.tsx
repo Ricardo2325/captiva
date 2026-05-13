@@ -210,24 +210,13 @@ export default function Testimonials() {
         <div
           className="md:hidden overflow-x-auto pb-4"
           style={{
-            marginLeft: '-1.5rem',
-            marginRight: '-1.5rem',
             scrollSnapType: 'x mandatory',
             scrollbarWidth: 'none',
-            WebkitOverflowScrolling: 'touch',
           } as React.CSSProperties}
         >
           <div className="flex gap-4">
             {reviews.map((r, i) => (
-              <div
-                key={r.name + i}
-                style={{
-                  flex: '0 0 82%',
-                  scrollSnapAlign: 'start',
-                  ...(i === 0 ? { marginLeft: '1.5rem' } : {}),
-                  ...(i === reviews.length - 1 ? { marginRight: '1.5rem' } : {}),
-                }}
-              >
+              <div key={r.name + i} style={{ flex: '0 0 85%', scrollSnapAlign: 'start' }}>
                 <GoogleReviewCard review={r} />
               </div>
             ))}
