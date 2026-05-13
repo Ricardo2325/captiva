@@ -83,7 +83,7 @@ export default function Services() {
 
         {/* Cards */}
         <div className="relative">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch" style={{ touchAction: 'pan-x' }}>
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.name}
