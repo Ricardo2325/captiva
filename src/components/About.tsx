@@ -91,7 +91,7 @@ export default function About() {
         </motion.div>
 
         {/* Team — zig-zag */}
-        <div className="flex flex-col gap-px" style={{ borderTop: '1px solid #1e1e2e' }}>
+        <div className="flex flex-col gap-4">
           {team.map((person, i) => {
             const reverse = i % 2 === 1;
             return (
@@ -102,7 +102,7 @@ export default function About() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease }}
                 className={`flex flex-col md:flex-row gap-0 ${reverse ? 'md:flex-row-reverse' : ''}`}
-                style={{ borderBottom: '1px solid #1e1e2e' }}
+                style={{ border: '1px solid #1e1e2e', overflow: 'hidden' }}
               >
                 {/* Avatar block */}
                 <div
