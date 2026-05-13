@@ -91,89 +91,93 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease }}
-                whileHover={{ borderColor: '#4f46e5' }}
-                className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0 cursor-default"
-                style={{
-                  backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
-                  border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
-                  boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
-                }}
+                className="min-w-[82%] snap-start md:min-w-0"
+                style={{ display: 'flex' }}
               >
-                {plan.featured && (
-                  <div
-                    className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
-                    style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
-                  >
-                    Más popular
-                  </div>
-                )}
+                <div
+                  className="relative flex flex-col p-8 w-full cursor-default"
+                  style={{
+                    backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
+                    border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
+                    boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
+                  }}
+                >
+                  {plan.featured && (
+                    <div
+                      className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
+                      style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
+                    >
+                      Más popular
+                    </div>
+                  )}
 
-                <div className="mb-6">
-                  <p className="text-sm mb-4" style={{ color: '#8888aa' }}>
-                    {plan.name}
-                  </p>
-                  <div className="flex items-baseline gap-1 mb-3">
-                    <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>
-                      €{plan.price}
-                    </span>
-                    <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
+                  <div className="mb-6">
+                    <p className="text-sm mb-4" style={{ color: '#8888aa' }}>
+                      {plan.name}
+                    </p>
+                    <div className="flex items-baseline gap-1 mb-3">
+                      <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>
+                        €{plan.price}
+                      </span>
+                      <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
+                      {plan.desc}
+                    </p>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                    {plan.desc}
-                  </p>
+
+                  <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
+
+                  <ul className="flex flex-col gap-3 mb-8 flex-1">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          className="flex-shrink-0 mt-0.5"
+                          style={{ color: '#4f46e5' }}
+                        >
+                          <path
+                            d="M3 8l3.5 3.5L13 4.5"
+                            stroke="currentColor"
+                            strokeWidth="1.75"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {plan.featured ? (
+                    <Link
+                      href="/contacto"
+                      className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
+                      style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+                    >
+                      {plan.cta}
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/contacto"
+                      className="block text-center py-3 text-sm font-medium transition-all duration-200"
+                      style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5';
+                        (e.currentTarget as HTMLElement).style.color = '#e8e8f2';
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e';
+                        (e.currentTarget as HTMLElement).style.color = '#8888aa';
+                      }}
+                    >
+                      {plan.cta}
+                    </Link>
+                  )}
                 </div>
-
-                <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
-
-                <ul className="flex flex-col gap-3 mb-8 flex-1">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        className="flex-shrink-0 mt-0.5"
-                        style={{ color: '#4f46e5' }}
-                      >
-                        <path
-                          d="M3 8l3.5 3.5L13 4.5"
-                          stroke="currentColor"
-                          strokeWidth="1.75"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                {plan.featured ? (
-                  <Link
-                    href="/contacto"
-                    className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
-                    style={{ backgroundColor: '#4f46e5', color: '#e8e8f2', touchAction: 'manipulation' }}
-                  >
-                    {plan.cta}
-                  </Link>
-                ) : (
-                  <Link
-                    href="/contacto"
-                    className="block text-center py-3 text-sm font-medium transition-all duration-200"
-                    style={{ border: '1px solid #1e1e2e', color: '#8888aa', touchAction: 'manipulation' }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5';
-                      (e.currentTarget as HTMLElement).style.color = '#e8e8f2';
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e';
-                      (e.currentTarget as HTMLElement).style.color = '#8888aa';
-                    }}
-                  >
-                    {plan.cta}
-                  </Link>
-                )}
               </motion.div>
             ))}
           </div>
