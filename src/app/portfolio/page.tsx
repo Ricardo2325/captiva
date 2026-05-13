@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
-import PortfolioScroll from '@/components/PortfolioScroll';
+import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
+
+const PortfolioScroll = dynamic(() => import('@/components/PortfolioScroll'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Portfolio — Captiva',
