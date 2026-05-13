@@ -98,6 +98,55 @@ export default function Services() {
           </p>
         </motion.div>
 
+        {/* What's included callout */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease }}
+          className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-4"
+        >
+          {[
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              ),
+              title: 'Diseño a medida',
+              desc: 'No usamos plantillas. Cada web se diseña desde cero para tu marca, tu nicho y tus objetivos de conversión.',
+            },
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              ),
+              title: 'Rendimiento técnico',
+              desc: 'Webs rápidas, bien optimizadas y con SEO básico incluido. Tu posición en Google mejora desde el lanzamiento.',
+            },
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              ),
+              title: 'Soporte post-entrega',
+              desc: 'No desaparecemos al lanzar. Estamos disponibles para ajustes, dudas y optimizaciones durante los meses siguientes.',
+            },
+          ].map((item) => (
+            <div key={item.title} className="flex gap-4 p-6" style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}>
+              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center" style={{ backgroundColor: 'rgba(79,70,229,0.12)' }}>
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-sm mb-1" style={{ color: '#e8e8f2' }}>{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
         {/* Cards */}
         <div className="relative">
           <div
@@ -219,55 +268,6 @@ export default function Services() {
         </motion.p>
 
         <ComparisonTable />
-
-        {/* What's included callout */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2, ease }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4"
-        >
-          {[
-            {
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                </svg>
-              ),
-              title: 'Diseño a medida',
-              desc: 'No usamos plantillas. Cada web se diseña desde cero para tu marca, tu nicho y tus objetivos de conversión.',
-            },
-            {
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                </svg>
-              ),
-              title: 'Rendimiento técnico',
-              desc: 'Webs rápidas, bien optimizadas y con SEO básico incluido. Tu posición en Google mejora desde el lanzamiento.',
-            },
-            {
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              ),
-              title: 'Soporte post-entrega',
-              desc: 'No desaparecemos al lanzar. Estamos disponibles para ajustes, dudas y optimizaciones durante los meses siguientes.',
-            },
-          ].map((item) => (
-            <div key={item.title} className="flex gap-4 p-6" style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}>
-              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center" style={{ backgroundColor: 'rgba(79,70,229,0.12)' }}>
-                {item.icon}
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-sm mb-1" style={{ color: '#e8e8f2' }}>{item.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
 
         {/* FAQ accordion */}
         <motion.div
