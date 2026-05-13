@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Workflow obligatorio (NO negociable)
+
+Cada cambio en este proyecto DEBE seguir este flujo sin excepción:
+
+1. **Issue** — crear issue en GitHub antes de empezar (`gh issue create`)
+2. **Rama** — `git checkout -b tipo/nombre-descriptivo` (nunca trabajar en `main` directamente)
+3. **Commits** — usar el skill `work-unit-commits` para planificar commits como unidades revisables
+4. **PR** — abrir PR con el skill `gentle-ai-branch-pr` al terminar
+5. **Engram** — guardar decisiones, bugs y descubrimientos proactivamente sin que el usuario lo pida
+
+### Tipos de rama
+- `feat/` — nueva funcionalidad
+- `fix/` — corrección de bug
+- `refactor/` — refactor sin cambio funcional
+- `style/` — cambios visuales / copy
+- `chore/` — configuración, dependencias
+
+### Reglas adicionales
+- **Nunca pushear directo a `main`** — siempre rama + PR
+- **Bugs → `scope: personal` en Engram** — para que estén disponibles en todos los proyectos
+- **No usar `data-lenis-prevent`** en contenedores que en desktop son grids de ancho completo (bloquea el scroll de la rueda)
+- **`overflow-x-clip` en vez de `overflow-x-hidden`** en contenedores con GSAP ScrollTrigger para no crear scroll containers secundarios
+- **Scroll horizontal en mobile**: no usar negative margin tricks — dejar que el `px-6` de la sección padre actúe como margen natural, cards al 85% de ancho
+
 ## Commands
 
 ```bash
