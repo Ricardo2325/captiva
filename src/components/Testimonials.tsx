@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const reviews = [
   {
@@ -167,6 +167,108 @@ function GoogleReviewCard({ review, large = false }: { review: Review; large?: b
   );
 }
 
+const PER_PAGE = 4;
+
+function DesktopCarousel({ reviews, ease }: { reviews: Review[]; ease: readonly number[] }) {
+  const [page, setPage] = useState(0);
+  const [dir, setDir] = useState(1);
+  const pages = Math.ceil(reviews.length / PER_PAGE);
+  const visible = reviews.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+
+  const go = (next: number) => {
+    setDir(next > page ? 1 : -1);
+    setPage(next);
+  };
+
+  return (
+    <div className="hidden md:block">
+      <div style={{ overflow: 'hidden' }}>
+        <AnimatePresence mode="wait" initial={false} custom={dir}>
+          <motion.div
+            key={page}
+            custom={dir}
+            variants={{
+              enter: (d: number) => ({ x: d * 40, opacity: 0 }),
+              center: { x: 0, opacity: 1 },
+              exit: (d: number) => ({ x: d * -40, opacity: 0 }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.35, ease: ease as [number, number, number, number] }}
+            className="grid grid-cols-4 gap-4"
+          >
+            {visible.map((r, i) => (
+              <GoogleReviewCard key={r.name + i} review={r} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Controles */}
+      <div className="flex items-center justify-center gap-6 mt-8">
+        <button
+          onClick={() => go(page - 1)}
+          disabled={page === 0}
+          aria-label="Anterior"
+          style={{
+            width: '40px', height: '40px',
+            borderRadius: '50%',
+            border: '1px solid',
+            borderColor: page === 0 ? '#1e1e2e' : 'rgba(255,255,255,0.3)',
+            background: 'transparent',
+            color: page === 0 ? '#3a3a5c' : '#e8e8f2',
+            cursor: page === 0 ? 'not-allowed' : 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          ←
+        </button>
+
+        <div className="flex gap-2">
+          {Array.from({ length: pages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              aria-label={`Página ${i + 1}`}
+              style={{
+                width: i === page ? '24px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                background: i === page ? '#4f46e5' : '#1e1e2e',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                padding: 0,
+              }}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => go(page + 1)}
+          disabled={page === pages - 1}
+          aria-label="Siguiente"
+          style={{
+            width: '40px', height: '40px',
+            borderRadius: '50%',
+            border: '1px solid',
+            borderColor: page === pages - 1 ? '#1e1e2e' : 'rgba(255,255,255,0.3)',
+            background: 'transparent',
+            color: page === pages - 1 ? '#3a3a5c' : '#e8e8f2',
+            cursor: page === pages - 1 ? 'not-allowed' : 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          →
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
   return (
     <section
@@ -211,20 +313,8 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Desktop: grilla uniforme 3 columnas */}
-        <div className="hidden md:grid md:grid-cols-3 gap-4">
-          {reviews.map((r, i) => (
-            <motion.div
-              key={r.name + i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.07, ease }}
-            >
-              <GoogleReviewCard review={r} />
-            </motion.div>
-          ))}
-        </div>
+        {/* Desktop: carrusel 4+4 con flechas */}
+        <DesktopCarousel reviews={reviews} ease={ease} />
 
         {/* CTA dejar reseña */}
         <motion.div
