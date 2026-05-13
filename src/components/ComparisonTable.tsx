@@ -96,7 +96,6 @@ export default function ComparisonTable() {
             style={{
               border: '1px solid #1e1e2e',
               borderRadius: '16px',
-              overflow: 'hidden',
               backgroundColor: '#0d0d14',
             }}
           >
@@ -107,9 +106,10 @@ export default function ComparisonTable() {
                 gridTemplateColumns: '1.8fr 1fr 1fr 1fr',
                 borderBottom: '1px solid #1e1e2e',
                 backgroundColor: '#13131f',
+                borderRadius: '16px 16px 0 0',
               }}
             >
-              <div style={{ padding: '1.25rem 1.5rem' }}>
+              <div style={{ padding: '1.25rem 1.5rem', borderRadius: '16px 0 0 0' }}>
                 <span
                   className="font-body"
                   style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#8888aa' }}
@@ -204,9 +204,10 @@ export default function ComparisonTable() {
                 gridTemplateColumns: '1.8fr 1fr 1fr 1fr',
                 borderTop: '1px solid #1e1e2e',
                 backgroundColor: '#13131f',
+                borderRadius: '0 0 16px 16px',
               }}
             >
-              <div style={{ padding: '1.25rem 1.5rem' }} />
+              <div style={{ padding: '1.25rem 1.5rem', borderRadius: '0 0 0 16px' }} />
               {plans.map((plan, i) => (
                 <div
                   key={plan}
@@ -215,6 +216,7 @@ export default function ComparisonTable() {
                     textAlign: 'center',
                     borderLeft: '1px solid #1e1e2e',
                     backgroundColor: i === featured ? 'rgba(79,70,229,0.06)' : 'transparent',
+                    borderRadius: i === plans.length - 1 ? '0 0 16px 0' : undefined,
                   }}
                 >
                   <Link
