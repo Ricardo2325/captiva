@@ -78,18 +78,6 @@ const reviews = [
   },
 ];
 
-// 4-col bento layout (desktop)
-const layout = [
-  { colSpan: 2, rowSpan: 2 },
-  { colSpan: 2, rowSpan: 1 },
-  { colSpan: 1, rowSpan: 1 },
-  { colSpan: 1, rowSpan: 1 },
-  { colSpan: 1, rowSpan: 1 },
-  { colSpan: 1, rowSpan: 1 },
-  { colSpan: 2, rowSpan: 2 },
-  { colSpan: 2, rowSpan: 1 },
-];
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const GoogleG = () => (
@@ -223,26 +211,19 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Desktop: bento grid */}
-        <div className="hidden md:grid md:grid-cols-4 gap-4 md:[grid-auto-rows:minmax(150px,auto)]">
-          {reviews.map((r, i) => {
-            const { colSpan, rowSpan } = layout[i];
-            return (
-              <motion.div
-                key={r.name + i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.07, ease }}
-                className={[
-                  colSpan === 2 ? 'col-span-2' : 'col-span-1',
-                  rowSpan === 2 ? 'md:row-span-2' : '',
-                ].join(' ')}
-              >
-                <GoogleReviewCard review={r} large={rowSpan === 2} />
-              </motion.div>
-            );
-          })}
+        {/* Desktop: grilla uniforme 3 columnas */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4">
+          {reviews.map((r, i) => (
+            <motion.div
+              key={r.name + i}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.07, ease }}
+            >
+              <GoogleReviewCard review={r} />
+            </motion.div>
+          ))}
         </div>
 
         {/* CTA dejar reseña */}
