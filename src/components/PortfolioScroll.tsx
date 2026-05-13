@@ -296,12 +296,12 @@ function ScreenshotStack({ project }: { project: Project }) {
               position: 'absolute',
               right: '0%',
               top: '8%',
-              width: '26%',
+              width: '32%',
               transform: 'rotate(5deg)',
               filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.6))',
             }}
           >
-            <PhoneFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
+            <TabletFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
           </div>
         )}
       </div>
