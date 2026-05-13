@@ -7,21 +7,21 @@ const team = [
     initials: 'R',
     name: 'Ricardo',
     role: 'Desarrollador Full Stack',
-    bio: 'Construyo webs rápidas, bien estructuradas y con automatizaciones que funcionan de verdad. Obsesionado con el detalle técnico y con que el código sea mantenible.',
+    bio: 'Llevo años construyendo sistemas que funcionan de verdad. Me obsesiona que el código sea limpio y que cada automatización ahorre tiempo real — no solo en el papel. Empecé Captiva porque vi demasiados autónomos pagando precios de agencia grande por webs que no convertían.',
     gradient: 'linear-gradient(135deg, #1a1040 0%, #4f46e5 100%)',
   },
   {
     initials: 'I',
     name: 'Ismael',
     role: 'Marketing & Desarrollo',
-    bio: 'Combino estrategia de marketing con código. Me encargo de que cada proyecto tenga coherencia entre lo que dice, cómo se ve y cómo convierte.',
+    bio: 'Vengo del marketing pero me enamoré del código. Ese cruce es donde vivo — entiendo qué tiene que decir una web para que funcione y sé construirla. Odio los proyectos genéricos casi tanto como las reuniones que podrían haber sido un email.',
     gradient: 'linear-gradient(135deg, #1a0a00 0%, #c45200 100%)',
   },
   {
     initials: 'C',
     name: 'Cristian',
     role: 'Especialista en Marketing Digital',
-    bio: 'Me encargo de que la web no solo sea bonita, sino que convierta. Copy, estrategia, funnels y la parte que hace que el teléfono suene.',
+    bio: 'El copy es lo primero que lee un visitante y lo último que la mayoría cuida. Me encargo de que cada palabra en tu web esté ahí por un motivo. También llevo la estrategia y los funnels — la parte que convierte lectores en clientes.',
     gradient: 'linear-gradient(135deg, #0d2818 0%, #065f46 100%)',
   },
 ];
@@ -43,22 +43,65 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
-          className="mb-12 md:mb-16 md:max-w-2xl"
+          className="mb-16 md:mb-20"
         >
           <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
             Sobre nosotros
           </p>
           <h2
-            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl mb-5"
+            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-2xl"
             style={{ color: '#e8e8f2' }}
           >
             Tres personas.<br />Un enfoque.
           </h2>
-          <p className="text-base md:text-lg leading-relaxed mb-5" style={{ color: '#8888aa' }}>
-            Somos una micro-agencia sin capas intermedias. Hablas directamente con quien hace el trabajo. Nada de cuentas, nada de gestores de proyecto. Solo resultado.
+        </motion.div>
+
+        {/* Historia de origen */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16"
+        >
+          <div>
+            <p
+              className="font-display font-bold text-2xl md:text-3xl leading-snug mb-0"
+              style={{ color: '#e8e8f2' }}
+            >
+              "Vimos que los negocios locales pagaban precios de agencia grande por webs que no convertían. Eso no tenía sentido."
+            </p>
+          </div>
+          <div className="flex flex-col gap-5">
+            <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
+              Captiva nació de una frustración concreta: demasiados entrenadores, fisioterapeutas y negocios locales atrapados entre dos opciones malas. O una agencia cara que les trataba como un cliente más en la cadena de montaje, o una plantilla barata que no diferenciaba su negocio de nadie.
+            </p>
+            <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
+              Decidimos que había una tercera vía — especialización real. Si solo trabajás con un tipo de negocio, aprendés exactamente qué funciona para ellos. No reinventás la rueda en cada proyecto. Y podés entregar en dos semanas lo que una agencia generalista tarda dos meses.
+            </p>
+            <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
+              Eso es Captiva. Sin capas intermedias, sin presupuestos orientativos, sin desaparecer después del lanzamiento.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Misión */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+          className="mb-16 p-10 md:p-14"
+          style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
+        >
+          <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#4f46e5' }}>
+            Nuestra misión
           </p>
-          <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
-            Nos especializamos en entrenadores personales y negocios locales porque creemos que los mejores sistemas no deberían estar reservados para las empresas grandes. Un buen sistema de captación y automatización puede cambiar por completo la vida de un autónomo o una pequeña empresa — y eso es lo que construimos.
+          <p
+            className="font-display font-bold text-2xl md:text-3xl lg:text-4xl leading-tight max-w-3xl"
+            style={{ color: '#e8e8f2' }}
+          >
+            Que los mejores sistemas de captación y conversión no estén reservados para las empresas grandes.
           </p>
         </motion.div>
 
@@ -68,7 +111,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-px mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-px mb-16"
           style={{ backgroundColor: '#1e1e2e' }}
         >
           {[
