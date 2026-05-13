@@ -160,34 +160,19 @@ export default function ComparisonTable() {
                 </tr>
               ))}
 
-              {/* CTA row */}
-              <tr style={{ borderTop: '1px solid #1e1e2e' }}>
-                <td style={{ padding: '1rem 1rem 0.5rem 0' }} />
-                {plans.map((plan, i) => (
-                  <td key={plan} style={{ padding: '1rem 1rem 0.5rem', textAlign: 'center' }}>
-                    <Link
-                      href="/contacto"
-                      className="font-body"
-                      style={{
-                        display: 'inline-block',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        textDecoration: 'none',
-                        backgroundColor: i === featured ? '#4f46e5' : 'transparent',
-                        color: i === featured ? '#ffffff' : '#8888aa',
-                        border: i === featured ? 'none' : '1px solid #1e1e2e',
-                      }}
-                    >
-                      Empezar →
-                    </Link>
-                  </td>
-                ))}
-              </tr>
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div className="mt-8 text-center">
+        <Link
+          href="/contacto"
+          className="font-body inline-block text-sm font-semibold px-8 py-3 transition-opacity duration-200 hover:opacity-90"
+          style={{ backgroundColor: '#4f46e5', color: '#ffffff', borderRadius: '6px' }}
+        >
+          Hablamos y elegimos tu plan →
+        </Link>
       </div>
     </motion.div>
   );
