@@ -81,7 +81,7 @@ const yourPart = [
       </svg>
     ),
     title: 'Tu contenido, si lo tienes',
-    desc: 'Fotos, textos, logo — lo que tengas. Si no tienes nada, lo construimos juntos desde cero sin coste extra.',
+    desc: 'Fotos, textos, logo. Lo que tengas. Si no tienes nada, lo construimos juntos desde cero sin coste extra.',
   },
 ];
 
@@ -92,7 +92,7 @@ const deliverables = [
   { text: 'Formación de 1h para gestionar la web tú solo' },
   { text: 'Documentación de todas las automatizaciones' },
   { text: 'Soporte incluido durante los primeros 3–6 meses' },
-  { text: 'Código fuente y acceso total — es tuya, no nuestra' },
+  { text: 'Código fuente y acceso total. Es tuya, no nuestra.' },
 ];
 
 const faqItems = [
@@ -122,7 +122,7 @@ const faqItems = [
   },
   {
     q: '¿Qué herramientas usáis?',
-    a: 'Next.js para el frontend, Resend para emails, y herramientas como Make o Zapier para automatizaciones. Todo escogido por rendimiento y facilidad de mantenimiento — nada de builders que te encierran en su plataforma.',
+    a: 'Next.js para el frontend, Resend para emails, y herramientas como Make o Zapier para automatizaciones. Todo escogido por rendimiento y facilidad de mantenimiento. Nada de builders que te encierran en su plataforma.',
   },
   {
     q: '¿Trabajáis con cualquier tipo de negocio?',
@@ -308,7 +308,7 @@ export default function Process() {
               Garantía de satisfacción
             </h3>
             <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-              Si al ver la primera entrega hay algo que no te convence, lo revisamos sin coste adicional. Trabajamos hasta que el resultado sea exactamente lo que acordamos — ni más, ni menos.
+              Si al ver la primera entrega hay algo que no te convence, lo revisamos sin coste adicional. Trabajamos hasta que el resultado sea exactamente lo que acordamos. Ni más, ni menos.
             </p>
           </div>
           <div className="flex-shrink-0 text-right hidden md:block">
@@ -346,6 +346,32 @@ export default function Process() {
               </AccordionItem>
             ))}
           </Accordion>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+          className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-8 md:p-10"
+          style={{ backgroundColor: '#13131f', border: '1px solid #1e1e2e' }}
+        >
+          <div>
+            <h3 className="font-display font-bold text-xl md:text-2xl mb-2" style={{ color: '#e8e8f2' }}>
+              ¿Listo para empezar?
+            </h3>
+            <p className="text-sm" style={{ color: '#8888aa' }}>
+              Llamada gratuita de 30 minutos. Sin presión, sin compromiso.
+            </p>
+          </div>
+          <a
+            href="/contacto"
+            className="shrink-0 text-sm font-medium px-8 py-3.5 rounded-full transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+            style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+          >
+            Reservar llamada →
+          </a>
         </motion.div>
 
       </div>

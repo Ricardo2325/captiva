@@ -213,7 +213,7 @@ export default function Services() {
             Elige tu punto<br />de partida.
           </h2>
           <p className="text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: '#8888aa' }}>
-            Cada proyecto empieza con una llamada gratuita de 30 minutos. A partir de ahí, te proponemos el plan que mejor encaja con donde estás ahora y a dónde quieres llegar. El precio es fijo — lo que acordamos es lo que pagas.
+            Cada proyecto empieza con una llamada gratuita de 30 minutos. A partir de ahí, te proponemos el plan que mejor encaja con donde estás ahora y a dónde quieres llegar. El precio es fijo: lo que acordamos es lo que pagas.
           </p>
         </motion.div>
 

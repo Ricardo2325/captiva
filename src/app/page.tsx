@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import ValueProps from '@/components/ValueProps';
+import ForWho from '@/components/ForWho';
 import PortfolioPreview from '@/components/PortfolioPreview';
 import Testimonials from '@/components/Testimonials';
 import CTASection from '@/components/CTASection';
@@ -11,6 +12,7 @@ export default function Home() {
       <main>
         <Hero />
         <ValueProps />
+        <ForWho />
         <PortfolioPreview />
         <Testimonials />
         <CTASection />
