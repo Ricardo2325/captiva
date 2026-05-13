@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import ComparisonTable from '@/components/ComparisonTable';
 
 const plans = [
   {
@@ -188,6 +189,8 @@ export default function Services() {
         >
           Precios orientativos. Cada proyecto se presupuesta a medida.
         </motion.p>
+
+        <ComparisonTable />
 
         {/* What's included callout */}
         <motion.div
