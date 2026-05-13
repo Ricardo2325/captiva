@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useRef, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ComparisonTable from '@/components/ComparisonTable';
 
@@ -56,15 +55,6 @@ const plans = [
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Services() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollLeft = 1;
-    requestAnimationFrame(() => { el.scrollLeft = 0; });
-  }, []);
-
   return (
     <section id="servicios" className="px-6 md:px-12 py-24 md:py-32" style={{ borderTop: '1px solid #1e1e2e' }}>
       <div className="max-w-6xl mx-auto">
@@ -93,7 +83,7 @@ export default function Services() {
 
         {/* Cards */}
         <div className="relative">
-          <div ref={scrollRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch select-none" style={{ overscrollBehaviorX: 'contain' }}>
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.name}
@@ -101,8 +91,8 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease }}
-                whileHover={{ y: -8, borderColor: '#4f46e5' }}
-                className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0"
+                whileHover={{ borderColor: '#4f46e5' }}
+                className="min-w-[82%] snap-start relative flex flex-col p-8 md:min-w-0 cursor-default"
                 style={{
                   backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
                   border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
