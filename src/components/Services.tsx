@@ -101,8 +101,8 @@ export default function Services() {
               >
                 {plan.featured && (
                   <div
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-[11px] font-medium tracking-wider uppercase"
-                    style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+                    className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
+                    style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
                   >
                     Más popular
                   </div>
