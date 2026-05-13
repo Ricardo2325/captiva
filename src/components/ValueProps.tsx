@@ -9,7 +9,7 @@ const items = [
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
-    title: 'Entrega en 3 semanas',
+    title: 'Entrega en 2 semanas',
     desc: 'De la primera llamada a tu web en producción. Sin procesos eternos, sin reuniones que no aportan. Ves el avance desde el día uno y damos feedback en tiempo real.',
   },
   {
