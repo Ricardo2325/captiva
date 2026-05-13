@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Project } from '@/data/projects';
 
 interface AccordionItemProps {
@@ -113,15 +114,56 @@ export function ImageAccordion({ projects }: ImageAccordionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-row items-stretch gap-3 w-full">
-      {projects.map((project, index) => (
-        <AccordionItem
-          key={project.slug}
-          project={project}
-          isActive={index === activeIndex}
-          onMouseEnter={() => setActiveIndex(index)}
-        />
-      ))}
-    </div>
+    <>
+      {/* Mobile: grid 2×2 */}
+      <div className="md:hidden grid grid-cols-2 gap-3">
+        {projects.map((project) => (
+          <Link key={project.slug} href="/portfolio" style={{ textDecoration: 'none' }}>
+            <div
+              style={{
+                position: 'relative',
+                aspectRatio: '4/3',
+                borderRadius: '12px',
+                overflow: 'hidden',
+              }}
+            >
+              <Image
+                src={`/portfolio/${project.slug}/desktop.jpg`}
+                alt={project.name}
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'top' }}
+                sizes="50vw"
+                quality={85}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)',
+                }}
+              />
+              <p
+                className="font-display absolute bottom-3 left-3 right-3"
+                style={{ fontSize: '0.85rem', fontWeight: 700, color: '#ffffff', lineHeight: 1.2 }}
+              >
+                {project.name}
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Desktop: accordion */}
+      <div className="hidden md:flex flex-row items-stretch gap-3 w-full">
+        {projects.map((project, index) => (
+          <AccordionItem
+            key={project.slug}
+            project={project}
+            isActive={index === activeIndex}
+            onMouseEnter={() => setActiveIndex(index)}
+          />
+        ))}
+      </div>
+    </>
   );
 }
