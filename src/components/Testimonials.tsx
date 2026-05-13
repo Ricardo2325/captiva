@@ -293,7 +293,7 @@ export default function Testimonials() {
       className="px-6 md:px-12 py-24 md:py-32"
       style={{ borderTop: '1px solid #1e1e2e' }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-screen-2xl mx-auto">
 
         {/* Header */}
         <motion.div
