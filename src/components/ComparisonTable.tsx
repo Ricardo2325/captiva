@@ -6,66 +6,25 @@ import Link from 'next/link';
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const plans = ['Presencia', 'Captiva', 'Sistema'];
-const featured = 1; // Captiva
+const featured = 1;
 
-const Check = () => (
-  <div
-    style={{
-      width: '24px', height: '24px',
-      borderRadius: '50%',
-      background: 'rgba(79,70,229,0.15)',
-      border: '1px solid rgba(79,70,229,0.4)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      margin: '0 auto',
-    }}
-  >
-    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-      <path d="M3 8l3.5 3.5L13 4.5" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  </div>
-);
-
-const Dash = () => (
-  <span style={{ color: '#3a3a5c', fontSize: '1.1rem', display: 'block', textAlign: 'center' }}>—</span>
-);
-
-type Cell = string | boolean | null;
-
-const rows: { label: string; values: Cell[] }[] = [
-  { label: 'Precio del proyecto',       values: ['797€',       '1.497€',    '2.997€'] },
-  { label: 'Páginas incluidas',          values: ['Hasta 5',    'Hasta 5',   'Ilimitadas'] },
-  { label: 'Diseño responsive',          values: [true,         true,        true] },
-  { label: 'Formulario de contacto',     values: [true,         true,        true] },
-  { label: 'SEO on-page',               values: ['Básico',     'Básico',    'Avanzado'] },
-  { label: 'Plazo de entrega',           values: ['2 semanas',  '2-3 sem.',  '4-5 sem.'] },
-  { label: 'Reservas y pagos online',    values: [null,         true,        true] },
-  { label: 'Secuencia de emails',        values: [null,         true,        true] },
-  { label: 'Integración con calendario', values: [null,         true,        true] },
-  { label: 'Seguimiento de leads',       values: [null,         true,        true] },
-  { label: 'Funnel de ventas',           values: [null,         null,        true] },
-  { label: 'Página de venta de programas', values: [null,       null,        true] },
-  { label: 'Dashboard de métricas',      values: [null,         null,        true] },
-  { label: 'Automatizaciones avanzadas', values: [null,         null,        true] },
-  { label: 'Soporte post-entrega',       values: ['—',          '3 meses',   '6 meses'] },
+const rows: { label: string; values: (string | null)[] }[] = [
+  { label: 'Precio del proyecto',          values: ['797€',       '1.497€',    '2.997€'] },
+  { label: 'Páginas incluidas',             values: ['Hasta 5',    'Hasta 5',   'Ilimitadas'] },
+  { label: 'Diseño responsive',             values: ['✓',          '✓',         '✓'] },
+  { label: 'Formulario de contacto',        values: ['✓',          '✓',         '✓'] },
+  { label: 'SEO on-page',                  values: ['Básico',     'Básico',    'Avanzado'] },
+  { label: 'Plazo de entrega',              values: ['2 semanas',  '2-3 sem.',  '4-5 sem.'] },
+  { label: 'Reservas y pagos online',       values: [null,         '✓',         '✓'] },
+  { label: 'Secuencia de emails',           values: [null,         '✓',         '✓'] },
+  { label: 'Integración con calendario',    values: [null,         '✓',         '✓'] },
+  { label: 'Seguimiento de leads',          values: [null,         '✓',         '✓'] },
+  { label: 'Funnel de ventas',              values: [null,         null,        '✓'] },
+  { label: 'Página de venta de programas',  values: [null,         null,        '✓'] },
+  { label: 'Dashboard de métricas',         values: [null,         null,        '✓'] },
+  { label: 'Automatizaciones avanzadas',    values: [null,         null,        '✓'] },
+  { label: 'Soporte post-entrega',          values: ['—',          '3 meses',   '6 meses'] },
 ];
-
-function CellValue({ value, isFeatured }: { value: Cell; isFeatured: boolean }) {
-  if (value === true) return <Check />;
-  if (value === null) return <Dash />;
-  return (
-    <span
-      style={{
-        display: 'block',
-        textAlign: 'center',
-        fontSize: '0.8rem',
-        fontWeight: isFeatured ? 700 : 400,
-        color: isFeatured ? '#e8e8f2' : '#8888aa',
-      }}
-    >
-      {value}
-    </span>
-  );
-}
 
 export default function ComparisonTable() {
   return (
@@ -84,164 +43,150 @@ export default function ComparisonTable() {
           className="font-display font-bold leading-tight text-3xl md:text-4xl"
           style={{ color: '#e8e8f2' }}
         >
-          Todos los detalles,<br />
+          Todos los detalles,{' '}
           <span style={{ color: '#8888aa' }}>sin letra pequeña.</span>
         </h2>
       </div>
 
-      {/* Scroll wrapper for mobile */}
-      <div style={{ overflowX: 'auto', marginLeft: '-1.5rem', marginRight: '-1.5rem' }}>
-        <div style={{ minWidth: '560px', paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '4px' }}>
-          <div
-            style={{
-              border: '1px solid #1e1e2e',
-              borderRadius: '16px',
-              backgroundColor: '#0d0d14',
-            }}
-          >
-            {/* Header row */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1.8fr 1fr 1fr 1fr',
-                borderBottom: '1px solid #1e1e2e',
-                backgroundColor: '#13131f',
-                borderRadius: '16px 16px 0 0',
-              }}
-            >
-              <div style={{ padding: '1.25rem 1.5rem', borderRadius: '16px 0 0 0' }}>
-                <span
-                  className="font-body"
-                  style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#8888aa' }}
+      <div
+        style={{
+          backgroundColor: '#13131f',
+          border: '1px solid #1e1e2e',
+          borderRadius: '16px',
+          padding: '1.5rem',
+        }}
+      >
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem', minWidth: '480px' }}>
+            <thead>
+              <tr>
+                <th
+                  style={{
+                    textAlign: 'left',
+                    padding: '0.75rem 1rem 0.75rem 0',
+                    fontSize: '0.65rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.15em',
+                    color: '#8888aa',
+                    fontWeight: 500,
+                    width: '38%',
+                  }}
                 >
                   Característica
-                </span>
-              </div>
-              {plans.map((plan, i) => (
-                <div
-                  key={plan}
-                  style={{
-                    padding: '1.25rem 1rem',
-                    textAlign: 'center',
-                    borderLeft: '1px solid #1e1e2e',
-                    position: 'relative',
-                    backgroundColor: i === featured ? 'rgba(79,70,229,0.06)' : 'transparent',
-                  }}
+                </th>
+                {plans.map((plan, i) => (
+                  <th
+                    key={plan}
+                    style={{
+                      padding: '0.75rem 1rem',
+                      textAlign: 'center',
+                      fontWeight: 700,
+                    }}
+                  >
+                    {i === featured ? (
+                      <span
+                        className="font-display"
+                        style={{
+                          display: 'inline-block',
+                          fontSize: '0.8rem',
+                          color: '#e8e8f2',
+                          padding: '4px 14px',
+                          borderRadius: '999px',
+                          background: '#4f46e5',
+                        }}
+                      >
+                        {plan}
+                      </span>
+                    ) : (
+                      <span className="font-display" style={{ fontSize: '0.8rem', color: '#e8e8f2' }}>
+                        {plan}
+                      </span>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, ri) => (
+                <tr
+                  key={row.label}
+                  style={{ borderTop: '1px solid #1e1e2e' }}
                 >
-                  {i === featured ? (
-                    <span
-                      className="font-display"
-                      style={{
-                        display: 'inline-block',
-                        fontSize: '0.85rem',
-                        fontWeight: 700,
-                        color: '#e8e8f2',
-                        padding: '4px 14px',
-                        borderRadius: '999px',
-                        background: '#4f46e5',
-                      }}
-                    >
-                      {plan}
-                    </span>
-                  ) : (
-                    <span
-                      className="font-display"
-                      style={{ fontSize: '0.875rem', fontWeight: 700, color: '#e8e8f2' }}
-                    >
-                      {plan}
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Data rows */}
-            {rows.map((row, ri) => (
-              <div
-                key={row.label}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1.8fr 1fr 1fr 1fr',
-                  borderBottom: ri < rows.length - 1 ? '1px solid #1e1e2e' : 'none',
-                }}
-              >
-                <div
-                  style={{
-                    padding: '1rem 1.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                >
-                  <span
-                    className="font-body"
-                    style={{ fontSize: '0.8rem', color: '#8888aa' }}
+                  <td
+                    style={{
+                      padding: '0.875rem 1rem 0.875rem 0',
+                      color: '#8888aa',
+                      fontSize: '0.78rem',
+                    }}
                   >
                     {row.label}
-                  </span>
-                </div>
-                {row.values.map((val, ci) => (
-                  <div
-                    key={ci}
-                    style={{
-                      padding: '1rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderLeft: '1px solid #1e1e2e',
-                      backgroundColor: ci === featured ? 'rgba(79,70,229,0.04)' : 'transparent',
-                    }}
-                  >
-                    <CellValue value={val} isFeatured={ci === featured} />
-                  </div>
-                ))}
-              </div>
-            ))}
-
-            {/* CTA row */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1.8fr 1fr 1fr 1fr',
-                borderTop: '1px solid #1e1e2e',
-                backgroundColor: '#13131f',
-                borderRadius: '0 0 16px 16px',
-              }}
-            >
-              <div style={{ padding: '1.25rem 1.5rem', borderRadius: '0 0 0 16px' }} />
-              {plans.map((plan, i) => (
-                <div
-                  key={plan}
-                  style={{
-                    padding: '1.25rem 1rem',
-                    textAlign: 'center',
-                    borderLeft: '1px solid #1e1e2e',
-                    backgroundColor: i === featured ? 'rgba(79,70,229,0.06)' : 'transparent',
-                    borderRadius: i === plans.length - 1 ? '0 0 16px 0' : undefined,
-                  }}
-                >
-                  <Link
-                    href="/contacto"
-                    className="font-body"
-                    style={{
-                      display: 'inline-block',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                      padding: '8px 16px',
-                      borderRadius: '6px',
-                      textDecoration: 'none',
-                      backgroundColor: i === featured ? '#4f46e5' : 'transparent',
-                      color: i === featured ? '#ffffff' : '#8888aa',
-                      border: i === featured ? 'none' : '1px solid #1e1e2e',
-                      transition: 'opacity 0.2s ease',
-                    }}
-                  >
-                    Empezar →
-                  </Link>
-                </div>
+                  </td>
+                  {row.values.map((val, ci) => (
+                    <td
+                      key={ci}
+                      style={{
+                        padding: '0.875rem 1rem',
+                        textAlign: 'center',
+                        color: ci === featured ? '#e8e8f2' : '#8888aa',
+                        fontWeight: ci === featured ? 600 : 400,
+                        fontSize: '0.78rem',
+                      }}
+                    >
+                      {val === '✓' ? (
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '20px',
+                            height: '20px',
+                            borderRadius: '50%',
+                            background: 'rgba(79,70,229,0.15)',
+                            border: '1px solid rgba(79,70,229,0.4)',
+                            color: '#4f46e5',
+                            fontSize: '10px',
+                            fontWeight: 700,
+                          }}
+                        >
+                          ✓
+                        </span>
+                      ) : val === null ? (
+                        <span style={{ color: '#3a3a5c' }}>—</span>
+                      ) : (
+                        val
+                      )}
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </div>
 
-          </div>
+              {/* CTA row */}
+              <tr style={{ borderTop: '1px solid #1e1e2e' }}>
+                <td style={{ padding: '1rem 1rem 0.5rem 0' }} />
+                {plans.map((plan, i) => (
+                  <td key={plan} style={{ padding: '1rem 1rem 0.5rem', textAlign: 'center' }}>
+                    <Link
+                      href="/contacto"
+                      className="font-body"
+                      style={{
+                        display: 'inline-block',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        padding: '8px 16px',
+                        borderRadius: '6px',
+                        textDecoration: 'none',
+                        backgroundColor: i === featured ? '#4f46e5' : 'transparent',
+                        color: i === featured ? '#ffffff' : '#8888aa',
+                        border: i === featured ? 'none' : '1px solid #1e1e2e',
+                      }}
+                    >
+                      Empezar →
+                    </Link>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </motion.div>

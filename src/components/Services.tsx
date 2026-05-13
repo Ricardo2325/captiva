@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRef, useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ComparisonTable from '@/components/ComparisonTable';
 
@@ -54,6 +55,143 @@ const plans = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+function PricingCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  const scrollToIndex = (index: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.children[index] as HTMLElement;
+    if (!card) return;
+    el.scrollTo({ left: card.offsetLeft - 24, behavior: 'smooth' });
+    setActive(index);
+  };
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.children[0] as HTMLElement;
+    if (!card) return;
+    const cardW = card.offsetWidth + 16;
+    setActive(Math.round(el.scrollLeft / cardW));
+  };
+
+  return (
+    <div className="md:hidden">
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        data-lenis-prevent
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-2"
+        style={{ scrollbarWidth: 'none' } as React.CSSProperties}
+      >
+        {plans.map((plan, i) => (
+          <div key={plan.name} className="w-[82vw] max-w-sm shrink-0 snap-start">
+            <div
+              className="relative flex flex-col p-8 h-full cursor-default"
+              style={{
+                backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
+                border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
+                boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
+              }}
+            >
+              {plan.featured && (
+                <div
+                  className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
+                  style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
+                >
+                  Más popular
+                </div>
+              )}
+              <div className="mb-6">
+                <p className="text-sm mb-4" style={{ color: '#8888aa' }}>{plan.name}</p>
+                <div className="flex items-baseline gap-1 mb-3">
+                  <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>€{plan.price}</span>
+                  <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{plan.desc}</p>
+              </div>
+              <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
+              <ul className="flex flex-col gap-3 mb-8 flex-1">
+                {plan.features.map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 mt-0.5" style={{ color: '#4f46e5' }}>
+                      <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/contacto"
+                className="block w-full text-center py-3 text-sm font-medium transition-all duration-200"
+                style={{
+                  backgroundColor: plan.featured ? '#4f46e5' : 'transparent',
+                  color: plan.featured ? '#e8e8f2' : '#8888aa',
+                  border: plan.featured ? 'none' : '1px solid #1e1e2e',
+                }}
+              >
+                {plan.cta}
+              </Link>
+            </div>
+          </div>
+        ))}
+        {/* trailing spacer so last card doesn't flush to edge */}
+        <div className="w-6 shrink-0" aria-hidden="true" />
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-5 mt-6">
+        <button
+          onClick={() => scrollToIndex(Math.max(0, active - 1))}
+          disabled={active === 0}
+          aria-label="Anterior"
+          style={{
+            width: '36px', height: '36px', borderRadius: '50%',
+            border: '1px solid #1e1e2e', background: 'transparent',
+            color: active === 0 ? '#3a3a5c' : '#e8e8f2', cursor: active === 0 ? 'not-allowed' : 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem',
+          }}
+        >←</button>
+
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          {plans.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToIndex(i)}
+              aria-label={`Plan ${i + 1}`}
+              style={{
+                width: i === active ? '24px' : '8px', height: '8px',
+                borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0,
+                background: i === active ? '#4f46e5' : '#1e1e2e',
+                transition: 'all 0.3s ease',
+              }}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => scrollToIndex(Math.min(plans.length - 1, active + 1))}
+          disabled={active === plans.length - 1}
+          aria-label="Siguiente"
+          style={{
+            width: '36px', height: '36px', borderRadius: '50%',
+            border: '1px solid #1e1e2e', background: 'transparent',
+            color: active === plans.length - 1 ? '#3a3a5c' : '#e8e8f2',
+            cursor: active === plans.length - 1 ? 'not-allowed' : 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem',
+          }}
+        >→</button>
+      </div>
+
+      <p className="text-center text-xs mt-3" style={{ color: '#8888aa' }}>
+        {plans[active].name} · €{plans[active].price}/proyecto
+      </p>
+    </div>
+  );
+}
+
 export default function Services() {
   return (
     <section id="servicios" className="px-6 md:px-12 py-24 md:py-32" style={{ borderTop: '1px solid #1e1e2e' }}>
@@ -81,108 +219,72 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="relative">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch">
-            {plans.map((plan, i) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease }}
-                className="md:min-w-0"
-                style={{ display: 'flex' }}
+        {/* Mobile carousel */}
+        <PricingCarousel />
+
+        {/* Desktop grid */}
+        <div className="hidden md:grid grid-cols-3 gap-4 items-stretch">
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease }}
+            >
+              <div
+                className="relative flex flex-col p-8 h-full cursor-default"
+                style={{
+                  backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
+                  border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
+                  boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
+                }}
               >
-                <div
-                  className="relative flex flex-col p-8 w-full cursor-default"
-                  draggable={false}
-                  onContextMenu={(e) => e.preventDefault()}
-                  style={{
-                    backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
-                    border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
-                    boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
-                  }}
-                >
-                  {plan.featured && (
-                    <div
-                      className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
-                      style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
-                    >
-                      Más popular
-                    </div>
-                  )}
-
-                  <div className="mb-6">
-                    <p className="text-sm mb-4" style={{ color: '#8888aa' }}>
-                      {plan.name}
-                    </p>
-                    <div className="flex items-baseline gap-1 mb-3">
-                      <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>
-                        €{plan.price}
-                      </span>
-                      <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
-                    </div>
-                    <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-                      {plan.desc}
-                    </p>
+                {plan.featured && (
+                  <div
+                    className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
+                    style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
+                  >
+                    Más popular
                   </div>
-
-                  <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
-
-                  <ul className="flex flex-col gap-3 mb-8 flex-1">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          className="flex-shrink-0 mt-0.5"
-                          style={{ color: '#4f46e5' }}
-                        >
-                          <path
-                            d="M3 8l3.5 3.5L13 4.5"
-                            stroke="currentColor"
-                            strokeWidth="1.75"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {plan.featured ? (
-                    <Link
-                      href="/contacto"
-                      className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
-                      style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
-                    >
-                      {plan.cta}
-                    </Link>
-                  ) : (
-                    <Link
-                      href="/contacto"
-                      className="block text-center py-3 text-sm font-medium transition-all duration-200"
-                      style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5';
-                        (e.currentTarget as HTMLElement).style.color = '#e8e8f2';
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e';
-                        (e.currentTarget as HTMLElement).style.color = '#8888aa';
-                      }}
-                    >
-                      {plan.cta}
-                    </Link>
-                  )}
+                )}
+                <div className="mb-6">
+                  <p className="text-sm mb-4" style={{ color: '#8888aa' }}>{plan.name}</p>
+                  <div className="flex items-baseline gap-1 mb-3">
+                    <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>€{plan.price}</span>
+                    <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{plan.desc}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
+                <ul className="flex flex-col gap-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 mt-0.5" style={{ color: '#4f46e5' }}>
+                        <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                {plan.featured ? (
+                  <Link href="/contacto" className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90" style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}>
+                    {plan.cta}
+                  </Link>
+                ) : (
+                  <Link
+                    href="/contacto"
+                    className="block text-center py-3 text-sm font-medium transition-all duration-200"
+                    style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5'; (e.currentTarget as HTMLElement).style.color = '#e8e8f2'; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e'; (e.currentTarget as HTMLElement).style.color = '#8888aa'; }}
+                  >
+                    {plan.cta}
+                  </Link>
+                )}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         <motion.p
