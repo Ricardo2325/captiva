@@ -62,8 +62,8 @@ const yourPart = [
         <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
       </svg>
     ),
-    title: 'Feedback en menos de 48h',
-    desc: 'Cada revisión que te mandamos necesita tu respuesta en dos días para no romper el ritmo del proyecto.',
+    title: 'Disponibilidad para revisar',
+    desc: 'No hace falta que estés pendiente todo el día. Solo que te reserves un rato cuando toca revisar y tomar decisiones.',
   },
   {
     icon: (
