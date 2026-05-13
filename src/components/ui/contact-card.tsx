@@ -68,7 +68,7 @@ export function ContactCard({
                     )}
                 </div>
                 {leftFooter && (
-                    <div className="mt-auto px-4 pb-8 md:px-8">
+                    <div className="px-4 pb-8 md:px-8 mt-8">
                         {leftFooter}
                     </div>
                 )}
