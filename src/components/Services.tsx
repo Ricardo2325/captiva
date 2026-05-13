@@ -83,7 +83,10 @@ export default function Services() {
 
         {/* Cards */}
         <div className="relative">
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch">
+          <div
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible md:items-stretch"
+            onContextMenu={(e) => e.preventDefault()}
+          >
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.name}
@@ -96,6 +99,8 @@ export default function Services() {
               >
                 <div
                   className="relative flex flex-col p-8 w-full cursor-default"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
                   style={{
                     backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
                     border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
