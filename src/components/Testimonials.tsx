@@ -208,22 +208,22 @@ export default function Testimonials() {
 
         {/* Mobile: horizontal scroll con peek */}
         <div
-          className="md:hidden flex gap-4 overflow-x-auto pb-4"
+          className="md:hidden overflow-x-auto pb-4"
           style={{
             marginLeft: '-1.5rem',
             marginRight: '-1.5rem',
-            paddingLeft: '1.5rem',
-            paddingRight: '1.5rem',
             scrollSnapType: 'x mandatory',
             scrollbarWidth: 'none',
             WebkitOverflowScrolling: 'touch',
           } as React.CSSProperties}
         >
-          {reviews.map((r, i) => (
-            <div key={r.name + i} style={{ flex: '0 0 82%', scrollSnapAlign: 'start' }}>
-              <GoogleReviewCard review={r} />
-            </div>
-          ))}
+          <div className="flex gap-4" style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+            {reviews.map((r, i) => (
+              <div key={r.name + i} style={{ flex: '0 0 82%', scrollSnapAlign: 'start' }}>
+                <GoogleReviewCard review={r} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Desktop: bento grid */}
