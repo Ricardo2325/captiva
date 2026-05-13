@@ -217,9 +217,17 @@ export default function Testimonials() {
             WebkitOverflowScrolling: 'touch',
           } as React.CSSProperties}
         >
-          <div className="flex gap-4" style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+          <div className="flex gap-4">
             {reviews.map((r, i) => (
-              <div key={r.name + i} style={{ flex: '0 0 82%', scrollSnapAlign: 'start' }}>
+              <div
+                key={r.name + i}
+                style={{
+                  flex: '0 0 82%',
+                  scrollSnapAlign: 'start',
+                  ...(i === 0 ? { marginLeft: '1.5rem' } : {}),
+                  ...(i === reviews.length - 1 ? { marginRight: '1.5rem' } : {}),
+                }}
+              >
                 <GoogleReviewCard review={r} />
               </div>
             ))}
