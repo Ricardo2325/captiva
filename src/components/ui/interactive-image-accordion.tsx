@@ -26,7 +26,7 @@ function AccordionItem({ project, isActive, onMouseEnter }: AccordionItemProps) 
         src={`/portfolio/${project.slug}/desktop.jpg`}
         alt={project.name}
         fill
-        style={{ objectFit: 'cover' }}
+        style={{ objectFit: 'cover', objectPosition: 'top' }}
         sizes="(max-width: 768px) 100vw, 60vw"
         quality={90}
       />
