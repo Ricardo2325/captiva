@@ -278,72 +278,88 @@ function ScreenshotStack({ project }: { project: Project }) {
   const isLaBotanica = slug === 'la-botanica';
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        height: 'clamp(400px, 76vh, 950px)',
-        width: '100%',
-      }}
-    >
-      {/* Laptop — back layer */}
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: '50%',
-          transform: 'translateY(-50%) rotate(-2deg)',
-          width: '82%',
-          filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.5))',
-        }}
-      >
-        <LaptopFrame src={`/portfolio/${slug}/desktop.jpg`} slug={slug} />
+    <>
+      {/* Mobile: laptop solo, flow normal, sin absolute positioning */}
+      <div className="md:hidden" style={{ padding: '0.5rem 0 1rem' }}>
+        <div
+          style={{
+            transform: 'rotate(-1.5deg)',
+            filter: 'drop-shadow(0 16px 40px rgba(0,0,0,0.6))',
+          }}
+        >
+          <LaptopFrame src={`/portfolio/${slug}/desktop.jpg`} slug={slug} />
+        </div>
       </div>
 
-      {isLaBotanica ? (
-        <>
-          {/* iPad — mid layer */}
-          <div
-            style={{
-              position: 'absolute',
-              right: '8%',
-              top: '4%',
-              width: '36%',
-              transform: 'rotate(5deg)',
-              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
-            }}
-          >
-            <TabletFrame src={`/portfolio/${slug}/tablet.jpg`} slug={slug} />
-          </div>
-          {/* iPhone — front layer */}
+      {/* Desktop: composición con absolute positioning */}
+      <div
+        className="hidden md:block"
+        style={{
+          position: 'relative',
+          height: 'clamp(400px, 76vh, 950px)',
+          width: '100%',
+        }}
+      >
+        {/* Laptop — back layer */}
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: '50%',
+            transform: 'translateY(-50%) rotate(-2deg)',
+            width: '82%',
+            filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.5))',
+          }}
+        >
+          <LaptopFrame src={`/portfolio/${slug}/desktop.jpg`} slug={slug} />
+        </div>
+
+        {isLaBotanica ? (
+          <>
+            {/* iPad — mid layer */}
+            <div
+              style={{
+                position: 'absolute',
+                right: '8%',
+                top: '4%',
+                width: '36%',
+                transform: 'rotate(5deg)',
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
+              }}
+            >
+              <TabletFrame src={`/portfolio/${slug}/tablet.jpg`} slug={slug} />
+            </div>
+            {/* iPhone — front layer */}
+            <div
+              style={{
+                position: 'absolute',
+                right: '2%',
+                top: '14%',
+                width: '22%',
+                transform: 'rotate(-6deg)',
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
+              }}
+            >
+              <PhoneFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
+            </div>
+          </>
+        ) : (
+          /* iPhone — front layer */
           <div
             style={{
               position: 'absolute',
               right: '2%',
-              top: '14%',
-              width: '22%',
-              transform: 'rotate(-6deg)',
+              top: '10%',
+              width: '24%',
+              transform: 'rotate(7deg)',
               filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
             }}
           >
             <PhoneFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
           </div>
-        </>
-      ) : (
-        /* iPhone — front layer */
-        <div
-          style={{
-            position: 'absolute',
-            right: '2%',
-            top: '10%',
-            width: '24%',
-            transform: 'rotate(7deg)',
-            filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
-          }}
-        >
-          <PhoneFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -524,7 +540,7 @@ function ProjectPanel({
       {/* RIGHT COLUMN */}
       <div
         className="relative"
-        style={{ flex: '1.2', minHeight: 'clamp(400px, 76vh, 950px)' }}
+        style={{ flex: '1.2' }}
       >
         <ScreenshotStack project={project} />
       </div>
