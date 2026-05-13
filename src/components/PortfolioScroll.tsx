@@ -279,16 +279,31 @@ function ScreenshotStack({ project }: { project: Project }) {
 
   return (
     <>
-      {/* Mobile: laptop solo, flow normal, sin absolute positioning */}
-      <div className="md:hidden" style={{ padding: '0.5rem 0 1rem' }}>
+      {/* Mobile: laptop (todos) + phone superpuesto (solo la-botanica) */}
+      <div className="md:hidden" style={{ position: 'relative', padding: '0.5rem 0 1rem' }}>
         <div
           style={{
+            width: isLaBotanica ? '74%' : '100%',
             transform: 'rotate(-1.5deg)',
             filter: 'drop-shadow(0 16px 40px rgba(0,0,0,0.6))',
           }}
         >
           <LaptopFrame src={`/portfolio/${slug}/desktop.jpg`} slug={slug} />
         </div>
+        {isLaBotanica && (
+          <div
+            style={{
+              position: 'absolute',
+              right: '0%',
+              top: '8%',
+              width: '26%',
+              transform: 'rotate(5deg)',
+              filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.6))',
+            }}
+          >
+            <PhoneFrame src={`/portfolio/${slug}/mobile.jpg`} slug={slug} />
+          </div>
+        )}
       </div>
 
       {/* Desktop: composición con absolute positioning */}
