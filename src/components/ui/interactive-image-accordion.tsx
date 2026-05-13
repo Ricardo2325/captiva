@@ -27,7 +27,8 @@ function AccordionItem({ project, isActive, onMouseEnter }: AccordionItemProps) 
         alt={project.name}
         fill
         style={{ objectFit: 'cover' }}
-        sizes="420px"
+        sizes="(max-width: 768px) 100vw, 60vw"
+        quality={90}
       />
 
       {/* Gradient overlay */}
