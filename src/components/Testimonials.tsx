@@ -76,6 +76,24 @@ const reviews = [
     date: 'hace 1 mes',
     text: 'La secuencia de emails automática me trajo 3 alumnos nuevos el primer mes sin que yo hiciera nada. Solo tuve que abrir el calendario y confirmar.',
   },
+  {
+    name: 'Lucía Fernández',
+    initial: 'L',
+    avatarColor: '#0288d1',
+    meta: 'Guía Local · 9 reseñas',
+    stars: 5,
+    date: 'hace 2 semanas',
+    text: 'Tenía miedo de que el proyecto se alargara o que los costes se dispararan. Nada de eso. Precio cerrado desde el primer día y entregado antes de lo previsto.',
+  },
+  {
+    name: 'Roberto Iglesias',
+    initial: 'R',
+    avatarColor: '#558b2f',
+    meta: '7 reseñas',
+    stars: 5,
+    date: 'hace 3 meses',
+    text: 'Mis clientes me preguntan quién me hizo la web porque parece de empresa grande. Eso ya solo vale el precio. Pero es que además funciona.',
+  },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -167,7 +185,7 @@ function GoogleReviewCard({ review, large = false }: { review: Review; large?: b
   );
 }
 
-const PER_PAGE = 4;
+const PER_PAGE = 5;
 
 function DesktopCarousel({ reviews, ease }: { reviews: Review[]; ease: readonly number[] }) {
   const [page, setPage] = useState(0);
@@ -196,7 +214,7 @@ function DesktopCarousel({ reviews, ease }: { reviews: Review[]; ease: readonly 
             animate="center"
             exit="exit"
             transition={{ duration: 0.35, ease: ease as [number, number, number, number] }}
-            className="grid grid-cols-4 gap-4"
+            className="grid grid-cols-5 gap-4"
           >
             {visible.map((r, i) => (
               <GoogleReviewCard key={r.name + i} review={r} />
