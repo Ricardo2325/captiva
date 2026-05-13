@@ -90,8 +90,8 @@ export default function ComparisonTable() {
       </div>
 
       {/* Scroll wrapper for mobile */}
-      <div style={{ overflowX: 'auto' }}>
-        <div style={{ minWidth: '560px' }}>
+      <div style={{ overflowX: 'auto', marginLeft: '-1.5rem', marginRight: '-1.5rem' }}>
+        <div style={{ minWidth: '560px', paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '4px' }}>
           <div
             style={{
               border: '1px solid #1e1e2e',
