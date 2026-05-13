@@ -16,8 +16,8 @@ function AccordionItem({ project, isActive, onMouseEnter }: AccordionItemProps) 
       className="relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-in-out"
       style={{
         height: '480px',
-        width: isActive ? '420px' : '64px',
-        flexShrink: 0,
+        flex: isActive ? '1 1 0%' : '0 0 64px',
+        minWidth: '64px',
       }}
       onMouseEnter={onMouseEnter}
     >
@@ -112,7 +112,7 @@ export function ImageAccordion({ projects }: ImageAccordionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-row items-center gap-3 w-full overflow-x-auto">
+    <div className="flex flex-row items-stretch gap-3 w-full">
       {projects.map((project, index) => (
         <AccordionItem
           key={project.slug}
