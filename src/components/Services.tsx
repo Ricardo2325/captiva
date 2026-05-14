@@ -10,7 +10,7 @@ const plans = [
   {
     name: 'Presencia',
     price: '797',
-    desc: 'Para entrenadores que necesitan una presencia digital sólida y profesional.',
+    desc: 'Para negocios que necesitan una presencia digital sólida y profesional.',
     features: [
       'Web a medida hasta 5 páginas',
       'Diseño responsive mobile-first',
@@ -24,7 +24,7 @@ const plans = [
   {
     name: 'Captiva',
     price: '1.497',
-    desc: 'El más elegido. Web profesional + automatizaciones que trabajan mientras entrenas.',
+    desc: 'El más elegido. Web profesional + automatizaciones que trabajan mientras vos atendés tu negocio.',
     features: [
       'Todo lo del plan Presencia',
       'Reservas y pagos automatizados',
@@ -314,7 +314,7 @@ export default function Services() {
                 </svg>
               ),
               title: 'Diseño a medida',
-              desc: 'No usamos plantillas. Cada web se diseña desde cero para tu marca, tu nicho y tus objetivos de conversión.',
+              desc: 'No usamos plantillas. Cada web se diseña desde cero para tu marca y tus objetivos de conversión concretos.',
             },
             {
               icon: (
@@ -369,8 +369,12 @@ export default function Services() {
                   a: 'Cada proyecto se adapta. El plan es el punto de partida: en la llamada inicial ajustamos el alcance exacto a tu situación y necesidades concretas.',
                 },
                 {
-                  q: '¿El precio incluye el hosting y el dominio?',
-                  a: 'No. El hosting y dominio se contratan por tu cuenta directamente (entre 10-20€/mes). Te explicamos exactamente cómo hacerlo y qué contratar.',
+                  q: '¿Puedo pedir cambios en el diseño durante el proceso?',
+                  a: 'Sí, es parte del proceso. Trabajamos en revisiones cortas para que veas el avance antes de que avancemos. No llegas al final con sorpresas: cada bloque se aprueba antes de seguir.',
+                },
+                {
+                  q: '¿Qué diferencia hay entre una landing y una web completa?',
+                  a: 'La landing tiene un único objetivo: convertir al visitante en lead o cliente. Sin menú, sin distracciones. La web completa tiene varias páginas y sirve para negocios que necesitan explicar más: servicios, equipo, portfolio. En la llamada inicial te decimos cuál tiene más sentido para tu caso.',
                 },
                 {
                   q: '¿Qué necesito tener listo antes de empezar?',

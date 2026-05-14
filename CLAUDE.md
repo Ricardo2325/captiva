@@ -81,7 +81,17 @@ Fonts: **Bricolage Grotesque** (display/headings) via `font-display`, **DM Sans*
 
 ### Data
 
-`src/data/projects.ts` exports a `projects` array with 9 case studies (fitness/coaching niche). Each entry: `slug`, `title`, `category`, `challenge`, `solution`, `automation`, `metrics[]`, `gradient` (Tailwind gradient classes), `color`.
+`src/data/projects.ts` exports a `projects` array (currently 6 case studies across mixed niches: dental, physio, fitness, real estate, e-commerce). Each entry: `name`, `slug`, `type`, `tagline`, `context`, `url`, `gradient` (raw CSS `linear-gradient()` string — not Tailwind classes), `metrics[]` (`{ value, label }`), `challenge`, `automation`.
+
+### Portfolio screenshot assets
+
+Each project requires `public/portfolio/{slug}/desktop.jpg` and `mobile.jpg`. The `la-botanica` project additionally requires `tablet.jpg` — it's the only entry that renders a 3-device mockup (laptop + iPad + phone). All other projects use laptop + phone only.
+
+The `PortfolioScroll` component is SSR-disabled via a `dynamic()` import inside `PortfolioClient` — this is intentional because GSAP ScrollTrigger requires a DOM. Don't remove the wrapper.
+
+### story-scroll (GSAP scroll engine)
+
+`src/components/ui/story-scroll.tsx` exports `FlowArt` (container) and `FlowSection` (per-project panel). The engine pins each section until the next one scrolls in, and rotates the incoming section's inner div from 30° → 0° as it enters. `overflow-x-clip` is used (not `overflow-x-hidden`) to avoid creating a secondary scroll container that breaks ScrollTrigger.
 
 ### Contact form
 

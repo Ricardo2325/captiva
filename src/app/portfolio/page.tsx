@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Portfolio — Captiva',
-  description: 'Proyectos reales de webs y automatizaciones para entrenadores personales y negocios locales.',
+  description: 'Proyectos reales de webs y automatizaciones para negocios locales.',
 };
 
 export default function PortfolioPage() {

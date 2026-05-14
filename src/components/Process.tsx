@@ -91,8 +91,8 @@ const deliverables = [
   { text: 'Dominio conectado con certificado SSL' },
   { text: 'Formación de 1h para gestionar la web tú solo' },
   { text: 'Documentación de todas las automatizaciones' },
-  { text: 'Soporte incluido durante los primeros 3–6 meses' },
-  { text: 'Código fuente y acceso total. Es tuya, no nuestra.' },
+  { text: 'Velocidad de carga optimizada (Core Web Vitals)' },
+  { text: 'Diseño adaptado a móvil, tablet y escritorio' },
 ];
 
 const faqItems = [
@@ -110,11 +110,11 @@ const faqItems = [
   },
   {
     q: '¿Por qué solo 2 semanas?',
-    a: 'Porque nos especializamos en un tipo de proyecto y lo hemos hecho muchas veces. No reinventamos la rueda con cada cliente, aplicamos lo que ya sabemos que funciona.',
+    a: 'Porque tenemos el proceso resuelto. No reinventamos la rueda con cada cliente, aplicamos lo que ya sabemos que funciona y lo adaptamos a tu negocio concreto.',
   },
   {
     q: '¿Qué pasa con el hosting y el dominio?',
-    a: 'El hosting y el dominio los contratas tú directamente (entre 10–20€/mes). Te explicamos exactamente qué contratar y lo configuramos nosotros. Así la web es 100% tuya.',
+    a: 'El hosting y el dominio los contratas tú directamente. Te explicamos exactamente qué contratar y lo configuramos nosotros. Así la web es 100% tuya.',
   },
   {
     q: '¿Me forman para gestionar la web yo solo?',
@@ -126,7 +126,7 @@ const faqItems = [
   },
   {
     q: '¿Trabajáis con cualquier tipo de negocio?',
-    a: 'No. Trabajamos exclusivamente con entrenadores, fisioterapeutas, negocios de salud y negocios locales en general. Esa especialización es lo que nos permite ser más rápidos y más efectivos que una agencia generalista.',
+    a: 'Sí. Trabajamos con cualquier negocio local: clínicas, estudios, tiendas, autónomos, inmobiliarias, lo que sea. Lo que importa es que tengas algo bueno que ofrecer y quieras que más gente lo encuentre.',
   },
 ];
 
@@ -305,10 +305,10 @@ export default function Process() {
           </div>
           <div className="flex-1">
             <h3 className="font-display font-bold text-base mb-1" style={{ color: '#e8e8f2' }}>
-              Garantía de satisfacción
+              Revisamos juntos hasta que esté bien
             </h3>
             <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>
-              Si al ver la primera entrega hay algo que no te convence, lo revisamos sin coste adicional. Trabajamos hasta que el resultado sea exactamente lo que acordamos. Ni más, ni menos.
+              Revisamos juntos hasta que el resultado sea exactamente lo que hablamos. El proceso incluye rondas de feedback para que nada llegue por sorpresa al final.
             </p>
           </div>
           <div className="flex-shrink-0 text-right hidden md:block">

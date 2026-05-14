@@ -20,7 +20,7 @@ const reviews = [
     meta: '8 reseñas',
     stars: 5,
     date: 'hace 3 meses',
-    text: 'Pensaba que esto era solo para empresas grandes. Captiva me demostró que un entrenador autónomo también puede tener un sistema que trabaje por él.',
+    text: 'Pensaba que esto era solo para empresas grandes. Captiva me demostró que un negocio pequeño también puede tener un sistema que trabaje por él.',
   },
   {
     name: 'Laura Gómez',
