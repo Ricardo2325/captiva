@@ -8,52 +8,138 @@ import ComparisonTable from '@/components/ComparisonTable';
 
 const plans = [
   {
-    name: 'Presencia',
-    price: '797',
-    desc: 'Para negocios que necesitan una presencia digital sólida y profesional.',
-    features: [
-      'Web a medida hasta 5 páginas',
-      'Diseño responsive mobile-first',
-      'Formulario de contacto',
-      'SEO básico on-page',
-      'Entrega en 2 semanas',
+    name: 'Starter',
+    price: '499',
+    delivery: '7–14 días',
+    desc: 'Presencia profesional rápida. Una página, un objetivo: que el visitante te contacte.',
+    highlights: [
+      'Landing page 1 página',
+      'SEO + Google Analytics',
+      'Formulario y WhatsApp',
     ],
     cta: 'Empezar',
     featured: false,
   },
   {
-    name: 'Captiva',
-    price: '1.497',
-    desc: 'El más elegido. Web profesional + automatizaciones que trabajan mientras vos atendés tu negocio.',
-    features: [
-      'Todo lo del plan Presencia',
-      'Reservas y pagos automatizados',
-      'Secuencia de emails de bienvenida',
-      'Integración con tu calendario',
-      'Seguimiento de leads automático',
-      'Soporte 3 meses incluido',
+    name: 'Pro',
+    price: '999',
+    delivery: '14–21 días',
+    desc: 'Web corporativa completa y reservas en piloto automático. El más elegido.',
+    highlights: [
+      'Web multipágina completa',
+      'Reservas Cal.com sin WhatsApp',
+      'Recordatorios y bienvenida automáticos',
+      'Captura de leads instantánea',
     ],
     cta: 'Lo quiero',
     featured: true,
   },
   {
-    name: 'Sistema',
-    price: '2.997',
-    desc: 'Para negocios que quieren un sistema completo de captación y retención de clientes.',
-    features: [
-      'Todo lo del plan Captiva',
-      'Funnel de ventas completo',
-      'Página de venta de programas',
-      'Dashboard de métricas',
-      'Automatizaciones avanzadas',
-      'Soporte 6 meses incluido',
+    name: 'Shop',
+    price: '2.299',
+    delivery: '21–30 días',
+    desc: 'Ecommerce desarrollado a medida. Sin plantillas de plataforma, con control total sobre el resultado.',
+    highlights: [
+      'Gestión de stock y pedidos en tiempo real',
+      'Pasarela de pago configurada',
+      'Emails automáticos de pedido',
     ],
     cta: 'Hablamos',
+    featured: false,
+  },
+  {
+    name: 'Add-on',
+    price: '499',
+    delivery: '5–7 días',
+    desc: 'Automatizaciones para tu web actual. Sin rediseño, sin esperas.',
+    highlights: [
+      'Reservas Cal.com integradas',
+      'Recordatorios anti no-show',
+      'Sistema de captura de leads',
+    ],
+    cta: 'Lo añado',
     featured: false,
   },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+function CheckIcon({ color = '#4f46e5' }: { color?: string }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 mt-0.5" style={{ color }}>
+      <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PlanCard({ plan, featured }: { plan: typeof plans[0]; featured: boolean }) {
+  return (
+    <div
+      className="relative flex flex-col p-7 h-full cursor-default"
+      style={{
+        backgroundColor: featured ? '#1a1a2e' : '#0d0d14',
+        border: featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
+        boxShadow: featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
+      }}
+    >
+      <div
+        className="text-center text-[11px] font-medium tracking-wider uppercase mb-4 py-1"
+        style={{
+          backgroundColor: featured ? 'rgba(79,70,229,0.15)' : 'transparent',
+          color: featured ? '#818cf8' : 'transparent',
+          borderRadius: '4px',
+          userSelect: 'none',
+        }}
+      >
+        Más popular
+      </div>
+
+      {/* Nombre + precio */}
+      <p className="text-sm font-semibold mb-3" style={{ color: '#e8e8f2' }}>{plan.name}</p>
+      <div className="flex items-baseline gap-1 mb-1">
+        <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>€{plan.price}</span>
+        <span className="text-xs" style={{ color: '#8888aa' }}>/proyecto</span>
+      </div>
+      <p className="text-[11px] tracking-wide mb-4" style={{ color: '#4f46e5' }}>Entrega: {plan.delivery}</p>
+
+      <div className="mb-5" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
+
+      {/* Descripción */}
+      <p className="text-sm leading-relaxed mb-6" style={{ color: '#8888aa' }}>{plan.desc}</p>
+
+      {/* Highlights */}
+      <ul className="flex flex-col gap-3 flex-1 mb-6">
+        {plan.highlights.map((h) => (
+          <li key={h} className="flex items-start gap-2 text-sm" style={{ color: '#e8e8f2' }}>
+            <CheckIcon />
+            {h}
+          </li>
+        ))}
+      </ul>
+
+      {/* CTA */}
+      {featured ? (
+        <Link
+          href="/contacto"
+          className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90"
+          style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}
+        >
+          {plan.cta}
+        </Link>
+      ) : (
+        <Link
+          href="/contacto"
+          className="block text-center py-3 text-sm font-medium transition-all duration-200"
+          style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5'; (e.currentTarget as HTMLElement).style.color = '#e8e8f2'; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e'; (e.currentTarget as HTMLElement).style.color = '#8888aa'; }}
+        >
+          {plan.cta}
+        </Link>
+      )}
+    </div>
+  );
+}
 
 function PricingCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -82,64 +168,16 @@ function PricingCarousel() {
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-
         className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2"
         style={{ scrollbarWidth: 'none' } as React.CSSProperties}
       >
-        {plans.map((plan, i) => (
+        {plans.map((plan) => (
           <div key={plan.name} className="w-[85%] shrink-0 snap-start">
-            <div
-              className="relative flex flex-col p-8 h-full cursor-default"
-              style={{
-                backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
-                border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
-                boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
-              }}
-            >
-              {plan.featured && (
-                <div
-                  className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
-                  style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
-                >
-                  Más popular
-                </div>
-              )}
-              <div className="mb-6">
-                <p className="text-sm mb-4" style={{ color: '#8888aa' }}>{plan.name}</p>
-                <div className="flex items-baseline gap-1 mb-3">
-                  <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>€{plan.price}</span>
-                  <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
-                </div>
-                <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{plan.desc}</p>
-              </div>
-              <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
-              <ul className="flex flex-col gap-3 mb-8 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 mt-0.5" style={{ color: '#4f46e5' }}>
-                      <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contacto"
-                className="block w-full text-center py-3 text-sm font-medium transition-all duration-200"
-                style={{
-                  backgroundColor: plan.featured ? '#4f46e5' : 'transparent',
-                  color: plan.featured ? '#e8e8f2' : '#8888aa',
-                  border: plan.featured ? 'none' : '1px solid #1e1e2e',
-                }}
-              >
-                {plan.cta}
-              </Link>
-            </div>
+            <PlanCard plan={plan} featured={plan.featured} />
           </div>
         ))}
       </div>
 
-      {/* Controls */}
       <div className="flex items-center justify-center gap-5 mt-6">
         <button
           onClick={() => scrollToIndex(Math.max(0, active - 1))}
@@ -149,7 +187,7 @@ function PricingCarousel() {
             width: '36px', height: '36px', borderRadius: '50%',
             border: '1px solid #1e1e2e', background: 'transparent',
             color: active === 0 ? '#3a3a5c' : '#e8e8f2', cursor: active === 0 ? 'not-allowed' : 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}
         >←</button>
 
@@ -178,7 +216,7 @@ function PricingCarousel() {
             border: '1px solid #1e1e2e', background: 'transparent',
             color: active === plans.length - 1 ? '#3a3a5c' : '#e8e8f2',
             cursor: active === plans.length - 1 ? 'not-allowed' : 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}
         >→</button>
       </div>
@@ -193,9 +231,9 @@ function PricingCarousel() {
 export default function Services() {
   return (
     <section id="servicios" className="px-6 md:px-12 py-24 md:py-32" style={{ borderTop: '1px solid #1e1e2e' }}>
-      <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
+      {/* Header — contenido centrado */}
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -213,78 +251,33 @@ export default function Services() {
             Elige tu punto<br />de partida.
           </h2>
           <p className="text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: '#8888aa' }}>
-            Cada proyecto empieza con una llamada gratuita de 30 minutos. A partir de ahí, te proponemos el plan que mejor encaja con donde estás ahora y a dónde quieres llegar. El precio es fijo: lo que acordamos es lo que pagas.
+            Cada proyecto empieza con una llamada gratuita de 30 minutos. A partir de ahí, te proponemos el plan que mejor encaja con donde estás y a dónde quieres llegar. El precio es fijo: lo que acordamos es lo que pagas.
           </p>
         </motion.div>
+      </div>
 
-        {/* Mobile carousel */}
+      {/* Mobile carousel */}
+      <div className="max-w-6xl mx-auto">
         <PricingCarousel />
+      </div>
 
-        {/* Desktop grid */}
-        <div className="hidden md:grid grid-cols-3 gap-4 items-stretch">
-          {plans.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease }}
-            >
-              <div
-                className="relative flex flex-col p-8 h-full cursor-default"
-                style={{
-                  backgroundColor: plan.featured ? '#1a1a2e' : '#0d0d14',
-                  border: plan.featured ? '1px solid #4f46e5' : '1px solid #1e1e2e',
-                  boxShadow: plan.featured ? '0 0 40px rgba(79,70,229,0.1)' : 'none',
-                }}
-              >
-                {plan.featured && (
-                  <div
-                    className="text-center text-[11px] font-medium tracking-wider uppercase mb-5 py-1"
-                    style={{ backgroundColor: 'rgba(79,70,229,0.15)', color: '#818cf8', borderRadius: '4px' }}
-                  >
-                    Más popular
-                  </div>
-                )}
-                <div className="mb-6">
-                  <p className="text-sm mb-4" style={{ color: '#8888aa' }}>{plan.name}</p>
-                  <div className="flex items-baseline gap-1 mb-3">
-                    <span className="font-display font-extrabold text-4xl" style={{ color: '#e8e8f2' }}>€{plan.price}</span>
-                    <span className="text-sm" style={{ color: '#8888aa' }}>/proyecto</span>
-                  </div>
-                  <p className="text-sm leading-relaxed" style={{ color: '#8888aa' }}>{plan.desc}</p>
-                </div>
-                <div className="mb-6" style={{ height: '1px', backgroundColor: '#1e1e2e' }} />
-                <ul className="flex flex-col gap-3 mb-8 flex-1">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#8888aa' }}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 mt-0.5" style={{ color: '#4f46e5' }}>
-                        <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                {plan.featured ? (
-                  <Link href="/contacto" className="block w-full text-center py-3 text-sm font-medium transition-all duration-200 hover:opacity-90" style={{ backgroundColor: '#4f46e5', color: '#e8e8f2' }}>
-                    {plan.cta}
-                  </Link>
-                ) : (
-                  <Link
-                    href="/contacto"
-                    className="block text-center py-3 text-sm font-medium transition-all duration-200"
-                    style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5'; (e.currentTarget as HTMLElement).style.color = '#e8e8f2'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e'; (e.currentTarget as HTMLElement).style.color = '#8888aa'; }}
-                  >
-                    {plan.cta}
-                  </Link>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      {/* Desktop grid */}
+      <div className="hidden md:grid grid-cols-4 gap-4 items-stretch max-w-7xl mx-auto">
+        {plans.map((plan, i) => (
+          <motion.div
+            key={plan.name}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: i * 0.08, ease }}
+          >
+            <PlanCard plan={plan} featured={plan.featured} />
+          </motion.div>
+        ))}
+      </div>
 
+      {/* Resto del contenido — centrado */}
+      <div className="max-w-6xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -347,7 +340,7 @@ export default function Services() {
           ))}
         </motion.div>
 
-        {/* FAQ accordion */}
+        {/* FAQ */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -377,12 +370,8 @@ export default function Services() {
                   a: 'La landing tiene un único objetivo: convertir al visitante en lead o cliente. Sin menú, sin distracciones. La web completa tiene varias páginas y sirve para negocios que necesitan explicar más: servicios, equipo, portfolio. En la llamada inicial te decimos cuál tiene más sentido para tu caso.',
                 },
                 {
-                  q: '¿Qué necesito tener listo antes de empezar?',
-                  a: 'Prácticamente nada. Te guiamos con textos, imágenes y estructura. Si ya tienes material, lo usamos; si no, lo creamos juntos durante el proceso.',
-                },
-                {
                   q: '¿Cuánto tiempo lleva el proceso completo?',
-                  a: 'Entre 2 y 5 semanas según el plan. Todo el timeline queda fijado por escrito antes de empezar, con fechas concretas de revisión y entrega.',
+                  a: 'Entre 1 y 5 semanas según el plan. Todo el timeline queda fijado por escrito antes de empezar, con fechas concretas de revisión y entrega.',
                 },
               ].map((item, i) => (
                 <AccordionItem
@@ -406,7 +395,7 @@ export default function Services() {
           </div>
         </motion.div>
 
-      </div>
+      </div>{/* fin max-w-6xl */}
     </section>
   );
 }
