@@ -86,7 +86,7 @@ type PhysicsBody = {
 
 type MatterBodyProps = {
   children: ReactNode
-  matterBodyOptions?: Matter.IBodyDefinition
+  matterBodyOptions?: Matter.IChamferableBodyDefinition
   isDraggable?: boolean
   bodyType?: "rectangle" | "circle" | "svg"
   sampleLength?: number
@@ -171,11 +171,11 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
   ) => {
     const canvas = useRef<HTMLDivElement>(null)
     const engine = useRef(Engine.create())
-    const render = useRef<Render>()
-    const runner = useRef<Runner>()
+    const render = useRef<Render | undefined>(undefined)
+    const runner = useRef<Runner | undefined>(undefined)
     const bodiesMap = useRef(new Map<string, PhysicsBody>())
-    const frameId = useRef<number>()
-    const mouseConstraint = useRef<Matter.MouseConstraint>()
+    const frameId = useRef<number | undefined>(undefined)
+    const mouseConstraint = useRef<Matter.MouseConstraint | undefined>(undefined)
     const mouseDown = useRef(false)
     const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
     const isRunning = useRef(false)
