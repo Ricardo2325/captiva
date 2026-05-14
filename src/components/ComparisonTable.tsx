@@ -5,25 +5,35 @@ import Link from 'next/link';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const plans = ['Presencia', 'Captiva', 'Sistema'];
+const plans = ['Starter', 'Pro', 'Shop', 'Add-on'];
 const featured = 1;
 
-const rows: { label: string; values: (string | null)[] }[] = [
-  { label: 'Precio del proyecto',          values: ['797€',       '1.497€',    '2.997€'] },
-  { label: 'Páginas incluidas',             values: ['Hasta 5',    'Hasta 5',   'Ilimitadas'] },
-  { label: 'Diseño responsive',             values: ['✓',          '✓',         '✓'] },
-  { label: 'Formulario de contacto',        values: ['✓',          '✓',         '✓'] },
-  { label: 'SEO on-page',                  values: ['Básico',     'Básico',    'Avanzado'] },
-  { label: 'Plazo de entrega',              values: ['2 semanas',  '2-3 sem.',  '4-5 sem.'] },
-  { label: 'Reservas y pagos online',       values: [null,         '✓',         '✓'] },
-  { label: 'Secuencia de emails',           values: [null,         '✓',         '✓'] },
-  { label: 'Integración con calendario',    values: [null,         '✓',         '✓'] },
-  { label: 'Seguimiento de leads',          values: [null,         '✓',         '✓'] },
-  { label: 'Funnel de ventas',              values: [null,         null,        '✓'] },
-  { label: 'Página de venta de programas',  values: [null,         null,        '✓'] },
-  { label: 'Dashboard de métricas',         values: [null,         null,        '✓'] },
-  { label: 'Automatizaciones avanzadas',    values: [null,         null,        '✓'] },
-  { label: 'Soporte post-entrega',          values: ['—',          '3 meses',   '6 meses'] },
+const rows: { label: string; values: (string | null)[]; section?: boolean }[] = [
+  { label: 'Precio',                               values: ['499€',      '999€',       '2.299€',    '499€'] },
+  { label: 'Plazo de entrega',                     values: ['7–14 días', '14–21 días', '21–30 días', '5–7 días'] },
+  { label: 'Landing page 1 página',                values: ['✓',          null,          null,         null] },
+  { label: 'Web multipágina',                      values: [null,         '✓',           '✓',          null] },
+  { label: 'Tienda online a medida',               values: [null,         null,          '✓',          null] },
+  { label: 'Integración en web existente',         values: [null,         null,          null,         '✓'] },
+  { label: 'Diseño responsive',                    values: ['✓',          '✓',           '✓',          null] },
+  { label: 'Formulario de contacto',               values: ['✓',          '✓',           '✓',          null] },
+  { label: 'Botón de WhatsApp',                    values: ['✓',          '✓',           '✓',          null] },
+  { label: 'SEO básico on-page',                   values: ['✓',          '✓',           '✓',          null] },
+  { label: 'Google Analytics + Search Console',    values: ['✓',          '✓',           '✓',          null] },
+  { label: 'Páginas legales',                      values: ['✓',          '✓',           '✓',          null] },
+  { label: 'Pasarela de pago',                     values: [null,         null,          '✓',          null] },
+  { label: 'Soporte post-entrega',                 values: ['15 días',    '15 días',     '30 días',    '—'] },
+  { label: 'Rondas de cambios',                    values: ['2',          '2',           '3',          '—'] },
+  { label: 'Automatizaciones',                     values: ['', '', '', ''], section: true },
+  { label: 'Reservas Cal.com',                     values: [null,         '✓',           '✓',          '✓'] },
+  { label: 'Recordatorios anti no-show',           values: [null,         '✓',           '✓',          '✓'] },
+  { label: 'Secuencia de bienvenida',              values: [null,         '✓',           '✓',          '✓'] },
+  { label: 'Captura de leads + notificación',      values: [null,         '✓',           '✓',          '✓'] },
+  { label: 'Confirmación de pedido',               values: [null,         null,          '✓',          null] },
+  { label: 'Generación automática de facturas',    values: [null,         null,          '✓',          null] },
+  { label: 'Ticket de envío de la caja',           values: [null,         null,          '✓',          null] },
+  { label: 'Alerta de stock bajo',                 values: [null,         null,          '✓',          null] },
+  { label: 'Resumen mensual de facturas',          values: [null,         null,          '✓',          null] },
 ];
 
 export default function ComparisonTable() {
@@ -57,7 +67,7 @@ export default function ComparisonTable() {
         }}
       >
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem', minWidth: '480px' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem', minWidth: '560px' }}>
             <thead>
               <tr>
                 <th
@@ -69,7 +79,7 @@ export default function ComparisonTable() {
                     letterSpacing: '0.15em',
                     color: '#8888aa',
                     fontWeight: 500,
-                    width: '38%',
+                    width: '34%',
                   }}
                 >
                   Característica
@@ -78,7 +88,7 @@ export default function ComparisonTable() {
                   <th
                     key={plan}
                     style={{
-                      padding: '0.75rem 1rem',
+                      padding: '0.75rem 0.75rem',
                       textAlign: 'center',
                       fontWeight: 700,
                     }}
@@ -107,59 +117,75 @@ export default function ComparisonTable() {
               </tr>
             </thead>
             <tbody>
-              {rows.map((row, ri) => (
-                <tr
-                  key={row.label}
-                  style={{ borderTop: '1px solid #1e1e2e' }}
-                >
-                  <td
-                    style={{
-                      padding: '0.875rem 1rem 0.875rem 0',
-                      color: '#8888aa',
-                      fontSize: '0.78rem',
-                    }}
-                  >
-                    {row.label}
-                  </td>
-                  {row.values.map((val, ci) => (
+              {rows.map((row) => (
+                row.section ? (
+                  <tr key={row.label}>
                     <td
-                      key={ci}
+                      colSpan={5}
                       style={{
-                        padding: '0.875rem 1rem',
-                        textAlign: 'center',
-                        color: ci === featured ? '#e8e8f2' : '#8888aa',
-                        fontWeight: ci === featured ? 600 : 400,
-                        fontSize: '0.78rem',
+                        padding: '0.6rem 0',
+                        paddingTop: '1.25rem',
+                        fontSize: '0.6rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        color: '#4f46e5',
+                        fontWeight: 600,
+                        borderTop: '1px solid #1e1e2e',
                       }}
                     >
-                      {val === '✓' ? (
-                        <span
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '20px',
-                            height: '20px',
-                            borderRadius: '50%',
-                            background: 'rgba(79,70,229,0.15)',
-                            border: '1px solid rgba(79,70,229,0.4)',
-                            color: '#4f46e5',
-                            fontSize: '10px',
-                            fontWeight: 700,
-                          }}
-                        >
-                          ✓
-                        </span>
-                      ) : val === null ? (
-                        <span style={{ color: '#3a3a5c' }}>—</span>
-                      ) : (
-                        val
-                      )}
+                      {row.label}
                     </td>
-                  ))}
-                </tr>
+                  </tr>
+                ) : (
+                  <tr key={row.label} style={{ borderTop: '1px solid #1e1e2e' }}>
+                    <td
+                      style={{
+                        padding: '0.75rem 1rem 0.75rem 0',
+                        color: '#8888aa',
+                        fontSize: '0.75rem',
+                      }}
+                    >
+                      {row.label}
+                    </td>
+                    {row.values.map((val, ci) => (
+                      <td
+                        key={ci}
+                        style={{
+                          padding: '0.75rem',
+                          textAlign: 'center',
+                          color: ci === featured ? '#e8e8f2' : '#8888aa',
+                          fontWeight: ci === featured ? 600 : 400,
+                          fontSize: '0.75rem',
+                        }}
+                      >
+                        {val === '✓' ? (
+                          <span
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '20px',
+                              height: '20px',
+                              borderRadius: '50%',
+                              background: 'rgba(79,70,229,0.15)',
+                              border: '1px solid rgba(79,70,229,0.4)',
+                              color: '#4f46e5',
+                              fontSize: '10px',
+                              fontWeight: 700,
+                            }}
+                          >
+                            ✓
+                          </span>
+                        ) : val === null ? (
+                          <span style={{ color: '#3a3a5c' }}>—</span>
+                        ) : (
+                          val
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                )
               ))}
-
             </tbody>
           </table>
         </div>
