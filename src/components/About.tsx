@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Gravity, MatterBody } from '@/components/ui/gravity';
 
 const team = [
   {
@@ -28,6 +29,57 @@ const team = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const techItems = [
+  { name: 'Next.js',    x: '20%', y: '5%',  angle: -5  },
+  { name: 'TypeScript', x: '60%', y: '5%',  angle: 8   },
+  { name: 'Cal.com',    x: '40%', y: '5%',  angle: -3  },
+  { name: 'Make',       x: '15%', y: '5%',  angle: 6   },
+  { name: 'n8n',        x: '70%', y: '5%',  angle: -8  },
+  { name: 'Resend',     x: '50%', y: '5%',  angle: 4   },
+  { name: 'Supabase',   x: '30%', y: '5%',  angle: -6  },
+];
+
+function TechStack() {
+  return (
+    <div className="relative hidden md:block w-full" style={{ height: '300px', overflow: 'hidden' }}>
+      <Gravity
+        gravity={{ x: 0, y: 0.8 }}
+        grabCursor
+        addTopWall={false}
+        className="w-full h-full"
+      >
+        {techItems.map((item) => (
+          <MatterBody
+            key={item.name}
+            x={item.x}
+            y={item.y}
+            angle={item.angle}
+            matterBodyOptions={{ friction: 0.3, restitution: 0.4, density: 0.002 }}
+          >
+            <div
+              className="px-4 py-2 text-xs font-medium tracking-wide select-none whitespace-nowrap"
+              style={{
+                backgroundColor: '#13131f',
+                color: '#818cf8',
+                border: '1px solid rgba(79,70,229,0.3)',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.5)',
+              }}
+            >
+              {item.name}
+            </div>
+          </MatterBody>
+        ))}
+      </Gravity>
+
+      {/* Glow de fondo */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(79,70,229,0.07) 0%, transparent 70%)' }}
+      />
+    </div>
+  );
+}
+
 export default function About() {
   return (
     <section
@@ -38,23 +90,26 @@ export default function About() {
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-16 md:mb-20"
-        >
-          <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
-            Sobre nosotros
-          </p>
-          <h2
-            className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-2xl"
-            style={{ color: '#e8e8f2' }}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease }}
           >
-            Tres personas.<br />Un enfoque.
-          </h2>
-        </motion.div>
+            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
+              Sobre nosotros
+            </p>
+            <h2
+              className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl"
+              style={{ color: '#e8e8f2' }}
+            >
+              Tres personas.<br />Un enfoque.
+            </h2>
+          </motion.div>
+
+          <TechStack />
+        </div>
 
         {/* Historia de origen */}
         <motion.div
