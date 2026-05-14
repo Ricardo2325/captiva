@@ -79,7 +79,7 @@ export default function Footer() {
             Captiva
           </span>
           <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#8888aa' }}>
-            Webs a medida y automatizaciones para entrenadores y negocios locales.
+            Webs a medida y automatizaciones para negocios locales.
           </p>
           <p className="text-xs" style={{ color: '#8888aa' }}>
             © {new Date().getFullYear()} Captiva. Todos los derechos reservados.

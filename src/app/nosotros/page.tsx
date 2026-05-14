@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Nosotros — Captiva',
-  description: 'Somos Ricardo y Alejandro. Una micro-agencia sin capas intermedias especializada en negocios locales.',
+  description: 'Somos Ricardo, Ismael y Cristian. Una micro-agencia sin capas intermedias que hace webs y automatizaciones para negocios locales.',
 };
 
 export default function NosotrosPage() {

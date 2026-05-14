@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Servicios — Captiva',
-  description: 'Webs a medida y automatizaciones para entrenadores y negocios locales. Planes desde 797€.',
+  description: 'Webs a medida y automatizaciones para negocios locales. Planes desde 797€.',
 };
 
 export default function ServiciosPage() {

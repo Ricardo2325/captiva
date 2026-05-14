@@ -74,10 +74,10 @@ export default function About() {
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
-              Captiva nació de una frustración concreta: demasiados entrenadores, fisioterapeutas y negocios locales atrapados entre dos opciones malas. O una agencia cara que les trataba como un cliente más en la cadena de montaje, o una plantilla barata que no diferenciaba su negocio de nadie.
+              Captiva nació de una frustración concreta: demasiados negocios locales atrapados entre dos opciones malas. O una agencia cara que les trataba como un cliente más en la cadena de montaje, o una plantilla barata que no diferenciaba su negocio de nadie.
             </p>
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
-              Decidimos que había una tercera vía: la especialización real. Si solo trabajás con un tipo de negocio, aprendés exactamente qué funciona para ellos. No reinventás la rueda en cada proyecto. Y podés entregar en dos semanas lo que una agencia generalista tarda dos meses.
+              Decidimos que había una tercera vía: tamaño de micro-agencia con el proceso de una grande. Sin capas intermedias, sin plantillas, sin curva de aprendizaje que la paga el cliente. Entregamos en dos semanas porque tenemos el proceso resuelto, no porque improvisemos.
             </p>
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
               Eso es Captiva. Sin capas intermedias, sin presupuestos orientativos, sin desaparecer después del lanzamiento.
@@ -116,7 +116,7 @@ export default function About() {
         >
           {[
             { value: 'Precio fijo', label: 'Sin sorpresas al final' },
-            { value: '2+', label: 'Años especializados' },
+            { value: '2+', label: 'Años en activo' },
             { value: '2 sem.', label: 'Tiempo medio de entrega' },
             { value: '24h', label: 'Respuesta garantizada' },
           ].map((s) => (
@@ -206,7 +206,7 @@ export default function About() {
             },
             {
               title: 'Solo lo que funciona',
-              desc: 'No seguimos tendencias. Aplicamos lo que ha dado resultados en proyectos anteriores del mismo sector.',
+              desc: 'No seguimos tendencias. Aplicamos lo que ha dado resultados en proyectos anteriores y lo adaptamos a tu negocio.',
             },
             {
               title: 'El cliente lo entiende todo',

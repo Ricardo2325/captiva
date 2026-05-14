@@ -33,8 +33,8 @@ const items = [
         <line x1="20" y1="12" x2="22" y2="12" />
       </svg>
     ),
-    title: 'Especializados en tu nicho',
-    desc: 'Trabajamos exclusivamente con entrenadores personales y negocios locales. Conocemos el sector, sabemos qué convierte y no perdemos tiempo en curva de aprendizaje a tu costa.',
+    title: 'Sin curva de aprendizaje a tu costa',
+    desc: 'Da igual si tienes una clínica, un estudio de arquitectura o una tienda. Llevamos proyectos resolviendo el mismo problema: convertir visitas en clientes. Aplicamos lo que ya funciona.',
   },
   {
     icon: (

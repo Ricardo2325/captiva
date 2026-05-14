@@ -23,7 +23,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Captiva — Webs y automatizaciones para negocios locales",
   description:
-    "Creamos webs a medida y automatizamos procesos para que tu negocio crezca sin depender de ti. Especializados en entrenadores personales.",
+    "Creamos webs a medida y automatizamos procesos para que tu negocio crezca sin depender de ti. Para cualquier negocio local que quiera más clientes.",
 };
 
 export default function RootLayout({
