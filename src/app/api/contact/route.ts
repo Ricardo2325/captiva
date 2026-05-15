@@ -5,7 +5,7 @@ const FROM = 'onboarding@resend.dev';
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const TO = process.env.CONTACT_EMAIL ?? 'hola@captiva.es';
+  const TO = process.env.CONTACT_EMAIL ?? 'hola@baifostudio.com';
   const body = await req.json();
   const { nombre, email, telefono, mensaje } = body as Record<string, string>;
 
@@ -33,14 +33,14 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: FROM,
       to: email,
-      subject: 'Hemos recibido tu mensaje — Captiva',
+      subject: 'Hemos recibido tu mensaje — Baifo Studio',
       text: [
         `Hola ${nombre},`,
         ``,
         `Hemos recibido tu mensaje y te respondemos en menos de 24 horas.`,
         ``,
-        `El equipo de Captiva`,
-        `hola@captiva.es`,
+        `El equipo de Baifo Studio`,
+        `hola@baifostudio.com`,
       ].join('\n'),
     });
 

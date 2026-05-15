@@ -111,7 +111,7 @@ export default function ForWho() {
             className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-2xl mb-5"
             style={{ color: '#e8e8f2' }}
           >
-            Captiva es para ti si alguna de estas situaciones te suena.
+            Baifo Studio es para ti si alguna de estas situaciones te suena.
           </h2>
           <p className="text-base md:text-lg max-w-xl" style={{ color: '#8888aa' }}>
             No importa el sector. Importa que tu negocio tenga algo bueno que ofrecer y quieras que más gente lo encuentre.

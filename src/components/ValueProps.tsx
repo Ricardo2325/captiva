@@ -98,7 +98,7 @@ export default function ValueProps() {
           className="mb-16 md:mb-20"
         >
           <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#4f46e5' }}>
-            Por qué Captiva
+            Por qué Baifo Studio
           </p>
           <h2
             className="font-display font-bold leading-tight text-3xl md:text-4xl lg:text-5xl max-w-xl"

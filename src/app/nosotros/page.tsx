@@ -3,7 +3,7 @@ import About from '@/components/About';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Nosotros — Captiva',
+  title: 'Nosotros — Baifo Studio',
   description: 'Somos Ricardo, Ismael y Cristian. Una micro-agencia sin capas intermedias que hace webs y automatizaciones para negocios locales.',
 };
 

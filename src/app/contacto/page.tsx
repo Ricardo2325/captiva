@@ -3,7 +3,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Contacto — Captiva',
+  title: 'Contacto — Baifo Studio',
   description: 'Cuéntanos tu proyecto. Respondemos en menos de 24 horas.',
 };
 

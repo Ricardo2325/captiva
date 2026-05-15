@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState } from 'react';
@@ -33,11 +34,15 @@ export default function Nav() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18">
-        <Link
-          href="/"
-          className="font-display font-extrabold text-xl tracking-tight text-text-primary"
-        >
-          Captiva
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Baifo Studio"
+            width={182}
+            height={73}
+            className="h-[4.5625rem] w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop links */}
