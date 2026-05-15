@@ -8,7 +8,7 @@ const team = [
     initials: 'R',
     name: 'Ricardo',
     role: 'Desarrollador Full Stack',
-    bio: 'Llevo años construyendo sistemas que funcionan de verdad. Me obsesiona que el código sea limpio y que cada automatización ahorre tiempo real, no solo en el papel. Empecé Captiva porque vi demasiados autónomos pagando precios de agencia grande por webs que no convertían.',
+    bio: 'Llevo años construyendo sistemas que funcionan de verdad. Me obsesiona que el código sea limpio y que cada automatización ahorre tiempo real, no solo en el papel. Empecé Baifo Studio porque vi demasiados autónomos pagando precios de agencia grande por webs que no convertían.',
     gradient: 'linear-gradient(135deg, #1a1040 0%, #4f46e5 100%)',
   },
   {
@@ -129,13 +129,13 @@ export default function About() {
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
-              Captiva nació de una frustración concreta: demasiados negocios locales atrapados entre dos opciones malas. O una agencia cara que les trataba como un cliente más en la cadena de montaje, o una plantilla barata que no diferenciaba su negocio de nadie.
+              Baifo Studio nació de una frustración concreta: demasiados negocios locales atrapados entre dos opciones malas. O una agencia cara que les trataba como un cliente más en la cadena de montaje, o una plantilla barata que no diferenciaba su negocio de nadie.
             </p>
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
               Decidimos que había una tercera vía: tamaño de micro-agencia con el proceso de una grande. Sin capas intermedias, sin plantillas, sin curva de aprendizaje que la paga el cliente. Entregamos en dos semanas porque tenemos el proceso resuelto, no porque improvisemos.
             </p>
             <p className="text-base leading-relaxed" style={{ color: '#8888aa' }}>
-              Eso es Captiva. Sin capas intermedias, sin presupuestos orientativos, sin desaparecer después del lanzamiento.
+              Eso es Baifo Studio. Sin capas intermedias, sin presupuestos orientativos, sin desaparecer después del lanzamiento.
             </p>
           </div>
         </motion.div>

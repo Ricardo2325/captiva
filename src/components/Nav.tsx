@@ -37,7 +37,7 @@ export default function Nav() {
           href="/"
           className="font-display font-extrabold text-xl tracking-tight text-text-primary"
         >
-          Captiva
+          Baifo Studio
         </Link>
 
         {/* Desktop links */}

@@ -36,7 +36,7 @@ const footerLinks: FooterSection[] = [
   {
     label: 'Contacto',
     links: [
-      { title: 'hola@captiva.es', href: 'mailto:hola@captiva.es' },
+      { title: 'hola@baifostudio.com', href: 'mailto:hola@baifostudio.com' },
       { title: 'Reservar llamada', href: 'https://calendly.com/ricardorodriguezdelgado6' },
     ],
   },
@@ -76,13 +76,13 @@ export default function Footer() {
         {/* Brand */}
         <AnimatedContainer className="space-y-4">
           <span className="font-display font-extrabold text-2xl" style={{ color: '#e8e8f2' }}>
-            Captiva
+            Baifo Studio
           </span>
           <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#8888aa' }}>
             Webs a medida y automatizaciones para negocios locales.
           </p>
           <p className="text-xs" style={{ color: '#8888aa' }}>
-            © {new Date().getFullYear()} Captiva. Todos los derechos reservados.
+            © {new Date().getFullYear()} Baifo Studio. Todos los derechos reservados.
           </p>
         </AnimatedContainer>
 
