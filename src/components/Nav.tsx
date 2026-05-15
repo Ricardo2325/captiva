@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useState } from 'react';
 
@@ -13,6 +14,7 @@ const links = [
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,18 +42,29 @@ export default function Nav() {
 
         {/* Desktop links */}
         <nav className="hidden md:flex items-center gap-8">
-          {links.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-base text-text-muted hover:text-text-primary transition-colors duration-200"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {links.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`text-base transition-colors duration-200 ${
+                  isActive
+                    ? 'text-text-primary border-b border-accent pb-0.5'
+                    : 'text-text-muted hover:text-text-primary'
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <Link
             href="/contacto"
-            className="text-base px-4 py-2 rounded-full border border-border text-text-primary hover:border-accent hover:text-accent transition-all duration-200"
+            className={`text-base px-4 py-2 rounded-full border transition-all duration-200 ${
+              pathname === '/contacto'
+                ? 'border-accent text-accent'
+                : 'border-border text-text-primary hover:border-accent hover:text-accent'
+            }`}
           >
             Contacto
           </Link>
@@ -84,16 +97,21 @@ export default function Nav() {
         style={{ backgroundColor: 'rgba(19, 19, 31, 0.95)', backdropFilter: 'blur(16px)' }}
       >
         <nav className="flex flex-col gap-0 px-6 pb-6">
-          {links.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="py-4 text-base text-text-muted hover:text-text-primary border-b border-border transition-colors duration-200"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {links.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={`py-4 text-base border-b border-border transition-colors duration-200 ${
+                  isActive ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <Link
             href="/contacto"
             onClick={() => setMenuOpen(false)}
