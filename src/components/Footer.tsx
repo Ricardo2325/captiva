@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ReactNode } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 interface FooterLink {
   title: string;
@@ -75,9 +76,13 @@ export default function Footer() {
 
         {/* Brand */}
         <AnimatedContainer className="space-y-4">
-          <span className="font-display font-extrabold text-2xl" style={{ color: '#e8e8f2' }}>
-            Baifo Studio
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Baifo Studio"
+            width={140}
+            height={56}
+            className="h-14 w-auto object-contain"
+          />
           <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#8888aa' }}>
             Webs a medida y automatizaciones para negocios locales.
           </p>
