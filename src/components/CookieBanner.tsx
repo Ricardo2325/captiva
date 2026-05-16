@@ -54,7 +54,7 @@ export default function CookieBanner({ onAccept, onReject, onCustomize }: Props)
         Usamos cookies propias y de terceros para analizar el tráfico y
         personalizar la publicidad.{" "}
         <a
-          href="/cookies"
+          href="/legal/cookies"
           style={{ color: "#4f46e5", textDecoration: "underline" }}
         >
           Más información
