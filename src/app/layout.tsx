@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import GrainOverlay from "@/components/GrainOverlay";
 import SmoothScroll from "@/components/SmoothScroll";
 import PageTransition from "@/components/PageTransition";
+import FloatingCallButton from "@/components/FloatingCallButton";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -44,6 +45,7 @@ export default function RootLayout({
             {children}
           </PageTransition>
         </SmoothScroll>
+        <FloatingCallButton />
       </body>
     </html>
   );
