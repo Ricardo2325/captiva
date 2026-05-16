@@ -212,7 +212,6 @@ export default function About() {
                 {/* Avatar block */}
                 <div
                   className={`relative flex-shrink-0 md:w-64 ${person.containerClass}`}
-                  style={{ background: person.gradient }}
                 >
                   <Image
                     src={person.photo}
