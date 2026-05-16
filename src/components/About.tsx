@@ -205,7 +205,7 @@ export default function About() {
               >
                 {/* Avatar block */}
                 <div
-                  className="relative flex-shrink-0 md:w-64 h-64"
+                  className="relative flex-shrink-0 md:w-64 min-h-72"
                   style={{ background: person.gradient }}
                 >
                   <Image
