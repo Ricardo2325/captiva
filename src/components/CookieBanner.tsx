@@ -51,8 +51,8 @@ export default function CookieBanner({ onAccept, onReject, onCustomize }: Props)
           margin: 0,
         }}
       >
-        Usamos cookies propias y de terceros (Google Analytics, Meta Pixel) para
-        analizar el tráfico y mostrarte publicidad relevante.{" "}
+        Usamos cookies propias y de terceros para analizar el tráfico y
+        personalizar la publicidad.{" "}
         <a
           href="/cookies"
           style={{ color: "#4f46e5", textDecoration: "underline" }}
