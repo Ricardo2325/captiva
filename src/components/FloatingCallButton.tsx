@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 
-const WA_URL = "https://wa.me/34664636976";
+const WA_URL =
+  "https://wa.me/34664636976?text=" +
+  encodeURIComponent("Hola, estoy buscando una agencia para mi proyecto. ¿Podéis ayudarme?");
 
 export default function FloatingCallButton() {
   return (
