@@ -5,6 +5,7 @@ import GrainOverlay from "@/components/GrainOverlay";
 import SmoothScroll from "@/components/SmoothScroll";
 import PageTransition from "@/components/PageTransition";
 import FloatingCallButton from "@/components/FloatingCallButton";
+import CookieProvider from "@/components/CookieProvider";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -46,6 +47,7 @@ export default function RootLayout({
           </PageTransition>
         </SmoothScroll>
         <FloatingCallButton />
+        <CookieProvider />
       </body>
     </html>
   );
