@@ -21,7 +21,7 @@ const team = [
     bio: 'Vengo del marketing pero me enamoré del código. Ese cruce es donde vivo: entiendo qué tiene que decir una web para que funcione y sé construirla. Odio los proyectos genéricos casi tanto como las reuniones que podrían haber sido un email.',
     gradient: 'linear-gradient(135deg, #1a0a00 0%, #c45200 100%)',
     imgClass: 'object-cover object-top',
-    containerClass: 'h-96 md:min-h-72',
+    containerClass: 'min-h-72',
   },
   {
     photo: '/team/cristian.png',
@@ -30,7 +30,7 @@ const team = [
     bio: 'El copy es lo primero que lee un visitante y lo último que la mayoría cuida. Me encargo de que cada palabra en tu web esté ahí por un motivo. También llevo la estrategia y los funnels, la parte que convierte lectores en clientes.',
     gradient: 'linear-gradient(135deg, #0d2818 0%, #065f46 100%)',
     imgClass: 'object-cover object-top',
-    containerClass: 'h-96 md:min-h-72',
+    containerClass: 'min-h-72',
   },
 ];
 
