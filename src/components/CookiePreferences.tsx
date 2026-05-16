@@ -30,6 +30,17 @@ export default function CookiePreferences({ onSave, onClose }: Props) {
         }}
       />
 
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 10001,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "1rem",
+        }}
+      >
       <motion.div
         key="pref-modal"
         initial={{ opacity: 0, scale: 0.95, y: 16 }}
@@ -37,16 +48,11 @@ export default function CookiePreferences({ onSave, onClose }: Props) {
         exit={{ opacity: 0, scale: 0.95, y: 16 }}
         transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.3 }}
         style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 10001,
           background: "#13131f",
           border: "1px solid #1e1e2e",
           borderRadius: "1rem",
           padding: "2rem",
-          width: "min(28rem, calc(100vw - 2rem))",
+          width: "min(28rem, 100%)",
           boxShadow: "0 24px 64px rgba(0,0,0,0.7)",
         }}
       >
@@ -106,6 +112,7 @@ export default function CookiePreferences({ onSave, onClose }: Props) {
           </button>
         </div>
       </motion.div>
+      </div>
     </>
   );
 }

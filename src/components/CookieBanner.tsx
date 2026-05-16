@@ -10,18 +10,25 @@ interface Props {
 
 export default function CookieBanner({ onAccept, onReject, onCustomize }: Props) {
   return (
+    <div
+      style={{
+        position: "fixed",
+        bottom: "1.5rem",
+        left: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        zIndex: 9998,
+        padding: "0 1rem",
+      }}
+    >
     <motion.div
       initial={{ y: 120, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 120, opacity: 0 }}
       transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
       style={{
-        position: "fixed",
-        bottom: "1.5rem",
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 9998,
-        width: "min(56rem, calc(100vw - 2rem))",
+        width: "min(56rem, 100%)",
         background: "#13131f",
         border: "1px solid #1e1e2e",
         borderRadius: "1rem",
@@ -67,6 +74,7 @@ export default function CookieBanner({ onAccept, onReject, onCustomize }: Props)
         </button>
       </div>
     </motion.div>
+    </div>
   );
 }
 
