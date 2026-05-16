@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import Script from "next/script";
 import {
   getConsent,
   saveConsent,
@@ -16,72 +15,75 @@ import CookiePreferences from "./CookiePreferences";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
+function loadGA(id: string) {
+  if (document.getElementById("ga-script")) return;
+  const s = document.createElement("script");
+  s.id = "ga-script";
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+  s.async = true;
+  document.head.appendChild(s);
+  s.onload = () => {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+    gtag("js", new Date());
+    gtag("config", id);
+  };
+}
+
+function loadPixel(id: string) {
+  if (document.getElementById("pixel-script")) return;
+  const n: any = (window as any).fbq = function () {
+    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+  };
+  if (!(window as any)._fbq) (window as any)._fbq = n;
+  n.push = n; n.loaded = true; n.version = "2.0"; n.queue = [];
+  const s = document.createElement("script");
+  s.id = "pixel-script";
+  s.src = "https://connect.facebook.net/en_US/fbevents.js";
+  s.async = true;
+  document.head.appendChild(s);
+  n("init", id);
+  n("track", "PageView");
+}
+
 export default function CookieProvider() {
   const [consent, setConsent] = useState<ConsentState | null>(null);
   const [ready, setReady] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
 
   useEffect(() => {
-    setConsent(getConsent());
+    const saved = getConsent();
+    setConsent(saved);
     setReady(true);
+    if (saved?.analytics && GA_ID) loadGA(GA_ID);
+    if (saved?.marketing && PIXEL_ID) loadPixel(PIXEL_ID);
   }, []);
 
   function apply(next: ConsentState) {
     saveConsent(next);
     setConsent(next);
     setShowPreferences(false);
+    if (next.analytics && GA_ID) loadGA(GA_ID);
+    if (next.marketing && PIXEL_ID) loadPixel(PIXEL_ID);
   }
 
   const showBanner = ready && consent === null;
 
   return (
-    <>
-      {/* Google Analytics */}
-      {consent?.analytics && GA_ID && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="ga-init" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}');
-          `}</Script>
-        </>
+    <AnimatePresence>
+      {showBanner && !showPreferences && (
+        <CookieBanner
+          onAccept={() => apply(ACCEPT_ALL)}
+          onReject={() => apply(REJECT_ALL)}
+          onCustomize={() => setShowPreferences(true)}
+        />
       )}
-
-      {/* Meta Pixel */}
-      {consent?.marketing && PIXEL_ID && (
-        <Script id="meta-pixel" strategy="afterInteractive">{`
-          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
-          n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window,document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init','${PIXEL_ID}');
-          fbq('track','PageView');
-        `}</Script>
+      {showPreferences && (
+        <CookiePreferences
+          onSave={apply}
+          onClose={() => setShowPreferences(false)}
+        />
       )}
-
-      <AnimatePresence>
-        {showBanner && !showPreferences && (
-          <CookieBanner
-            onAccept={() => apply(ACCEPT_ALL)}
-            onReject={() => apply(REJECT_ALL)}
-            onCustomize={() => setShowPreferences(true)}
-          />
-        )}
-        {showPreferences && (
-          <CookiePreferences
-            onSave={apply}
-            onClose={() => setShowPreferences(false)}
-          />
-        )}
-      </AnimatePresence>
-    </>
+    </AnimatePresence>
   );
 }
