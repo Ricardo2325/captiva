@@ -527,8 +527,8 @@ function ProjectPanel({
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setCtaHovered(true)}
-          onMouseLeave={() => setCtaHovered(false)}
+          onMouseEnter={() => { if (window.matchMedia('(hover: hover)').matches) setCtaHovered(true); }}
+          onMouseLeave={() => { if (window.matchMedia('(hover: hover)').matches) setCtaHovered(false); }}
           style={{
             display: 'inline-flex',
             alignItems: 'center',

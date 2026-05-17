@@ -17,7 +17,7 @@ export default function MagneticWrapper({
   const springY = useSpring(y, { stiffness: 150, damping: 15 });
 
   function onMouseMove(e: React.MouseEvent) {
-    if (typeof window !== 'undefined' && window.innerWidth <= 768) return;
+    if (!window.matchMedia('(hover: hover)').matches) return;
     const rect = ref.current!.getBoundingClientRect();
     x.set((e.clientX - (rect.left + rect.width / 2)) * 0.35);
     y.set((e.clientY - (rect.top + rect.height / 2)) * 0.35);

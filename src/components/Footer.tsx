@@ -108,8 +108,8 @@ export default function Footer() {
                       href={link.href}
                       className="inline-flex items-center gap-1.5 text-sm transition-colors duration-200 hover:opacity-100"
                       style={{ color: '#8888aa' }}
-                      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#e8e8f2')}
-                      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = '#8888aa')}
+                      onMouseEnter={(e) => { if (window.matchMedia('(hover: hover)').matches) (e.currentTarget as HTMLElement).style.color = '#e8e8f2'; }}
+                      onMouseLeave={(e) => { if (window.matchMedia('(hover: hover)').matches) (e.currentTarget as HTMLElement).style.color = '#8888aa'; }}
                       {...(link.href.startsWith('http') || link.href.startsWith('mailto')
                         ? { target: '_blank', rel: 'noopener noreferrer' }
                         : {})}
