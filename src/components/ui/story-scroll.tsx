@@ -69,6 +69,7 @@ const FlowArt: React.FC<FlowArtProps> = ({
   useGSAP(
     () => {
       if (!containerRef.current || reducedMotion) return;
+      if (window.matchMedia('(pointer: coarse)').matches) return;
 
       const sections = Array.from(
         containerRef.current.querySelectorAll<HTMLElement>('[data-flow-section]'),

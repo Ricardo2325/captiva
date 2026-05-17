@@ -33,14 +33,14 @@ export default function Nav() {
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-14 md:h-18">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
             alt="Baifo Studio"
             width={182}
             height={73}
-            className="h-[4.5625rem] w-auto object-contain"
+            className="h-9 md:h-[4.5625rem] w-auto object-contain"
             priority
           />
         </Link>
