@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@custom-variant hover {
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 @theme inline {
   --color-background: #0d0d14;
   --color-surface: #13131f;

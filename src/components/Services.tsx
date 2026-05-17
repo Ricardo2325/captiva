@@ -131,8 +131,8 @@ function PlanCard({ plan, featured }: { plan: typeof plans[0]; featured: boolean
           href="/contacto"
           className="block text-center py-3 text-sm font-medium transition-all duration-200"
           style={{ border: '1px solid #1e1e2e', color: '#8888aa' }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5'; (e.currentTarget as HTMLElement).style.color = '#e8e8f2'; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e'; (e.currentTarget as HTMLElement).style.color = '#8888aa'; }}
+          onMouseEnter={(e) => { if (!window.matchMedia('(hover: hover)').matches) return; (e.currentTarget as HTMLElement).style.borderColor = '#4f46e5'; (e.currentTarget as HTMLElement).style.color = '#e8e8f2'; }}
+          onMouseLeave={(e) => { if (!window.matchMedia('(hover: hover)').matches) return; (e.currentTarget as HTMLElement).style.borderColor = '#1e1e2e'; (e.currentTarget as HTMLElement).style.color = '#8888aa'; }}
         >
           {plan.cta}
         </Link>

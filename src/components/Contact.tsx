@@ -120,8 +120,8 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-6 py-4 group transition-all duration-200"
                 style={{ border: '1px solid #4f46e5', backgroundColor: 'rgba(79,70,229,0.06)' }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.14)')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.06)')}
+                onMouseEnter={e => { if (window.matchMedia('(hover: hover)').matches) e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.14)'; }}
+                onMouseLeave={e => { if (window.matchMedia('(hover: hover)').matches) e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.06)'; }}
               >
                 <CalendarIcon className="w-5 h-5 flex-shrink-0" style={{ color: '#4f46e5' }} />
                 <div>
