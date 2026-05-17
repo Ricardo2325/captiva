@@ -12,7 +12,7 @@ const WHATSAPP_MSG = encodeURIComponent(
   'Hola! He visto vuestra web y me interesa lo que ofrecéis. ¿Podemos hablar sobre mi proyecto?'
 );
 const CAL_LINK = 'baifostudio/30min';
-const CAL_ORIGIN = 'https://cal.eu';
+const CAL_EMBED_JS = 'https://cal.eu/embed.js';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -77,13 +77,13 @@ export default function Contact() {
 
   useEffect(() => {
     (async () => {
-      const cal = await getCalApi({ namespace: '30min', calOrigin: CAL_ORIGIN });
+      const cal = await getCalApi({ namespace: '30min', embedJsUrl: CAL_EMBED_JS });
       cal('ui', { theme: 'dark', styles: { branding: { brandColor: '#4f46e5' } }, hideEventTypeDetails: false });
     })();
   }, []);
 
   async function openCalModal() {
-    const cal = await getCalApi({ namespace: '30min', calOrigin: CAL_ORIGIN });
+    const cal = await getCalApi({ namespace: '30min', embedJsUrl: CAL_EMBED_JS });
     cal('modal', { calLink: CAL_LINK, config: { layout: 'month_view' } });
   }
 
