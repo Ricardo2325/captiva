@@ -40,7 +40,7 @@ export default function Nav() {
             alt="Baifo Studio"
             width={182}
             height={73}
-            className="h-9 md:h-[4.5625rem] w-auto object-contain"
+            className="h-8 md:h-12 w-auto object-contain"
             priority
           />
         </Link>
