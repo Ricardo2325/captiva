@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CalendarIcon } from 'lucide-react';
+import { getCalApi } from '@calcom/embed-react';
 import { ContactCard } from '@/components/ui/contact-card';
 
 // ── Configura estos valores ──────────────────────────────────────────────────
@@ -10,7 +11,8 @@ const WHATSAPP_PHONE = '34600000000'; // sin + ni espacios
 const WHATSAPP_MSG = encodeURIComponent(
   'Hola! He visto vuestra web y me interesa lo que ofrecéis. ¿Podemos hablar sobre mi proyecto?'
 );
-const CALENDAR_URL = 'https://calendly.com/ricardorodriguezdelgado6';
+const CAL_LINK = 'baifostudio/30min';
+const CAL_ORIGIN = 'https://cal.eu';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -73,6 +75,18 @@ export default function Contact() {
   const [form, setForm] = useState({ nombre: '', email: '', telefono: '', mensaje: '' });
   const [status, setStatus] = useState<Status>('idle');
 
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: '30min', calOrigin: CAL_ORIGIN });
+      cal('ui', { theme: 'dark', styles: { branding: { brandColor: '#4f46e5' } }, hideEventTypeDetails: false });
+    })();
+  }, []);
+
+  async function openCalModal() {
+    const cal = await getCalApi({ namespace: '30min', calOrigin: CAL_ORIGIN });
+    cal('modal', { calLink: CAL_LINK, config: { layout: 'month_view' } });
+  }
+
   const set = (field: string) => (v: string) => setForm((f) => ({ ...f, [field]: v }));
 
   async function handleSubmit(e: React.FormEvent) {
@@ -114,11 +128,10 @@ export default function Contact() {
           description="Rellena el formulario y te respondemos en menos de 24 horas. O si lo prefieres, agenda directamente una llamada gratuita."
           leftFooter={
             <div className="flex justify-center">
-              <a
-                href={CALENDAR_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-4 group transition-all duration-200"
+              <button
+                type="button"
+                onClick={openCalModal}
+                className="inline-flex items-center gap-3 px-6 py-4 group transition-all duration-200 cursor-pointer"
                 style={{ border: '1px solid #4f46e5', backgroundColor: 'rgba(79,70,229,0.06)' }}
                 onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.14)')}
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.06)')}
@@ -129,7 +142,7 @@ export default function Contact() {
                   <p className="text-xs mt-0.5" style={{ color: '#8888aa' }}>30 min · Sin compromiso · Directo a tu calendario</p>
                 </div>
                 <span style={{ color: '#4f46e5', fontSize: '1.1rem' }} className="group-hover:translate-x-1 transition-transform duration-200 inline-block">→</span>
-              </a>
+              </button>
             </div>
           }
         >
